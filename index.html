@@ -1,185 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Udit Ekansh</title>
-  <!-- Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Personal Website</title>
+  <!-- Example Google Font (Optional) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
   <style>
-    /* Global Resets & Body */
+    /* Reset & Base Styles */
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
-
     body {
-      font-family: 'Roboto', Arial, sans-serif;
-      background-color: #f4f4f4;
+      font-family: 'Montserrat', sans-serif; /* Example font */
       color: #333;
-      line-height: 1.6;
     }
-
-    /* Header */
-    header {
-      background-color: #2c3e50; /* Darker accent color */
-      color: #fff;
-      padding: 2rem 0;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-    header p {
-      font-size: 1.1rem;
-      opacity: 0.9;
-    }
-
-    /* Navigation */
-    nav {
-      background-color: #fff;
-      text-align: center;
-      padding: 0.5rem 0;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-    nav a {
-      margin: 0 15px;
+    a {
       text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-    nav a:hover {
-      color: #2c3e50;
+      color: inherit;
     }
 
-    /* Container for main content sections */
-    .container {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1.5rem;
+    /* Fixed Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      height: 100vh;
+      background-color: #f5f5f5;
+      padding: 2rem 1rem;
+      box-shadow: 1px 0 5px rgba(0, 0, 0, 0.1);
     }
-
-    /* About Section */
-    #about h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-    #about img {
-      width: 150px;
-      border-radius: 50%;
-      margin: 20px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
-    #about p {
-      margin-bottom: 1rem;
-      line-height: 1.7;
-    }
-
-    /* Research and Projects Sections */
-    h2 {
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-    .container p {
-      text-align: center;
+    .sidebar h2 {
+      font-size: 1.3rem;
       margin-bottom: 2rem;
+      color: #e64545; /* Accent color, e.g., a red/orange shade */
     }
-    ul {
-      list-style-type: square;
-      margin: 1rem auto;
-      max-width: 700px;
-      padding-left: 1.5rem;
-      line-height: 1.7;
+    .sidebar ul {
+      list-style: none;
+    }
+    .sidebar li {
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+    .sidebar li a {
+      color: #333;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      padding: 0.3rem 0.5rem;
+      display: inline-block;
+      border-left: 3px solid transparent;
+      transition: 0.3s ease;
+    }
+    /* Hover/active effect for sidebar links */
+    .sidebar li a:hover,
+    .sidebar li a.active {
+      color: #e64545;
+      border-left: 3px solid #e64545;
     }
 
-    /* Footer */
-    footer {
-      background-color: #2c3e50;
-      color: #fff;
-      text-align: center;
-      padding: 1rem 0;
+    /* Main Content Area */
+    .main-content {
+      margin-left: 220px; /* same width as sidebar */
+      width: calc(100% - 220px);
     }
-    footer p {
-      margin: 0.5rem 0;
-      font-size: 0.9rem;
-      opacity: 0.8;
+
+    /* Hero / Banner Section */
+    .hero {
+      position: relative;
+      background: #333 url('your-background.jpg') no-repeat center center;
+      /* Replace with your own background image or pattern */
+      background-size: cover;
+      color: #fff;
+      padding: 4rem 1rem;
+      text-align: center;
+      /* Optional halftone or overlay effect */
+      /* 
+      background-blend-mode: multiply; 
+      opacity: 0.95; 
+      */
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+    .hero .divider {
+      height: 4px;
+      width: 80px;
+      background: #e64545; /* same accent color */
+      margin: 1rem auto 0 auto;
+    }
+
+    /* Welcome Section */
+    .welcome {
+      padding: 3rem 1.5rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .welcome h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .welcome p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Udit Ekansh</h1>
-    <p>Master's Student | Autonomous Systems | Researcher</p>
-  </header>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <!-- Replace with your name or website title -->
+    <h2>Udit Ekansh</h2>
+    <ul>
+      <li><a href="#hero" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </aside>
 
-  <nav>
-    <a href="#about">About Me</a>
-    <a href="#research">Research</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero">
+      <!-- Big Banner Text -->
+      <h1>MY PERSONAL WEBSITE</h1>
+      <div class="divider"></div>
+    </section>
 
-  <!-- ABOUT SECTION -->
-  <section id="about">
-    <div class="container">
-      <h2>About Me</h2>
-      <img src="profile.jpg" alt="Udit Ekansh">
+    <!-- WELCOME (or ABOUT) SECTION -->
+    <section id="about" class="welcome">
+      <h2>WELCOME</h2>
       <p>
-        Hello, I'm <strong>Udit Ekansh</strong>. I hold a B.Tech in Mechanical Engineering with a specialization in Mechatronics and Automation Engineering from MIT Art, Design, and Technology University, India (2023). 
-        Currently, I am pursuing my Master's in <strong>Autonomy</strong> at Purdue University, USA.
+        Hello! My name is Udit Ekansh. I'm currently pursuing my Master's in Autonomy at Purdue University, USA. I received my Bachelor's degree in Mechanical Engineering with a focus on Mechatronics and Automation from MIT Art, Design, and Technology University, India, in 2023. Prior to joining Purdue, I worked at the Indian Institute of Technology, Bombay as a research assistant under the guidance of Professor Leena Vachhani. My work at IIT focused on autonomous navigatiojn in highly stochastic 3D underwater environments. My current research interests include offline reinforcement learning, coordinated planning and control, and their applications to autonomous and connected systems. 
       </p>
       <p>
-        Before joining Purdue, I worked as a Research Assistant at the Indian Institute of Technology, Bombay, under the guidance of Professor Leena Vachhani. My research focused on developing autonomous navigation solutions for highly stochastic underwater environments.
+      
       </p>
-      <p>
-        My current research interests revolve around <strong>autonomy and its applications</strong>, particularly in offline reinforcement learning, autonomous and connected systems, and coordinated control strategies. I am passionate about bridging theoretical advancements with practical, real-world implementations.
-      </p>
-      <p>
-        Outside of my academic pursuits, I enjoy reading, playing chess, traveling, and geocaching. These hobbies allow me to explore new ideas, think strategically, and immerse myself in diverse cultures and environments.
-      </p>
-    </div>
-  </section>
+    </section>
 
-  <!-- RESEARCH SECTION -->
-  <section id="research">
-    <div class="container">
-      <h2>Research</h2>
+    <!-- OTHER SECTIONS (Projects, Publications, etc.) -->
+    <section id="projects" class="welcome">
+      <h2>PROJECTS</h2>
       <p>
-        I focus on offline RL, behavior policy modeling, and 3D autonomous navigation in stochastic environments.
+        Showcase your notable personal or academic projects. Include links, code snippets, or images where relevant.
       </p>
-    </div>
-  </section>
+    </section>
 
-  <!-- PROJECTS SECTION -->
-  <section id="projects">
-    <div class="container">
-      <h2>Projects</h2>
-      <ul>
-        <li>VRX 2023 Simulation: Autonomous vessel control in Gazebo.</li>
-        <li>Behavior Policy Modeling: Training neural networks for A* path planning.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- CONTACT SECTION (Placeholder) -->
-  <section id="contact">
-    <div class="container">
-      <h2>Contact</h2>
+    <section id="publications" class="welcome">
+      <h2>PUBLICATIONS</h2>
       <p>
-        You can reach me at: <em>your.email@domain.com</em>  
-        <!-- Replace with your actual contact info or a form -->
+        If you have research papers, articles, or other publications, list them here with brief summaries.
       </p>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2024 Udit Ekansh</p>
-  </footer>
+    <section id="contact" class="welcome">
+      <h2>CONTACT</h2>
+      <p>
+        Provide your email, social media links, or a contact form for visitors to reach out.
+      </p>
+    </section>
+  </div>
 </body>
 </html>
