@@ -2,40 +2,112 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Udit Ekansh</title>
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
+    /* Global Resets & Body */
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header */
     header {
-      background: #333;
+      background-color: #2c3e50; /* Darker accent color */
       color: #fff;
-      padding: 10px 0;
+      padding: 2rem 0;
       text-align: center;
     }
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* Navigation */
     nav {
-      margin: 20px;
+      background-color: #fff;
       text-align: center;
+      padding: 0.5rem 0;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
     nav a {
       margin: 0 15px;
       text-decoration: none;
       color: #333;
+      font-weight: 500;
+      transition: color 0.3s ease;
     }
-    section {
-      padding: 20px;
+    nav a:hover {
+      color: #2c3e50;
+    }
+
+    /* Container for main content sections */
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    /* About Section */
+    #about h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    #about img {
+      width: 150px;
+      border-radius: 50%;
+      margin: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    #about p {
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    /* Research and Projects Sections */
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
       text-align: center;
     }
+    .container p {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    ul {
+      list-style-type: square;
+      margin: 1rem auto;
+      max-width: 700px;
+      padding-left: 1.5rem;
+      line-height: 1.7;
+    }
+
+    /* Footer */
     footer {
-      background: #333;
+      background-color: #2c3e50;
       color: #fff;
       text-align: center;
-      padding: 10px 0;
-      margin-top: 20px;
+      padding: 1rem 0;
+    }
+    footer p {
+      margin: 0.5rem 0;
+      font-size: 0.9rem;
+      opacity: 0.8;
     }
   </style>
 </head>
@@ -44,41 +116,68 @@
     <h1>Udit Ekansh</h1>
     <p>Master's Student | Autonomous Systems | Researcher</p>
   </header>
+
   <nav>
     <a href="#about">About Me</a>
     <a href="#research">Research</a>
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
   </nav>
-  <section id="about" style="text-align: center; padding: 2rem;">
-  <h2>About Me</h2>
-  <img src="profile.jpg" alt="Udit Ekansh" style="width: 150px; border-radius: 50%; margin: 20px;">
-  <p>
-    Hello, I'm <strong>Udit Ekansh</strong>. I hold a B.Tech in Mechanical Engineering with a specialization in Mechatronics and Automation Engineering from MIT Art, Design, and Technology University, India (2023). 
-    Currently, I am pursuing my Master's in <strong>Autonomy</strong> at Purdue University, USA.
-  </p>
-  <p>
-    Before joining Purdue, I worked as a Research Assistant at the Indian Institute of Technology, Bombay, under the guidance of Professor Leena Vachhani. My research focused on developing autonomous navigation solutions for highly stochastic underwater environments. 
-  </p>
-  <p>
-    My current research interests revolve around <strong>autonomy and its applications</strong>, particularly in offline reinforcement learning, autonomous and connected systems, and coordinated control strategies. I am passionate about bridging theoretical advancements with practical, real-world implementations.
-  </p>
-  <p>
-    Outside of my academic pursuits, I enjoy reading, playing chess, traveling, and geocaching. These hobbies allow me to explore new ideas, think strategically, and immerse myself in diverse cultures and environments.
-  </p>
-</section>
 
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <img src="profile.jpg" alt="Udit Ekansh">
+      <p>
+        Hello, I'm <strong>Udit Ekansh</strong>. I hold a B.Tech in Mechanical Engineering with a specialization in Mechatronics and Automation Engineering from MIT Art, Design, and Technology University, India (2023). 
+        Currently, I am pursuing my Master's in <strong>Autonomy</strong> at Purdue University, USA.
+      </p>
+      <p>
+        Before joining Purdue, I worked as a Research Assistant at the Indian Institute of Technology, Bombay, under the guidance of Professor Leena Vachhani. My research focused on developing autonomous navigation solutions for highly stochastic underwater environments.
+      </p>
+      <p>
+        My current research interests revolve around <strong>autonomy and its applications</strong>, particularly in offline reinforcement learning, autonomous and connected systems, and coordinated control strategies. I am passionate about bridging theoretical advancements with practical, real-world implementations.
+      </p>
+      <p>
+        Outside of my academic pursuits, I enjoy reading, playing chess, traveling, and geocaching. These hobbies allow me to explore new ideas, think strategically, and immerse myself in diverse cultures and environments.
+      </p>
+    </div>
+  </section>
+
+  <!-- RESEARCH SECTION -->
   <section id="research">
-    <h2>Research</h2>
-    <p>I focus on offline RL, behavior policy modeling, and 3D autonomous navigation in stochastic environments.</p>
+    <div class="container">
+      <h2>Research</h2>
+      <p>
+        I focus on offline RL, behavior policy modeling, and 3D autonomous navigation in stochastic environments.
+      </p>
+    </div>
   </section>
+
+  <!-- PROJECTS SECTION -->
   <section id="projects">
-    <h2>Projects</h2>
-    <ul>
-      <li>VRX 2023 Simulation: Autonomous vessel control in Gazebo.</li>
-      <li>Behavior Policy Modeling: Training neural networks for A* path planning.</li>
-    </ul>
+    <div class="container">
+      <h2>Projects</h2>
+      <ul>
+        <li>VRX 2023 Simulation: Autonomous vessel control in Gazebo.</li>
+        <li>Behavior Policy Modeling: Training neural networks for A* path planning.</li>
+      </ul>
+    </div>
   </section>
+
+  <!-- CONTACT SECTION (Placeholder) -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <p>
+        You can reach me at: <em>your.email@domain.com</em>  
+        <!-- Replace with your actual contact info or a form -->
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
     <p>&copy; 2024 Udit Ekansh</p>
   </footer>
