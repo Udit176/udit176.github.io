@@ -109,7 +109,7 @@ section p {
 /* Container that holds the embedded PDF */
 .pdf-container {
   /* Centering + sizing */
-  max-width: 800px;       /* You can adjust as needed */
+  max-width: 1200px;       /* You can adjust as needed */
   margin: 0 auto;         /* Centers the container */
   height: 80vh;           /* Tall enough to view the PDF comfortably */
 
@@ -129,7 +129,7 @@ section p {
 /* Container that holds the embedded PDF */
 .pdf-container {
   /* Wider container so the PDF is bigger */
-  max-width: 1000px;      /* was 800px, now larger */
+  max-width: 1200px;      /* was 800px, now larger */
   width: 90%;             /* occupy ~90% of parent width */
   margin: 0 auto;         /* center horizontally */
 
