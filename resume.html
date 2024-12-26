@@ -1,32 +1,55 @@
-<section>
-  <h2>Embedded Resume</h2>
-  
-  <!-- Option 1: OBJECT tag -->
-  <object 
-    data="UditEkansh_Resume_Dec2024.pdf" 
-    type="application/pdf"
-    width="600" 
-    height="800">
-    <!-- Fallback content if PDF can't be loaded -->
-    <p>
-      It appears you don't have a PDF plugin for this browser.
-      <a href="Your_Resume.pdf" target="_blank">Click here to download the PDF</a>.
-    </p>
-  </object>
-  
-  <!-- Option 2: IFRAME tag (alternative) -->
-  <!--
-  <iframe 
-    src="Your_Resume.pdf" 
-    width="600" 
-    height="800">
-  </iframe>
-  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Udit Ekansh - Resume</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>Udit Ekansh</h2>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="resume.html" class="active">Resume</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="certificates.html">Certificates</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="misc.html">Misc</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </aside>
 
-  <p>
-    Or, if you’d rather just provide a download link: 
-    <a href="Your_Resume.pdf" target="_blank" style="color:#e64545;font-weight:bold;">
-      Download Resume (PDF)
-    </a>
-  </p>
-</section>
+  <div class="main-content">
+    <!-- HERO / BANNER -->
+    <section class="hero">
+      <h1>My Resume</h1>
+      <div class="divider"></div>
+    </section>
+
+    <!-- EMBEDDED RESUME SECTION -->
+    <section class="pdf-section">
+      <h2>Embedded Resume</h2>
+      <!-- The container that holds the embedded PDF -->
+      <div class="pdf-container">
+        <!-- Using <object> for embedding. Could also use <iframe>. -->
+        <object 
+          data="UditEkansh_Resume_Dec2024.pdf" 
+          type="application/pdf"
+          class="pdf-embed">
+          <!-- Fallback content if PDF can't be loaded -->
+          <p>
+            Your browser does not support PDF embedding.
+            <a href="Your_Resume.pdf" target="_blank">Download Resume</a>
+          </p>
+        </object>
+      </div>
+      <!-- Direct download link (optional) -->
+      <p class="download-link">
+        <a href="Your_Resume.pdf" target="_blank">Download Resume (PDF)</a>
+      </p>
+    </section>
+  </div>
+</body>
+</html>
