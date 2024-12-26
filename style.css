@@ -120,6 +120,29 @@ section p {
   overflow: hidden;       /* Hides scrollbars beyond container edges */
 }
 
+/* Resume Page: PDF Section */
+.pdf-section {
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Container that holds the embedded PDF */
+.pdf-container {
+  /* Wider container so the PDF is bigger */
+  max-width: 1000px;      /* was 800px, now larger */
+  width: 90%;             /* occupy ~90% of parent width */
+  margin: 0 auto;         /* center horizontally */
+
+  /* Taller container so the PDF is more readable */
+  height: 90vh;           /* 90% of the viewport height */
+
+  /* Visual style */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;       /* hides scrollbars if needed */
+}
+
 /* The actual embedded PDF */
 .pdf-container .pdf-embed {
   width: 100%;
@@ -127,7 +150,7 @@ section p {
   border: none;
 }
 
-/* Optional: Style the direct download link */
+/* Optional: style the direct download link */
 .download-link a {
   color: #e64545;
   font-weight: bold;
@@ -137,4 +160,5 @@ section p {
 .download-link a:hover {
   text-decoration: underline;
 }
+
 
