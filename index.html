@@ -2,173 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Personal Website</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Udit Ekansh - Home</title>
   <!-- Example Google Font (Optional) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" 
     rel="stylesheet"
   />
-  <style>
-    /* Reset & Base Styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Montserrat', sans-serif; /* Example font */
-      color: #333;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* Fixed Sidebar */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 220px;
-      height: 100vh;
-      background-color: #f5f5f5;
-      padding: 2rem 1rem;
-      box-shadow: 1px 0 5px rgba(0, 0, 0, 0.1);
-    }
-    .sidebar h2 {
-      font-size: 1.3rem;
-      margin-bottom: 2rem;
-      color: #e64545; /* Accent color, e.g., a red/orange shade */
-    }
-    .sidebar ul {
-      list-style: none;
-    }
-    .sidebar li {
-      margin-bottom: 1rem;
-      font-weight: 500;
-    }
-    .sidebar li a {
-      color: #333;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      padding: 0.3rem 0.5rem;
-      display: inline-block;
-      border-left: 3px solid transparent;
-      transition: 0.3s ease;
-    }
-    /* Hover/active effect for sidebar links */
-    .sidebar li a:hover,
-    .sidebar li a.active {
-      color: #e64545;
-      border-left: 3px solid #e64545;
-    }
-
-    /* Main Content Area */
-    .main-content {
-      margin-left: 220px; /* same width as sidebar */
-      width: calc(100% - 220px);
-    }
-
-    /* Hero / Banner Section */
-    .hero {
-      position: relative;
-      background: #333 url('your-background.jpg') no-repeat center center;
-      /* Replace with your own background image or pattern */
-      background-size: cover;
-      color: #fff;
-      padding: 4rem 1rem;
-      text-align: center;
-      /* Optional halftone or overlay effect */
-      /* 
-      background-blend-mode: multiply; 
-      opacity: 0.95; 
-      */
-    }
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      letter-spacing: 2px;
-    }
-    .hero .divider {
-      height: 4px;
-      width: 80px;
-      background: #e64545; /* same accent color */
-      margin: 1rem auto 0 auto;
-    }
-
-    /* Welcome Section */
-    .welcome {
-      padding: 3rem 1.5rem;
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .welcome h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    .welcome p {
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <!-- SIDEBAR -->
   <aside class="sidebar">
-    <!-- Replace with your name or website title -->
     <h2>Udit Ekansh</h2>
     <ul>
-      <li><a href="#hero" class="active">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#publications">Publications</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <!-- Notice 'active' on Home link -->
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="certificates.html">Certificates</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="misc.html">Misc</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </aside>
 
   <!-- MAIN CONTENT -->
   <div class="main-content">
-    <!-- HERO SECTION -->
-    <section id="hero" class="hero">
-      <!-- Big Banner Text -->
+    <!-- HERO / BANNER -->
+    <section class="hero">
       <h1>Udit Ekansh</h1>
       <div class="divider"></div>
     </section>
-
-    <!-- WELCOME (or ABOUT) SECTION -->
-    <section id="about" class="welcome">
-      <h2>WELCOME</h2>
+    <!-- WELCOME (BIO) SECTION -->
+    <section>
+      <h2>Welcome</h2>
       <p>
-        Hello! My name is Udit Ekansh. I'm currently pursuing my Master's in Autonomy at Purdue University, USA. I received my Bachelor's degree in Mechanical Engineering with a focus on Mechatronics and Automation from MIT Art, Design, and Technology University, India (2023) Prior to joining Purdue, I worked at the Indian Institute of Technology, Bombay as a research assistant under the guidance of Professor Leena Vachhani. My work at IIT focused on autonomous navigation in highly stochastic 3D underwater environments. My current research interests include offline reinforcement learning, coordinated planning and control, and their applications to autonomous and connected systems. 
+        Hello! My name is Udit Ekansh. I'm currently pursuing my Master's in Autonomy
+        at Purdue University, USA. I received my Bachelor's degree in Mechanical Engineering 
+        with a focus on Mechatronics and Automation from MIT Art, Design, and Technology 
+        University, India (2023).
       </p>
       <p>
-      
-      </p>
-    </section>
-
-    <!-- OTHER SECTIONS (Projects, Publications, etc.) -->
-    <section id="projects" class="welcome">
-      <h2>PROJECTS</h2>
-      <p>
-        Showcase your notable personal or academic projects. Include links, code snippets, or images where relevant.
-      </p>
-    </section>
-
-    <section id="publications" class="welcome">
-      <h2>PUBLICATIONS</h2>
-      <p>
-        If you have research papers, articles, or other publications, list them here with brief summaries.
-      </p>
-    </section>
-
-    <section id="contact" class="welcome">
-      <h2>CONTACT</h2>
-      <p>
-        Provide your email, social media links, or a contact form for visitors to reach out.
+        Prior to joining Purdue, I worked at the Indian Institute of Technology, Bombay 
+        as a research assistant under the guidance of Professor Leena Vachhani. My work 
+        at IIT focused on autonomous navigation in highly stochastic 3D underwater environments. 
+        My current research interests include offline reinforcement learning, coordinated 
+        planning and control, and their applications to autonomous and connected systems.
       </p>
     </section>
   </div>
