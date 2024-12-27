@@ -96,61 +96,49 @@ section p {
   max-width: 800px;
   margin: 0.5rem auto;
 }
-/* Resume Page: PDF Section */
+
+/* Bio Section */
+.bio-section {
+  display: flex;
+  align-items: flex-start; /* Align items to the top */
+  gap: 20px; /* Space between image and bio text */
+  margin-top: 20px; /* Space above section */
+  text-align: left; /* Align text to the left */
+}
+
+/* Profile Picture Styling */
+.profile-thumbnail {
+  width: 100px; /* Thumbnail width */
+  height: 100px; /* Thumbnail height */
+  border-radius: 50%; /* Circular thumbnail */
+  object-fit: cover; /* Ensures no distortion */
+  flex-shrink: 0; /* Prevent shrinking when resizing */
+}
+
+/* Bio Text Styling */
+.bio-text {
+  max-width: 600px; /* Optional: Constrain the bio text width */
+}
+
+/* PDF Section */
 .pdf-section {
   text-align: center;
   padding: 2rem;
 }
-
-.pdf-section h2 {
-  margin-bottom: 1.5rem;
-}
-
-/* Container that holds the embedded PDF */
 .pdf-container {
-  /* Centering + sizing */
-  max-width: 1200px;       /* You can adjust as needed */
-  margin: 0 auto;         /* Centers the container */
-  height: 80vh;           /* Tall enough to view the PDF comfortably */
-
-  /* Visual style */
+  max-width: 1200px; /* You can adjust as needed */
+  margin: 0 auto; /* Centers the container */
+  height: 80vh; /* Tall enough to view the PDF comfortably */
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;       /* Hides scrollbars beyond container edges */
+  overflow: hidden; /* Hides scrollbars beyond container edges */
 }
-
-/* Resume Page: PDF Section */
-.pdf-section {
-  text-align: center;
-  padding: 2rem;
-}
-
-/* Container that holds the embedded PDF */
-.pdf-container {
-  /* Wider container so the PDF is bigger */
-  max-width: 1200px;      /* was 800px, now larger */
-  width: 90%;             /* occupy ~90% of parent width */
-  margin: 0 auto;         /* center horizontally */
-
-  /* Taller container so the PDF is more readable */
-  height: 90vh;           /* 90% of the viewport height */
-
-  /* Visual style */
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;       /* hides scrollbars if needed */
-}
-
-/* The actual embedded PDF */
 .pdf-container .pdf-embed {
   width: 100%;
   height: 100%;
   border: none;
 }
-
-/* Optional: style the direct download link */
 .download-link a {
   color: #e64545;
   font-weight: bold;
@@ -160,5 +148,3 @@ section p {
 .download-link a:hover {
   text-decoration: underline;
 }
-
-
