@@ -97,29 +97,55 @@ section p {
   margin: 0.5rem auto;
 }
 
-/* Bio Section */
-.bio-section {
+/* Profile Section */
+.profile-section {
   display: flex;
-  align-items: flex-start; /* Align items to the top */
-  gap: 20px; /* Space between image and bio text */
-  padding: 2rem; /* Padding around the section */
-  text-align: left; /* Align text to the left */
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto; /* Center the section */
 }
 
-/* Profile Picture Styling */
+/* Profile Image Container */
+.profile-image-container {
+  text-align: center;
+  flex-shrink: 0;
+}
+
 .profile-thumbnail {
-  width: 150px; /* Thumbnail width */
-  height: 150px; /* Thumbnail height */
-  border-radius: 50%; /* Circular thumbnail */
-  object-fit: cover; /* Ensures no distortion */
-  flex-shrink: 0; /* Prevent shrinking */
-  border: 2px solid #e64545; /* Optional: Adds a border for better appearance */
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e64545; /* Optional: Adds an accent border */
+  margin-bottom: 1rem;
 }
 
-/* Bio Text Styling */
-.bio-text {
-  max-width: 600px; /* Optional: Constrain the bio text width */
+.profile-image-container h1 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 0.5rem;
 }
+
+.profile-image-container h3 {
+  font-size: 1rem;
+  color: #666;
+  font-weight: 400;
+}
+
+/* Profile Bio */
+.profile-bio {
+  flex-grow: 1; /* Allows the text section to take up remaining space */
+}
+
+.profile-bio p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
 
 
 /* PDF Section */
