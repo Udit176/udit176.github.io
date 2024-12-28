@@ -2,55 +2,75 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Udit Ekansh - Projects</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Autonomous Mapping and Navigation Using TurtleBot3</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <h2>Udit Ekansh</h2>
+
+  <!-- HEADER / NAVBAR (Matches index.html style) -->
+  <header class="site-header">
+    <div class="logo-and-name">
+      <!-- Optional thumbnail:
+      <img 
+        src="profile_pic.jpeg" 
+        alt="Udit Ekansh Thumbnail" 
+        class="site-logo"
+      /> -->
+      <span class="site-title">Udit Ekansh</span>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#research">Research</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#certificates">Certificates</a></li>
+        <li><a href="index.html#courses">Courses</a></li>
+        <li><a href="index.html#publications">Publications</a></li>
+        <li><a href="index.html#misc">Misc</a></li>
+        <li><a href="index.html#connect">Connect</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO / TITLE SECTION -->
+  <section class="hero-section">
+    <h1>Autonomous Mapping and Navigation Using TurtleBot3</h1>
+  </section>
+
+  <!-- EXACT PROJECT CONTENT (unchanged) -->
+  <section style="margin-top:1rem; text-align:left; max-width:600px; margin:auto;">
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="research.html">Research</a></li>
-      <li><a href="projects.html" class="active">Projects</a></li>
-      <li><a href="courses.html">Courses</a></li>
-      <li><a href="certificates.html">Certificates</a></li>
-      <li><a href="resume.html">Resume</a></li>
-      <li><a href="publications.html">Publications</a></li>
-      <li><a href="misc.html">Misc</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li>
+        <strong>Autonomous Mapping and Navigation Using TurtleBot3:</strong>
+        <p>
+          Autonomous mapping and navigation are critical capabilities for mobile robots. This project utilized the TurtleBot3 platform to implement algorithms for simultaneous localization and mapping (SLAM), static and dynamic obstacle avoidance, and autonomous path planning. Using a frontier-based exploration approach, the robot systematically explored unknown environments to build a map by identifying unexplored regions and planning optimal paths using the A* algorithm. Real-time obstacle detection was integrated to enable dynamic replanning when encountering moving obstacles, ensuring robust and collision-free navigation.
+        </p>
+        <p>
+          The project successfully demonstrated the potential of combining SLAM and path-planning techniques to create intelligent robotic systems capable of navigating and mapping complex environments autonomously. Future work could include deploying the system in outdoor environments and optimizing the algorithms for faster real-time performance.
+        </p>
+        <p>
+          The code for this project can be found <a href="https://github.com/Udit176/AutonomousMappingNavigation.git" target="_blank" style="color: blue; text-decoration: underline;">here</a>.
+        </p>
+        <p>
+          <strong>Demonstration Videos: (TODO)</strong>
+        </p>
+        <ul>
+          <li>
+            <a href="https://www.youtube.com/watch?v=VideoID1" target="_blank">Mapping in Action</a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/watch?v=VideoID2" target="_blank">Dynamic Obstacle Avoidance</a>
+          </li>
+        </ul>
+      </li>
     </ul>
-  </aside>
+  </section>
 
-  <!-- MAIN CONTENT -->
-  <div class="main-content">
-    <!-- HERO / BANNER -->
-    <section class="hero">
-      <h1>Projects</h1>
-      <div class="divider"></div>
-    </section>
+  <!-- FOOTER (Optional) -->
+  <footer class="site-footer" style="text-align:center; margin-top:2rem;">
+    <p>© 2024 Udit Ekansh. All rights reserved.</p>
+  </footer>
 
-    <!-- PROJECT CARDS SECTION -->
-    <section class="content-section">
-      <p>Over the years, I've had the privilege of working on multiple exciting projects:</p>
-      
-      <!-- A grid of clickable cards -->
-      <div class="project-grid">
-        
-        <!-- PROJECT 1 CARD -->
-        <a class="project-card" href="project_offlinerl.html">
-          <h3>Mildly Conservative Q-Learning for Grid World Navigation</h3>
-        </a>
-        
-        <!-- PROJECT 2 CARD -->
-        <a class="project-card" href="project_turtlebot.html">
-          <h3>Autonomous Mapping &amp; Navigation Using TurtleBot3</h3>
-        </a>
-        
-        <!-- Add more project cards as needed... -->
-      </div>
-    </section>
-  </div>
 </body>
 </html>
