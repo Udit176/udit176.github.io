@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>3D Integrated Planning and Control</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER / NAVBAR -->
+  <header class="site-header">
+    <div class="logo-and-name">
+      <!-- Optional thumbnail if you'd like:
+      <img 
+        src="profile_pic.jpeg" 
+        alt="Udit Ekansh Thumbnail" 
+        class="site-logo"
+      />
+      -->
+      <span class="site-title">Udit Ekansh</span>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#research">Research</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#certificates">Certificates</a></li>
+        <li><a href="index.html#courses">Courses</a></li>
+        <li><a href="index.html#publications">Publications</a></li>
+        <li><a href="index.html#misc">Misc</a></li>
+        <li><a href="index.html#connect">Connect</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO / TITLE SECTION -->
+  <section class="hero-section">
+    <h1>3D Integrated Planning and Control</h1>
+  </section>
+
+  <!-- PROJECT CONTENT -->
+  <section class="content-section" style="max-width: 900px; margin: 0 auto;">
+
+    <p>
+      Navigating in cluttered or crowded spaces demands a paradigm that seamlessly combines planning, 
+      feedback control, and real-time sensing. Drawing inspiration from natural systems, the 
+      integrated planning and control (IPC) strategy merges trajectory design and execution into 
+      a single cohesive framework, thereby reducing the latency and rigidity common in conventional 
+      decoupled approaches.
+    </p>
+    <p>
+      In this work, building upon 
+      <a href="https://www.veejaykarthik.com/research-work" target="_blank" style="text-decoration: underline;">
+        the original IPC strategy by Veejay Karthik at IIT-B
+      </a>, 
+      we extend invariant-set-based navigation to <strong>3D underwater environments</strong>. 
+      By employing motion sets derived from non-linear feedback control laws, the system maintains 
+      naturally induced safe trajectories, swiftly responding to environment changes. 
+      Parameterized motion sets, along with continuous onboard sensing, enable the AUV to adapt to 
+      uncertain surroundings in real time. 
+      A manuscript detailing these advancements is currently under preparation for submission to 
+      a top robotics journal.
+    </p>
+    <p>
+      Below are two demonstration videos of an AUV navigating a cluttered 3D environment:
+    </p>
+
+    <!-- VIDEO 1: Static Obstacles -->
+    <h3>AUV Navigation with Static Obstacles</h3>
+    <iframe 
+      width="560" 
+      height="315" 
+      src="https://www.youtube.com/watch?v=pQ3jUsJdq0c" 
+      title="AUV Navigation (Static Obstacles)" 
+      frameborder="0" 
+      allowfullscreen
+      style="max-width: 100%; margin-bottom: 2rem;"
+    >
+    </iframe>
+
+    <!-- VIDEO 2: Dynamic Obstacles -->
+    <h3>AUV Navigation with Dynamic Obstacles</h3>
+    <iframe 
+      width="560" 
+      height="315" 
+      src="https://www.youtube.com/watch?v=QVoXUH31uZM" 
+      title="AUV Navigation (Dynamic Obstacles)" 
+      frameborder="0" 
+      allowfullscreen
+      style="max-width: 100%; margin-bottom: 2rem;"
+    >
+    </iframe>
+
+    <p>
+      These scenarios highlight how a tightly coupled planning and control approach leverages 
+      continuously updated feedback to maintain robust collision avoidance, even as new hazards 
+      arise in real time. My contribution specifically focuses on adapting and validating these 
+      techniques in the unique domain of undersea robotics, where reduced visibility, unpredictable 
+      fluid dynamics, and multidimensional motion further amplify the need for integrated solutions.
+    </p>
+    <p>
+      I continue refining these strategies to achieve safe, efficient, and agile navigation for 
+      autonomous underwater vehicles (AUVs), ensuring that the IPC framework remains versatile 
+      enough to handle real-world deployments in highly uncertain 3D domains.
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" style="text-align: center; margin-top: 2rem;">
+    <p>© 2024 Udit Ekansh. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
