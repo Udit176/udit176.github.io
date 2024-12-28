@@ -180,3 +180,39 @@ p {
   font-size: 0.9rem;
   margin-top: 1rem;
 }
+
+.certificate-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem; /* spacing between cards */
+  margin-top: 1rem;
+}
+
+.certificate-card {
+  background: #111;         /* dark card on a black (or very dark) background */
+  padding: 1rem;
+  border-radius: 4px;
+  color: #fff;              /* text color if your site is dark-themed */
+  flex: 1 1 300px;          /* flexible width, min 300px */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease;
+}
+
+.certificate-card:hover {
+  transform: scale(1.02);   /* subtle hover effect */
+}
+
+.view-credential {
+  display: inline-block;
+  background-color: #0bf;   /* accent color (turquoise) */
+  color: #000;              /* black text if the background is bright */
+  padding: 0.4rem 0.8rem;
+  border-radius: 3px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.view-credential:hover {
+  background-color: #0df;   /* lighten on hover */
+}
+
