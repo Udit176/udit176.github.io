@@ -1,4 +1,6 @@
-/* Reset & Base Styles */
+/* ---------------------
+   Reset & Base Styles
+--------------------- */
 * {
   margin: 0;
   padding: 0;
@@ -11,12 +13,18 @@ body {
   background-color: #fff;
 }
 
+/* 
+  By default, make links blue with underline.
+  You can adjust these as desired.
+*/
 a {
-  text-decoration: none;
-  color: inherit;
+  color: blue;
+  text-decoration: underline;
 }
 
-/* Sidebar Styles */
+/* ---------------------
+   Sidebar Styles
+--------------------- */
 .sidebar {
   position: fixed;
   top: 0;
@@ -42,14 +50,17 @@ a {
   margin-bottom: 1rem;
 }
 
+/* 
+  Sidebar links have default link styling (blue+underline), 
+  but we override color on hover/active to show accent color.
+*/
 .sidebar li a {
-  color: #333;
   font-weight: 500;
   text-transform: uppercase;
   font-size: 0.9rem;
   display: inline-block;
   padding: 0.3rem 0.5rem;
-  border-left: 3px solid transparent;
+  border-left: 3px solid transparent; 
   transition: 0.3s;
 }
 
@@ -59,7 +70,9 @@ a {
   border-left: 3px solid #e64545;
 }
 
-/* Main Content Area */
+/* ---------------------
+   Main Content Layout
+--------------------- */
 .main-content {
   margin-left: 220px; /* same width as sidebar */
   width: calc(100% - 220px);
@@ -67,7 +80,9 @@ a {
   background: #fff;
 }
 
-/* HERO SECTION */
+/* ---------------------
+   Hero / Profile Section
+--------------------- */
 .hero-container {
   display: flex;
   align-items: center;
@@ -75,11 +90,20 @@ a {
   border-bottom: 1px solid #ddd;
 }
 
+/* 
+  Left side of hero container holds the profile pic.
+  Use flex-shrink to keep the image from shrinking 
+  if the screen is narrow.
+*/
 .hero-left {
   flex-shrink: 0;
   margin-right: 2rem;
 }
 
+/* 
+  Profile image styled as a circle, optional border
+  for accent. Adjust sizes as needed.
+*/
 .hero-profile-image {
   width: 180px;
   height: 180px;
@@ -88,8 +112,12 @@ a {
   border: 3px solid #e64545; /* Optional accent border */
 }
 
+/* 
+  Right side for name, title, affiliation, and links.
+  We left-align this text.
+*/
 .hero-right {
-  text-align: left; /* left-align */
+  text-align: left;
 }
 
 .hero-name {
@@ -105,27 +133,41 @@ a {
   margin-bottom: 0.5rem;
 }
 
+/* 
+  You can style your affiliation differently
+  or keep it consistent with paragraph styling.
+*/
 .hero-affiliation {
   font-size: 1rem;
   margin-bottom: 1rem;
   line-height: 1.4;
 }
 
+/* 
+  Icon links (e.g., Email, Scholar, LinkedIn) 
+  can use default link styling or custom ones below.
+*/
 .hero-icons a {
-  color: #e64545;
-  font-weight: 600;
   margin-right: 0.5rem;
 }
+
+/* 
+  Removing underline on hover to differentiate
+  them from normal links if desired. 
+  Adjust to your preference.
+*/
 .hero-icons a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
-/* BIO SECTION */
+/* ---------------------
+   Bio / Body Content
+--------------------- */
 .bio-section {
   padding: 2rem;
   max-width: 900px;
   margin: 0 auto;
-  text-align: left; /* left-align text */
+  text-align: left; /* keep paragraphs left-aligned */
 }
 
 .bio-section p {
@@ -133,17 +175,3 @@ a {
   line-height: 1.6;
   margin-bottom: 1rem;
 }
-
-/* Utility: Link Styling */
-.link {
-  color: #e64545;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.link:hover {
-  text-decoration: underline;
-}
-
-/* PDF or other sections below as needed */
-/* ... */
