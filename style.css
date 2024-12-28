@@ -1,5 +1,5 @@
 /* ------------------------------
-   Global Reset & Base
+   Base & Global
 ------------------------------ */
 * {
   margin: 0;
@@ -7,213 +7,180 @@
   box-sizing: border-box;
 }
 
-body {
-  /* Black background, white text */
+html, body {
+  /* Black background, minimal color for text */
   background-color: #000;
-  color: #fff;
-  font-family: 'Montserrat', sans-serif;
-  line-height: 1.5; /* Slightly relaxed line-height */
-  /* Give a little breathing room at the bottom */
-  padding-bottom: 2rem;
+  color: #ddd; /* Light gray text */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-/* Blue links, underlined */
 a {
-  color: #00f;
-  text-decoration: underline;
+  color: #fff; /* White links by default */
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
-/* 
-  All headings in red to stand out.
-  Add spacing & a subtle bottom border 
-  to visually separate headings from text.
-*/
-h1, h2, h3, h4, h5, h6 {
-  color: #f00;
-  margin: 1.2em 0 0.6em; /* vertical spacing */
-  border-bottom: 1px solid #f00;
-  padding-bottom: 0.2em;
+a:hover {
+  color: #f2f2f2; /* Slightly lighter on hover */
 }
 
-/* ------------------------------
-   Sidebar
------------------------------- */
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 220px;
-  height: 100vh;
-  
-  /* Black background */
-  background-color: #000;
-  
-  /* A faint border on the right in red, 
-     to help separate sidebar from main content */
-  border-right: 1px solid #f00;
-  
-  /* Extra padding to breathe */
-  padding: 2rem 1rem;
-  
-  /* All text in the sidebar is red (including links) */
-  color: #f00;
-}
-
-.sidebar h2 {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-}
-
-/* No bullet points, with spacing above the list */
-.sidebar ul {
+ul {
   list-style: none;
-  margin-top: 1rem;
 }
 
-.sidebar li {
-  margin-bottom: 1rem;
-}
-
-/* 
-  Sidebar links:
-  - Red text
-  - A small left border that turns red on hover
-  - Slight horizontal slide on hover
-*/
-.sidebar li a {
-  color: #f00;
-  font-weight: 500;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  
-  display: block;         /* full-width clickable area */
-  padding: 0.4rem 0.5rem;
-  border-left: 4px solid transparent;
-  
-  transition: 
-    border-left-color 0.3s ease,
-    padding-left      0.3s ease;
-}
-
-.sidebar li a:hover,
-.sidebar li a.active {
-  border-left-color: #f00;
-  padding-left: 1rem;
+/* Large headings in pure white for contrast */
+h1, h2, h3, h4, h5, h6 {
+  color: #fff; 
+  margin-bottom: 0.5em;
+  font-weight: 600;
 }
 
 /* ------------------------------
-   Main Content Layout
+   Header & Navigation
 ------------------------------ */
-.main-content {
-  margin-left: 220px;      /* same as sidebar width */
-  width: calc(100% - 220px);
-  min-height: 100vh;
-  padding: 2rem;           /* internal padding for breathing */
-}
-
-/* ------------------------------
-   Hero / Profile Section
------------------------------- */
-.hero-container {
+.site-header {
   display: flex;
   align-items: center;
-  margin-bottom: 2rem;
+  justify-content: space-between;
+  
+  /* Slight padding around the header */
+  padding: 1rem 2rem;
+  
+  /* A subtle border below the header (dark gray) */
+  border-bottom: 1px solid #222;
 }
 
-.hero-left {
-  flex-shrink: 0;
-  margin-right: 2rem;
+.logo-and-name {
+  display: flex;
+  align-items: center;
 }
 
-.hero-profile-image {
-  width: 180px;
-  height: 180px;
+/* Thumbnail where Adel’s signature was */
+.site-logo {
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   object-fit: cover;
-  /* 
-    Avoid using a colored border to keep 
-    only black/white/blue/red. If you want
-    a red border, uncomment:
-    border: 3px solid #f00;
-  */
+  margin-right: 0.5rem;
 }
 
-.hero-right {
+.site-title {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.main-nav a {
+  text-transform: lowercase; 
+  /* or uppercase if you prefer */
+  font-weight: 500;
+  /* little padding */
+  padding: 0.2rem 0;
+}
+
+.main-nav a:hover {
+  color: #999; /* subtle hover color */
+}
+
+/* ------------------------------
+   Hero Section
+------------------------------ */
+.hero-section {
+  padding: 3rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
   text-align: left;
 }
 
-.hero-name {
-  /* Overridden by h1 styling if it's an <h1>, 
-     but here as a class, we can refine size */
-  margin-bottom: 0.4rem;
-  /* color, border, etc. come from h1/h2 resets */
+.hero-section h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  /* White text already from global heading style */
 }
 
-.hero-title {
+.hero-subtitle {
   font-size: 1.2rem;
-  margin-bottom: 1rem;
-  /* color, border from heading rules if <h2> */
-}
-
-/* 
-  We'll keep .hero-affiliation 
-  as paragraph text in white,
-  headings are red from global rule.
-*/
-.hero-affiliation {
-  font-size: 1rem;
+  color: #aaa;
+  max-width: 600px;
+  margin-bottom: 2rem;
   line-height: 1.4;
-  margin-bottom: 1.2rem;
 }
 
-/* 
-  Icon links in the hero (Email, LinkedIn, etc.) 
-  remain blue underlined by default 
-  (from global <a> styling).
-*/
-.hero-icons a {
-  margin-right: 1rem;
-  /* no hover changes needed unless you want them */
+/* Availability toggle style (the red/white toggle in Adel’s design).
+   You can adapt the color scheme if you want. */
+.availability-toggle {
+  display: inline-flex;
+  align-items: center;
+  background: #111;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+}
+
+.toggle-label {
+  color: #f00;
+  /* bright red for “unavailable/available” label? 
+     Tweak as you prefer. */
+  font-weight: 500;
 }
 
 /* ------------------------------
-   Bio Section
+   Content Sections
 ------------------------------ */
-.bio-section {
-  max-width: 900px;
+.content-section {
+  max-width: 800px;
   margin: 0 auto;
+  padding: 3rem 2rem;
 }
 
-.bio-section p {
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  /* White text from body */
+.content-section p, 
+.content-section li {
+  color: #ccc; /* softer gray text than headings */
+}
+
+/* Example for lists in research section */
+.content-section ul {
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+}
+
+/* Projects grid layout */
+.project-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.project-card {
+  background: #111;
+  padding: 0.8rem 1rem;
+  border-radius: 4px;
+  color: #fff;
+  transition: background 0.2s;
+}
+
+.project-card:hover {
+  background: #222;
 }
 
 /* ------------------------------
-   Resume (PDF Container)
+   Footer
 ------------------------------ */
-/* 
-  Let the embedded PDF or iFrame fill most of the screen height 
-  for easy viewing. 
-*/
-.pdf-section {
+.site-footer {
   text-align: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
+  border-top: 1px solid #222;
+  margin-top: 2rem;
 }
 
-.pdf-container {
-  width: 100%;
-  height: 90vh; /* occupy most of viewport height */
-  border: none;
-  overflow: hidden;
-}
-
-.pdf-container iframe,
-.pdf-container embed {
-  width: 100%;
-  height: 100%;
-  border: none;
+.site-footer p {
+  color: #666;
+  font-size: 0.9rem;
 }
