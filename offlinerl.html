@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Mildly Conservative Q-Learning for Grid World Navigation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2>Udit Ekansh</h2>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="certificates.html">Certificates</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="misc.html">Misc</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+    <!-- HERO/BANNER -->
+    <section class="hero">
+      <h1>Mildly Conservative Q-Learning for Grid World Navigation</h1>
+      <div class="divider"></div>
+    </section>
+
+    <!-- PROJECT CONTENT -->
+    <section class="content-section">
+      <p>
+        Offline reinforcement learning (RL) enables policy training using pre-collected datasets, minimizing 
+        online exploration. This project evaluated offline RL algorithms for grid-world navigation, with a 
+        custom dataset generated using the A* path-planning algorithm on a 2D occupancy grid derived from a 
+        realistic environment map created in the Gazebo Simulation Environment using TurtleBot3.
+      </p>
+      <p>
+        The <strong>Mildly Conservative Q-Learning (MCQ)</strong> algorithm and other methods, including 
+        Behavior Cloning (BC), Advantage-Weighted Regression (AWR), Batch-Constrained Q-Learning (BCQL), 
+        and Conservative Q-Learning (CQL), were implemented and compared. Results showed that MCQ and CQL 
+        failed to create policies that effectively guided the robot to goal, achieving ~0% success rates 
+        despite hyperparameter tuning using Optuna. BC achieved a 79% success rate, which improved to 94% 
+        with tuning, while AWR reached 88%. Initial results with BCQL showed promise with a 52% success rate, 
+        but its hyperparameters could not be fully tuned due to time constraints.
+      </p>
+      <p>
+        In addition, Twin Delayed Deep Deterministic Policy Gradient + Behavior Cloning (TD3+BC) was tested 
+        in the PointMaze environment, revealing significant reward degradation when faced with out-of-distribution 
+        (OOD) actions. These results highlight the challenges of offline RL in navigation tasks and emphasize 
+        the need for robust algorithms and effective hyperparameter tuning. Future work includes validating 
+        policies on TurtleBot3 in Gazebo and addressing out-of-distribution scenarios.
+      </p>
+      <p>
+        <a 
+          href="RLProject_copy.pdf" 
+          target="_blank"
+          >View Term Paper</a> | 
+        Code: 
+        <a 
+          href="https://github.com/Udit176/OfflineRL" 
+          target="_blank"
+          >GitHub Repository</a>
+      </p>
+
+      <p style="text-align:center;">
+        <img 
+          src="OfflineRL.png" 
+          alt="MCQ Project Image"
+          style="max-width:100%; height:auto; margin-bottom: 1rem;"
+        />
+        <br>
+        <em>
+          Source: 
+          <a 
+            href="https://sites.google.com/view/offlinerltutorial-neurips2020/home" 
+            target="_blank"
+            >Offline RL Tutorial - NeurIPS 2020</a>
+        </em>
+      </p>
+    </section>
+  </div>
+</body>
+</html>
