@@ -1,5 +1,5 @@
 /* ---------------------
-   Reset & Base Styles
+   1) Global Styles
 --------------------- */
 * {
   margin: 0;
@@ -7,23 +7,35 @@
   box-sizing: border-box;
 }
 
+/* 
+   Black background and white text for the entire site.
+   Headers will be overridden to red below.
+*/
 body {
+  background-color: #000; 
+  color: #fff;
   font-family: 'Montserrat', sans-serif;
-  color: #333;
-  background-color: #fff;
 }
 
 /* 
-  By default, make links blue with underline.
-  You can adjust these as desired.
+   Blue links with underlines, no hover color change 
+   (still blue). 
 */
 a {
-  color: blue;
+  color: #00f;
   text-decoration: underline;
 }
 
+/* 
+   All headings in red so they stand out on each page.
+   This includes h1, h2, h3, etc.
+*/
+h1, h2, h3, h4, h5, h6 {
+  color: red;
+}
+
 /* ---------------------
-   Sidebar Styles
+   2) Sidebar Styles
 --------------------- */
 .sidebar {
   position: fixed;
@@ -31,111 +43,120 @@ a {
   left: 0;
   width: 220px;
   height: 100vh; /* Full vertical height */
-  background-color: #f5f5f5;
-  box-shadow: 1px 0 5px rgba(0, 0, 0, 0.1);
+  background-color: #000; /* black background */
   padding: 2rem 1rem;
+  /* 
+     All text in the sidebar should be red, including 
+     <h2>, <li>, <a>, etc.
+  */
+  color: red;
 }
 
+/* Adjust sidebar heading if desired */
 .sidebar h2 {
   font-size: 1.2rem;
-  color: #e64545; /* Accent color */
   margin-bottom: 2rem;
 }
 
+/* No bullet points */
 .sidebar ul {
   list-style: none;
 }
 
+/* Spacing below each menu item */
 .sidebar li {
   margin-bottom: 1rem;
 }
 
 /* 
-  Sidebar links have default link styling (blue+underline), 
-  but we override color on hover/active to show accent color.
+   Sidebar links also in red; 
+   keep them underlined + color #00f if you prefer, 
+   but your requirement says “Sidebar text should be red.”
+   We’ll enforce red here.
 */
 .sidebar li a {
+  color: red;
   font-weight: 500;
   text-transform: uppercase;
   font-size: 0.9rem;
   display: inline-block;
   padding: 0.3rem 0.5rem;
-  border-left: 3px solid transparent; 
+  border-left: 3px solid transparent;
   transition: 0.3s;
 }
 
+/* On hover or active, keep them red. */
 .sidebar li a:hover,
 .sidebar li a.active {
-  color: #e64545;
-  border-left: 3px solid #e64545;
+  color: red;
+  border-left: 3px solid red;
 }
 
 /* ---------------------
-   Main Content Layout
+   3) Main Content Layout
 --------------------- */
 .main-content {
-  margin-left: 220px; /* same width as sidebar */
+  margin-left: 220px; /* Same width as sidebar */
   width: calc(100% - 220px);
-  min-height: 100vh; /* ensure full-height on short pages */
-  background: #fff;
+  min-height: 100vh; 
+  /* Black background is inherited from body */
+  /* White text is inherited from body */
+  padding-bottom: 2rem; /* some spacing at bottom */
 }
 
 /* ---------------------
-   Hero / Profile Section
+   4) Hero / Profile Section
 --------------------- */
 .hero-container {
   display: flex;
   align-items: center;
   padding: 2rem;
-  border-bottom: 1px solid #ddd;
+  /* If you want a visual separator (in white) 
+     you can uncomment below:
+  border-bottom: 1px solid #fff; 
+  */
 }
 
-/* 
-  Left side of hero container holds the profile pic.
-  Use flex-shrink to keep the image from shrinking 
-  if the screen is narrow.
-*/
 .hero-left {
   flex-shrink: 0;
   margin-right: 2rem;
 }
 
 /* 
-  Profile image styled as a circle, optional border
-  for accent. Adjust sizes as needed.
+   Profile image can keep a circular shape,
+   but we remove other colors (no border).
 */
 .hero-profile-image {
   width: 180px;
   height: 180px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #e64545; /* Optional accent border */
 }
 
-/* 
-  Right side for name, title, affiliation, and links.
-  We left-align this text.
-*/
+/* Right side text alignment remains left */
 .hero-right {
   text-align: left;
 }
 
+/* 
+   We rely on global heading styles (h1, h2 in red).
+   If you want a larger or smaller heading, 
+   you can adjust font-size here.
+*/
 .hero-name {
   font-size: 2rem;
   margin-bottom: 0.5rem;
-  color: #333;
 }
 
 .hero-title {
   font-size: 1.2rem;
   font-weight: 400;
-  color: #666;
   margin-bottom: 0.5rem;
 }
 
 /* 
-  You can style your affiliation differently
-  or keep it consistent with paragraph styling.
+   Affiliation text will be white, 
+   since body color is white, but headings are red.
 */
 .hero-affiliation {
   font-size: 1rem;
@@ -143,31 +164,23 @@ a {
   line-height: 1.4;
 }
 
-/* 
-  Icon links (e.g., Email, Scholar, LinkedIn) 
-  can use default link styling or custom ones below.
+/* If you want icon links in the hero section 
+   to remain blue underlined, do nothing.
+   If you want them red (like the sidebar),
+   you could override them here.
 */
 .hero-icons a {
   margin-right: 0.5rem;
 }
 
-/* 
-  Removing underline on hover to differentiate
-  them from normal links if desired. 
-  Adjust to your preference.
-*/
-.hero-icons a:hover {
-  text-decoration: none;
-}
-
 /* ---------------------
-   Bio / Body Content
+   5) Bio Section
 --------------------- */
 .bio-section {
   padding: 2rem;
   max-width: 900px;
   margin: 0 auto;
-  text-align: left; /* keep paragraphs left-aligned */
+  text-align: left;
 }
 
 .bio-section p {
@@ -175,3 +188,40 @@ a {
   line-height: 1.6;
   margin-bottom: 1rem;
 }
+
+/* ---------------------
+   6) Resume (PDF Container)
+--------------------- */
+/* 
+   Make the embedded resume fit the screen well.
+   Below is an example if you embed a PDF with 
+   a class="pdf-container" wrapping an <iframe> or <embed>.
+*/
+.pdf-section {
+  padding: 2rem;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pdf-container {
+  width: 100%;
+  height: 90vh; /* Fill most of the viewport height */
+  border: none; /* no color borders */
+  overflow: hidden;
+}
+.pdf-container iframe,
+.pdf-container embed {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* 
+   That’s it. 
+   Now all background is black, 
+   text is white, 
+   links are blue (except sidebar text is red),
+   headings are red,
+   resume container fits most of the screen height.
+*/
