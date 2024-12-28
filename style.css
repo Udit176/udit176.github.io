@@ -7,29 +7,32 @@
   box-sizing: border-box;
 }
 
-/* Dark background, light text */
+/* Dark background, medium gray text for body */
 html, body {
   background-color: #000;  /* black */
-  color: #ccc;             /* softer gray text for body */
+  color: #ccc;             /* medium gray for body text */
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
 }
 
-/* Headings in white for strong contrast */
+/* Headings in bright white */
 h1, h2, h3, h4, h5, h6 {
-  color: #fff; 
+  color: #fff;
   margin-bottom: 0.5em;
   font-weight: 600;
 }
 
-/* Golden/yellow links, no red anywhere */
+/* 
+   Links in light gray (#ddd).
+   Hover: brighten to white (#fff).
+*/
 a {
-  color: #ffdf00;           /* gold/yellow accent */
+  color: #ddd;             
   text-decoration: none;
   transition: color 0.2s ease;
 }
 a:hover {
-  color: #fff;              /* brighten on hover */
+  color: #fff;
 }
 
 /* Unordered lists reset */
@@ -59,7 +62,7 @@ p {
   align-items: center;
 }
 
-/* Your round thumbnail (instead of red signature) */
+/* Your round thumbnail (logo area) */
 .site-logo {
   width: 48px;
   height: 48px;
@@ -69,7 +72,7 @@ p {
 }
 
 .site-title {
-  color: #fff;       /* white text for site name */
+  color: #fff;    /* site name in white */
   font-weight: 700;
   font-size: 1.2rem;
 }
@@ -101,12 +104,12 @@ p {
 
 .hero-subtitle {
   font-size: 1.1rem;
-  color: #999;       /* slightly darker gray than #ccc for a subtle contrast */
+  color: #999;   /* slightly darker gray for subtitles */
   margin-bottom: 2rem;
   line-height: 1.4;
 }
 
-/* If you have a status toggle (like “Unavailable for hire”), style it here */
+/* Example toggle or status area (if needed) */
 .availability-toggle {
   display: inline-flex;
   align-items: center;
@@ -117,7 +120,7 @@ p {
 }
 
 .toggle-label {
-  color: #ffdf00;    /* gold accent */
+  color: #ddd;    /* light gray to match link color */
   font-weight: 500;
 }
 
@@ -132,7 +135,7 @@ p {
 
 .content-section p,
 .content-section li {
-  color: #ccc;       /* match body color */
+  color: #ccc;   /* matches body color */
 }
 
 .content-section ul {
