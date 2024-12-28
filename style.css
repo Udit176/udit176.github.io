@@ -1,16 +1,16 @@
-/* style.css */
-
 /* Reset & Base Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: 'Montserrat', sans-serif;
   color: #333;
   background-color: #fff;
 }
+
 a {
   text-decoration: none;
   color: inherit;
@@ -27,17 +27,21 @@ a {
   box-shadow: 1px 0 5px rgba(0, 0, 0, 0.1);
   padding: 2rem 1rem;
 }
+
 .sidebar h2 {
   font-size: 1.2rem;
   color: #e64545; /* Accent color */
   margin-bottom: 2rem;
 }
+
 .sidebar ul {
   list-style: none;
 }
+
 .sidebar li {
   margin-bottom: 1rem;
 }
+
 .sidebar li a {
   color: #333;
   font-weight: 500;
@@ -48,6 +52,7 @@ a {
   border-left: 3px solid transparent;
   transition: 0.3s;
 }
+
 .sidebar li a:hover,
 .sidebar li a.active {
   color: #e64545;
@@ -62,117 +67,83 @@ a {
   background: #fff;
 }
 
-/* Hero / Banner Section */
-.hero {
-  background-color: #333; 
-  color: #fff;
-  padding: 4rem 2rem;
-  text-align: center;
-}
-.hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-.divider {
-  height: 4px;
-  width: 80px;
-  background: #e64545;
-  margin: 1rem auto 0;
-}
-
-/* Shared Section Styling */
-section {
-  padding: 3rem 2rem;
-  text-align: center;
-}
-section h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  letter-spacing: 1px;
-}
-section p {
-  font-size: 1rem;
-  line-height: 1.6;
-  max-width: 800px;
-  margin: 0.5rem auto;
-}
-
-/* Profile Section */
-.profile-section {
+/* HERO SECTION */
+.hero-container {
   display: flex;
-  align-items: flex-start;
-  gap: 2rem;
+  align-items: center;
   padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto; /* Center the section */
+  border-bottom: 1px solid #ddd;
 }
 
-/* Profile Image Container */
-.profile-image-container {
-  text-align: center;
+.hero-left {
   flex-shrink: 0;
+  margin-right: 2rem;
 }
 
-.profile-thumbnail {
+.hero-profile-image {
   width: 180px;
   height: 180px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #e64545; /* Optional: Adds an accent border */
-  margin-bottom: 1rem;
+  border: 3px solid #e64545; /* Optional accent border */
 }
 
-.profile-image-container h1 {
-  font-size: 1.8rem;
+.hero-right {
+  text-align: left; /* left-align */
+}
+
+.hero-name {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
   color: #333;
+}
+
+.hero-title {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #666;
   margin-bottom: 0.5rem;
 }
 
-.profile-image-container h3 {
+.hero-affiliation {
   font-size: 1rem;
-  color: #666;
-  font-weight: 400;
+  margin-bottom: 1rem;
+  line-height: 1.4;
 }
 
-/* Profile Bio */
-.profile-bio {
-  flex-grow: 1; /* Allows the text section to take up remaining space */
+.hero-icons a {
+  color: #e64545;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+.hero-icons a:hover {
+  text-decoration: underline;
 }
 
-.profile-bio p {
+/* BIO SECTION */
+.bio-section {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left; /* left-align text */
+}
+
+.bio-section p {
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 1rem;
-  text-align: justify;
 }
 
-
-
-/* PDF Section */
-.pdf-section {
-  text-align: center;
-  padding: 2rem;
-}
-.pdf-container {
-  max-width: 1200px; /* You can adjust as needed */
-  margin: 0 auto; /* Centers the container */
-  height: 80vh; /* Tall enough to view the PDF comfortably */
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden; /* Hides scrollbars beyond container edges */
-}
-.pdf-container .pdf-embed {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-.download-link a {
+/* Utility: Link Styling */
+.link {
   color: #e64545;
-  font-weight: bold;
   text-decoration: none;
-  transition: 0.2s;
+  font-weight: 600;
 }
-.download-link a:hover {
+
+.link:hover {
   text-decoration: underline;
 }
+
+/* PDF or other sections below as needed */
+/* ... */
