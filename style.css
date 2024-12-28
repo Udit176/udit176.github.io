@@ -1,120 +1,123 @@
-/* ---------------------
-   1) Global Styles
---------------------- */
+/* ------------------------------
+   Global Reset & Base
+------------------------------ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* 
-   Black background and white text for the entire site.
-   Headers will be overridden to red below.
-*/
 body {
-  background-color: #000; 
+  /* Black background, white text */
+  background-color: #000;
   color: #fff;
   font-family: 'Montserrat', sans-serif;
+  line-height: 1.5; /* Slightly relaxed line-height */
+  /* Give a little breathing room at the bottom */
+  padding-bottom: 2rem;
 }
 
-/* 
-   Blue links with underlines, no hover color change 
-   (still blue). 
-*/
+/* Blue links, underlined */
 a {
   color: #00f;
   text-decoration: underline;
 }
 
 /* 
-   All headings in red so they stand out on each page.
-   This includes h1, h2, h3, etc.
+  All headings in red to stand out.
+  Add spacing & a subtle bottom border 
+  to visually separate headings from text.
 */
 h1, h2, h3, h4, h5, h6 {
-  color: red;
+  color: #f00;
+  margin: 1.2em 0 0.6em; /* vertical spacing */
+  border-bottom: 1px solid #f00;
+  padding-bottom: 0.2em;
 }
 
-/* ---------------------
-   2) Sidebar Styles
---------------------- */
+/* ------------------------------
+   Sidebar
+------------------------------ */
 .sidebar {
   position: fixed;
   top: 0;
   left: 0;
   width: 220px;
-  height: 100vh; /* Full vertical height */
-  background-color: #000; /* black background */
+  height: 100vh;
+  
+  /* Black background */
+  background-color: #000;
+  
+  /* A faint border on the right in red, 
+     to help separate sidebar from main content */
+  border-right: 1px solid #f00;
+  
+  /* Extra padding to breathe */
   padding: 2rem 1rem;
-  /* 
-     All text in the sidebar should be red, including 
-     <h2>, <li>, <a>, etc.
-  */
-  color: red;
+  
+  /* All text in the sidebar is red (including links) */
+  color: #f00;
 }
 
-/* Adjust sidebar heading if desired */
 .sidebar h2 {
   font-size: 1.2rem;
   margin-bottom: 2rem;
 }
 
-/* No bullet points */
+/* No bullet points, with spacing above the list */
 .sidebar ul {
   list-style: none;
+  margin-top: 1rem;
 }
 
-/* Spacing below each menu item */
 .sidebar li {
   margin-bottom: 1rem;
 }
 
 /* 
-   Sidebar links also in red; 
-   keep them underlined + color #00f if you prefer, 
-   but your requirement says “Sidebar text should be red.”
-   We’ll enforce red here.
+  Sidebar links:
+  - Red text
+  - A small left border that turns red on hover
+  - Slight horizontal slide on hover
 */
 .sidebar li a {
-  color: red;
+  color: #f00;
   font-weight: 500;
   text-transform: uppercase;
   font-size: 0.9rem;
-  display: inline-block;
-  padding: 0.3rem 0.5rem;
-  border-left: 3px solid transparent;
-  transition: 0.3s;
+  
+  display: block;         /* full-width clickable area */
+  padding: 0.4rem 0.5rem;
+  border-left: 4px solid transparent;
+  
+  transition: 
+    border-left-color 0.3s ease,
+    padding-left      0.3s ease;
 }
 
-/* On hover or active, keep them red. */
 .sidebar li a:hover,
 .sidebar li a.active {
-  color: red;
-  border-left: 3px solid red;
+  border-left-color: #f00;
+  padding-left: 1rem;
 }
 
-/* ---------------------
-   3) Main Content Layout
---------------------- */
+/* ------------------------------
+   Main Content Layout
+------------------------------ */
 .main-content {
-  margin-left: 220px; /* Same width as sidebar */
+  margin-left: 220px;      /* same as sidebar width */
   width: calc(100% - 220px);
-  min-height: 100vh; 
-  /* Black background is inherited from body */
-  /* White text is inherited from body */
-  padding-bottom: 2rem; /* some spacing at bottom */
+  min-height: 100vh;
+  padding: 2rem;           /* internal padding for breathing */
 }
 
-/* ---------------------
-   4) Hero / Profile Section
---------------------- */
+/* ------------------------------
+   Hero / Profile Section
+------------------------------ */
 .hero-container {
   display: flex;
   align-items: center;
-  padding: 2rem;
-  /* If you want a visual separator (in white) 
-     you can uncomment below:
-  border-bottom: 1px solid #fff; 
-  */
+  margin-bottom: 2rem;
 }
 
 .hero-left {
@@ -122,106 +125,95 @@ h1, h2, h3, h4, h5, h6 {
   margin-right: 2rem;
 }
 
-/* 
-   Profile image can keep a circular shape,
-   but we remove other colors (no border).
-*/
 .hero-profile-image {
   width: 180px;
   height: 180px;
   border-radius: 50%;
   object-fit: cover;
+  /* 
+    Avoid using a colored border to keep 
+    only black/white/blue/red. If you want
+    a red border, uncomment:
+    border: 3px solid #f00;
+  */
 }
 
-/* Right side text alignment remains left */
 .hero-right {
   text-align: left;
 }
 
-/* 
-   We rely on global heading styles (h1, h2 in red).
-   If you want a larger or smaller heading, 
-   you can adjust font-size here.
-*/
 .hero-name {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+  /* Overridden by h1 styling if it's an <h1>, 
+     but here as a class, we can refine size */
+  margin-bottom: 0.4rem;
+  /* color, border, etc. come from h1/h2 resets */
 }
 
 .hero-title {
   font-size: 1.2rem;
-  font-weight: 400;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  /* color, border from heading rules if <h2> */
 }
 
 /* 
-   Affiliation text will be white, 
-   since body color is white, but headings are red.
+  We'll keep .hero-affiliation 
+  as paragraph text in white,
+  headings are red from global rule.
 */
 .hero-affiliation {
   font-size: 1rem;
-  margin-bottom: 1rem;
   line-height: 1.4;
+  margin-bottom: 1.2rem;
 }
 
-/* If you want icon links in the hero section 
-   to remain blue underlined, do nothing.
-   If you want them red (like the sidebar),
-   you could override them here.
+/* 
+  Icon links in the hero (Email, LinkedIn, etc.) 
+  remain blue underlined by default 
+  (from global <a> styling).
 */
 .hero-icons a {
-  margin-right: 0.5rem;
+  margin-right: 1rem;
+  /* no hover changes needed unless you want them */
 }
 
-/* ---------------------
-   5) Bio Section
---------------------- */
+/* ------------------------------
+   Bio Section
+------------------------------ */
 .bio-section {
-  padding: 2rem;
   max-width: 900px;
   margin: 0 auto;
-  text-align: left;
 }
 
 .bio-section p {
-  font-size: 1rem;
-  line-height: 1.6;
   margin-bottom: 1rem;
+  font-size: 1rem;
+  /* White text from body */
 }
 
-/* ---------------------
-   6) Resume (PDF Container)
---------------------- */
+/* ------------------------------
+   Resume (PDF Container)
+------------------------------ */
 /* 
-   Make the embedded resume fit the screen well.
-   Below is an example if you embed a PDF with 
-   a class="pdf-container" wrapping an <iframe> or <embed>.
+  Let the embedded PDF or iFrame fill most of the screen height 
+  for easy viewing. 
 */
 .pdf-section {
-  padding: 2rem;
   text-align: center;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 2rem;
 }
 
 .pdf-container {
   width: 100%;
-  height: 90vh; /* Fill most of the viewport height */
-  border: none; /* no color borders */
+  height: 90vh; /* occupy most of viewport height */
+  border: none;
   overflow: hidden;
 }
+
 .pdf-container iframe,
 .pdf-container embed {
   width: 100%;
   height: 100%;
   border: none;
 }
-
-/* 
-   That’s it. 
-   Now all background is black, 
-   text is white, 
-   links are blue (except sidebar text is red),
-   headings are red,
-   resume container fits most of the screen height.
-*/
