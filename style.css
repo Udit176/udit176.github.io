@@ -7,29 +7,29 @@
   box-sizing: border-box;
 }
 
-/* Dark background, slightly off-black */
+/* Dark background, light text */
 html, body {
-  background-color: #000;       /* black or near-black */
-  color: #ccc;                  /* soft gray body text */
+  background-color: #000;  /* black */
+  color: #ccc;             /* softer gray text for body */
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
 }
 
-/* Headings in bright white */
+/* Headings in white for strong contrast */
 h1, h2, h3, h4, h5, h6 {
-  color: #fff;                  /* stand out strongly against black */
+  color: #fff; 
   margin-bottom: 0.5em;
   font-weight: 600;
 }
 
-/* Links in golden color, with slight hover effect */
+/* Golden/yellow links, no red anywhere */
 a {
-  color: #ffdf00;               /* golden/yellow link color */
+  color: #ffdf00;           /* gold/yellow accent */
   text-decoration: none;
   transition: color 0.2s ease;
 }
 a:hover {
-  color: #fff;                  /* brighten on hover */
+  color: #fff;              /* brighten on hover */
 }
 
 /* Unordered lists reset */
@@ -44,20 +44,22 @@ p {
 }
 
 /* ------------------------------
-   Navbar / Header
+   Header / Navbar
 ------------------------------ */
 .site-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  border-bottom: 1px solid #111;  /* subtle boundary */
+  border-bottom: 1px solid #111; /* subtle dark boundary */
 }
+
 .logo-and-name {
   display: flex;
   align-items: center;
 }
-/* Your round thumbnail (similar to Adel's signature spot) */
+
+/* Your round thumbnail (instead of red signature) */
 .site-logo {
   width: 48px;
   height: 48px;
@@ -65,17 +67,18 @@ p {
   object-fit: cover;
   margin-right: 0.75rem;
 }
+
 .site-title {
-  color: #fff;
+  color: #fff;       /* white text for site name */
   font-weight: 700;
   font-size: 1.2rem;
 }
 
-/* Nav links in a row */
 .main-nav ul {
   display: flex;
   gap: 1.5rem;
 }
+
 .main-nav li a {
   font-weight: 500;
   padding: 0.2rem 0;
@@ -89,18 +92,21 @@ p {
   margin: 0 auto;
   padding: 3rem 2rem;
 }
+
 .hero-section h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
+  /* White from global heading style */
 }
+
 .hero-subtitle {
   font-size: 1.1rem;
-  color: #999;   /* darker gray to contrast heading */
+  color: #999;       /* slightly darker gray than #ccc for a subtle contrast */
   margin-bottom: 2rem;
   line-height: 1.4;
 }
 
-/* Toggle or status (e.g., 'Unavailable for hire') */
+/* If you have a status toggle (like “Unavailable for hire”), style it here */
 .availability-toggle {
   display: inline-flex;
   align-items: center;
@@ -109,8 +115,9 @@ p {
   padding: 0.5rem 1rem;
   margin-top: 1rem;
 }
+
 .toggle-label {
-  color: #ffdf00;  /* same gold color as links */
+  color: #ffdf00;    /* gold accent */
   font-weight: 500;
 }
 
@@ -122,24 +129,27 @@ p {
   margin: 0 auto;
   padding: 3rem 2rem;
 }
+
 .content-section p,
 .content-section li {
-  color: #ccc; /* match body color */
+  color: #ccc;       /* match body color */
 }
+
 .content-section ul {
   margin-top: 1rem;
-  /* If you prefer bullet points: 
-     list-style: disc; 
-     padding-left: 1.5rem; 
+  /* If you prefer bullet points:
+     list-style: disc;
+     padding-left: 1.5rem;
   */
 }
 
-/* Example "card" layout for projects */
+/* Example for a grid of project links/cards */
 .project-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
 }
+
 .project-card {
   background: #111;
   padding: 0.8rem 1rem;
@@ -148,6 +158,7 @@ p {
   transition: background 0.2s;
   text-align: center;
 }
+
 .project-card:hover {
   background: #222;
 }
@@ -160,6 +171,7 @@ p {
   padding: 1rem 2rem;
   border-top: 1px solid #111;
 }
+
 .site-footer p {
   color: #666;
   font-size: 0.9rem;
