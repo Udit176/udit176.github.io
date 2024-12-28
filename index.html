@@ -2,105 +2,165 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Udit Ekansh - Home</title>
-  <!-- Example Google Font (Optional) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" 
-    rel="stylesheet"
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Udit Ekansh</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <h2>Udit Ekansh</h2>
+
+  <!-- HEADER / NAVBAR -->
+  <header class="site-header">
+    <div class="logo-and-name">
+      <!-- Where Adel’s signature was, you place your thumbnail -->
+      <img 
+        src="profile_thumbnail.jpg" 
+        alt="Udit Ekansh Thumbnail" 
+        class="site-logo"
+      />
+      <span class="site-title">Udit Ekansh</span>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certificates">Certificates</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#misc">Misc</a></li>
+        <li><a href="#connect">Connect</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <h1>Hey, I'm Udit — a graduate student in Autonomy!</h1>
+    <p class="hero-subtitle">
+      I enjoy researching cutting-edge solutions that advance the field of autonomous 
+      and connected systems. Currently, I'm pursuing my Master's at Purdue University 
+      in offline reinforcement learning, robust control, and multi-agent planning.
+    </p>
+    <div class="availability-toggle">
+      <span class="toggle-label">Currently open to opportunities</span>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="content-section">
+    <h2>About</h2>
+    <p>
+      I'm a passionate researcher and engineer with a background in mechanical engineering, 
+      automation, and control. My interests revolve around bridging theoretical concepts 
+      with real-world applications — ensuring that autonomous systems are both 
+      intelligent and resilient.
+    </p>
+  </section>
+
+  <!-- RESEARCH SECTION -->
+  <section id="research" class="content-section">
+    <h2>Research</h2>
+    <p>
+      My current research focuses on the design, analysis, and verification of 
+      autonomous systems. I'm particularly interested in:
+    </p>
     <ul>
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="research.html">Research</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="courses.html">Courses</a></li>
-      <li><a href="certificates.html">Certificates</a></li>
-      <li><a href="resume.html">Resume</a></li>
-      <li><a href="publications.html">Publications</a></li>
-      <li><a href="misc.html">Misc</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li>Offline Reinforcement Learning</li>
+      <li>Robust Control & Formal Methods</li>
+      <li>Networked Multi-Agent Systems</li>
+      <li>Human-Robot Collaboration</li>
     </ul>
-  </aside>
+  </section>
 
-  <!-- MAIN CONTENT -->
-  <div class="main-content">
-    <!-- HERO SECTION (Name & Photo) -->
-    <section class="hero-container">
-      <div class="hero-left">
-        <img 
-          src="profile_pic.jpeg" 
-          alt="Profile Picture of Udit Ekansh" 
-          class="hero-profile-image" 
-        />
-      </div>
-      <div class="hero-right">
-        <h1 class="hero-name">Udit Ekansh</h1>
-        <h2 class="hero-title">Graduate Student in Autonomy</h2>
+  <!-- PROJECTS SECTION -->
+  <section id="projects" class="content-section">
+    <h2>Projects</h2>
+    <p>
+      Over the years, I've had the privilege of working on multiple exciting projects:
+    </p>
+    <div class="project-grid">
+      <a href="#" class="project-card">Underwater Navigation</a>
+      <a href="#" class="project-card">Multi-Drone Coordination</a>
+      <a href="#" class="project-card">Automated Warehouse Robotics</a>
+      <a href="#" class="project-card">Offline RL for Autonomous Driving</a>
+    </div>
+  </section>
 
-        <!-- Affiliations -->
-        <p class="hero-affiliation">
-          <strong>
-            <a 
-              href="https://www.purdue.edu" 
-              target="_blank"
-              style="color: blue; text-decoration: underline;"
-            >Purdue University</a>
-          </strong><br />
-          <em>
-            <a 
-              href="https://engineering.purdue.edu/ICON" 
-              target="_blank"
-              style="color: blue; text-decoration: underline;"
-            >Institute for Control, Optimization, and Networks (ICON)</a>
-          </em>
-        </p>
+  <!-- CERTIFICATES SECTION -->
+  <section id="certificates" class="content-section">
+    <h2>Certificates</h2>
+    <ul>
+      <li>Advanced Robotics (Coursera)</li>
+      <li>Machine Learning Specialization (Coursera)</li>
+      <li>Control Systems Professional Certificate (edX)</li>
+      <!-- Add more... -->
+    </ul>
+  </section>
 
-        <!-- Example icons for email/scholar/LinkedIn (replace '#' with real links) -->
-        <div class="hero-icons">
-          <a href="mailto:your-email@purdue.edu" target="_blank">Email</a> |
-          <a href="#" target="_blank">Google Scholar</a> |
-          <a href="#" target="_blank">LinkedIn</a>
-        </div>
-      </div>
-    </section>
+  <!-- COURSES SECTION -->
+  <section id="courses" class="content-section">
+    <h2>Courses</h2>
+    <p>
+      I have taken courses in robotics, machine learning, deep learning, game theory, 
+      and advanced mathematics. A few highlights include:
+    </p>
+    <ul>
+      <li>Optimal Control and Estimation</li>
+      <li>Nonlinear Systems</li>
+      <li>Statistical Machine Learning</li>
+      <li>Advanced AI Techniques</li>
+    </ul>
+  </section>
 
-    <!-- BIO SECTION -->
-    <section class="bio-section">
-      <p>
-        I am a graduate student pursuing a Master's degree in Autonomy at 
-        <a href="https://www.purdue.edu" target="_blank" style="color: blue; text-decoration: underline;">Purdue University</a>, 
-        focusing on the theoretical and algorithmic underpinnings of 
-        <strong>offline reinforcement learning, coordinated multi-agent planning, and robust control</strong> 
-        for autonomous systems. My current research aims to develop safe and efficient decision-making 
-        strategies for networked robots and vehicles, drawing on principles from control theory, 
-        deep learning, and formal methods.
-      </p>
-      <p>
-        Prior to Purdue, I worked at the 
-        <a href="https://www.iitb.ac.in" target="_blank" style="color: blue; text-decoration: underline;">Indian Institute of Technology, Bombay</a>, 
-        investigating stochastic 3D underwater navigation algorithms under the guidance of 
-        <a 
-          href="https://www.sc.iitb.ac.in/faculty/leenav.html" 
-          target="_blank"
-          style="color: blue; text-decoration: underline;"
-        >Professor Leena Vachhani</a>. 
-        I also hold a Bachelor's degree in Mechanical Engineering with a specialization in Mechatronics 
-        and Automation from the 
-        <a 
-          href="https://mituniversity.edu.in" 
-          target="_blank"
-          style="color: blue; text-decoration: underline;"
-        >MIT Art, Design, and Technology University</a>.
-      </p>
-    </section>
+  <!-- PUBLICATIONS SECTION -->
+  <section id="publications" class="content-section">
+    <h2>Publications</h2>
+    <p>
+      Here are some of my selected publications:
+    </p>
+    <ul>
+      <li>
+        U. Ekansh, L. Vachhani, "Stochastic Path Planning for Underwater Drones," 
+        <em>Conference on XYZ</em>, 2021.
+      </li>
+      <li>
+        U. Ekansh, "Offline RL with Safety Guarantees," 
+        <em>Journal of Autonomous Systems</em>, 2023.
+      </li>
+      <!-- Add more... -->
+    </ul>
+  </section>
 
-  </div>
+  <!-- MISC SECTION -->
+  <section id="misc" class="content-section">
+    <h2>Miscellaneous</h2>
+    <p>
+      When I'm not deep into research, I enjoy reading about history, exploring new 
+      coffee spots, and tinkering with DIY electronics. I'm also a fan of open-source 
+      and love contributing to community-driven projects.
+    </p>
+  </section>
+
+  <!-- CONNECT SECTION -->
+  <section id="connect" class="content-section">
+    <h2>Connect</h2>
+    <p>
+      Thank you for visiting my site! Feel free to reach out for any inquiries, 
+      collaborations, or just to say hello.
+    </p>
+    <p>
+      You can find me on 
+      <a href="#">LinkedIn</a>, 
+      <a href="#">Google Scholar</a>, 
+      or just drop me an 
+      <a href="mailto:your-email@purdue.edu">email</a>.
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>© 2024 Udit Ekansh. All rights reserved.</p>
+  </footer>
+
 </body>
 </html>
