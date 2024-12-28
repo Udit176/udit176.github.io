@@ -7,21 +7,15 @@
   box-sizing: border-box;
 }
 
-/* 
-   Black background, light gray body text.
-   Slightly relaxed line-height for readability.
-*/
+/* Dark background, medium gray text for body */
 html, body {
-  background-color: #000;
-  color: #ccc;
+  background-color: #000;  /* black */
+  color: #ccc;             /* medium gray for body text */
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
 }
 
-/* 
-   Headings: bright white for strong contrast
-   against black background.
-*/
+/* Headings in bright white */
 h1, h2, h3, h4, h5, h6 {
   color: #fff;
   margin-bottom: 0.5em;
@@ -29,25 +23,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* 
-   Link styling: use a turquoise shade (#0bf) 
-   that stands out from #ccc text.
-   On hover, lighten to #0df.
+   Links in light gray (#ddd).
+   Hover: brighten to white (#fff).
 */
 a {
-  color: #0bf;             /* #00bbff */
+  color: #ddd;             
   text-decoration: none;
   transition: color 0.2s ease;
 }
-
 a:hover {
-  color: #0df;             /* #00ddff, slightly lighter */
+  color: #fff;
 }
 
-/* 
-   If you want underlines, you can add:
-   text-decoration: underline;
-   to the a or a:hover rules above
-*/
+/* Unordered lists reset */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* Paragraph spacing */
+p {
+  margin-bottom: 1rem;
+}
 
 /* ------------------------------
    Header / Navbar
@@ -57,7 +54,7 @@ a:hover {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  border-bottom: 1px solid #111; /* Subtle boundary */
+  border-bottom: 1px solid #111; /* subtle dark boundary */
 }
 
 .logo-and-name {
@@ -65,10 +62,7 @@ a:hover {
   align-items: center;
 }
 
-/* 
-   Circular thumbnail instead of a signature
-   or standard logo. Adjust size as needed.
-*/
+/* Your round thumbnail (logo area) */
 .site-logo {
   width: 48px;
   height: 48px;
@@ -78,7 +72,7 @@ a:hover {
 }
 
 .site-title {
-  color: #fff;    /* Keep site title white */
+  color: #fff;    /* site name in white */
   font-weight: 700;
   font-size: 1.2rem;
 }
@@ -105,20 +99,17 @@ a:hover {
 .hero-section h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
+  /* White from global heading style */
 }
 
 .hero-subtitle {
   font-size: 1.1rem;
-  color: #999;     /* Darker gray for subtle contrast */
+  color: #999;   /* slightly darker gray for subtitles */
   margin-bottom: 2rem;
   line-height: 1.4;
 }
 
-/* 
-   If you need a status toggle or 
-   small box (e.g., “Open to opportunities”),
-   style it here.
-*/
+/* Example toggle or status area (if needed) */
 .availability-toggle {
   display: inline-flex;
   align-items: center;
@@ -129,7 +120,7 @@ a:hover {
 }
 
 .toggle-label {
-  color: #0bf;
+  color: #ddd;    /* light gray to match link color */
   font-weight: 500;
 }
 
@@ -144,21 +135,18 @@ a:hover {
 
 .content-section p,
 .content-section li {
-  color: #ccc; /* Match body color */
+  color: #ccc;   /* matches body color */
 }
 
 .content-section ul {
   margin-top: 1rem;
-  /* If you prefer bullets:
+  /* If you prefer bullet points:
      list-style: disc;
      padding-left: 1.5rem;
   */
 }
 
-/* 
-   Example grid for Projects or Certificates
-   if you want a card layout.
-*/
+/* Example for a grid of project links/cards */
 .project-grid {
   display: flex;
   flex-wrap: wrap;
