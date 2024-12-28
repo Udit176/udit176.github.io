@@ -7,66 +7,49 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- SIDEBAR -->
   <aside class="sidebar">
     <h2>Udit Ekansh</h2>
     <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="research.html">Research</a></li>
-            <li><a href="projects.html" class="active">Projects</a></li>
-            <li><a href="courses.html">Courses</a></li>
-            <li><a href="certificates.html" >Certificates</a></li>
-            <li><a href="resume.html">Resume</a></li>                      
-            <li><a href="publications.html">Publications</a></li>
-            <li><a href="misc.html">Misc</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="certificates.html">Certificates</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="misc.html">Misc</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
   </aside>
 
+  <!-- MAIN CONTENT -->
   <div class="main-content">
+    <!-- HERO / BANNER -->
     <section class="hero">
       <h1>Projects</h1>
       <div class="divider"></div>
     </section>
-    <section>
-      <ul style="margin-top:1rem; text-align:left; max-width:600px; margin:auto;">
-        <li>
-          <strong>Mildly Conservative Q-Learning in Offline Reinforcement Learning for Grid World Navigation:</strong>
-          <p>
-            Offline reinforcement learning (RL) enables policy training using pre-collected datasets, minimizing online exploration. This project evaluated offline RL algorithms for grid-world navigation, with a custom dataset generated using the A* path-planning algorithm on a 2D occupancy grid derived from a realistic environment map created in the Gazebo Simulation Environment using TurtleBot3. The Mildly Conservative Q-Learning (MCQ) algorithm and other methods, including Behavior Cloning (BC), Advantage-Weighted Regression (AWR), Batch-Constrained Q-Learning (BCQL), and Conservative Q-Learning (CQL), were implemented and compared. Results showed that MCQ and CQL failed to create policies that effectively guided the robot to goal, achieving ~0% success rates despite hyperparameter tuning using Optuna. BC achieved a 79% success rate, which improved to 94% with tuning, while AWR reached 88%. Initial results with BCQL showed promise with a 52% success rate, but its hyperparameters could not be fully tuned due to time constraints. In addition, Twin Delayed Deep Deterministic Policy Gradient + Behavior Cloning (TD3+BC) was tested in the PointMaze environment, revealing significant reward degradation when faced with out-of-distribution (OOD) actions. These results highlight the challenges of offline RL in navigation tasks and emphasize the need for robust algorithms and effective hyperparameter tuning. Future work includes validating policies on TurtleBot3 in Gazebo and addressing out-of-distribution scenarios.
-            <a href="RLProject_copy.pdf" target="_blank" style="color: blue; text-decoration: underline;">View Term Paper</a>
-            <p> The code for this project can be found <a href="https://github.com/Udit176/OfflineRL" target="_blank" style="color: blue; text-decoration: underline;">here</a>. </p>
-          </p>
-          <p style="text-align:center;">
-            <img src="OfflineRL.png" alt="MCQL Project Image" style="max-width:100%; height:auto;">
-            <br>
-            <em>Source: <a href="https://sites.google.com/view/offlinerltutorial-neurips2020/home" target="_blank" style="color: blue; text-decoration: underline;">Offline RL Tutorial- NeurIPS 2020</a></em>
-          </p>
-        </li>
 
-        <li>
-          <strong>Autonomous Mapping and Navigation Using TurtleBot3:</strong>
-          <p>
-            Autonomous mapping and navigation are critical capabilities for mobile robots. This project utilized the TurtleBot3 platform to implement algorithms for simultaneous localization and mapping (SLAM), static and dynamic obstacle avoidance, and autonomous path planning. Using a frontier-based exploration approach, the robot systematically explored unknown environments to build a map by identifying unexplored regions and planning optimal paths using the A* algorithm. Real-time obstacle detection was integrated to enable dynamic replanning when encountering moving obstacles, ensuring robust and collision-free navigation.
-          </p>
-          <p>
-            The project successfully demonstrated the potential of combining SLAM and path-planning techniques to create intelligent robotic systems capable of navigating and mapping complex environments autonomously. Future work could include deploying the system in outdoor environments and optimizing the algorithms for faster real-time performance.
-          </p>
-          <p>
-            The code for this project can be found <a href="https://github.com/Udit176/AutonomousMappingNavigation.git" target="_blank" style="color: blue; text-decoration: underline;">here</a>.
-          </p>
-          <p>
-            <strong>Demonstration Videos: (TODO)</strong>
-          </p>
-          <ul>
-            <li>
-              <a href="https://www.youtube.com/watch?v=VideoID1" target="_blank">Mapping in Action</a>
-            </li>
-            <li>
-              <a href="https://www.youtube.com/watch?v=VideoID2" target="_blank">Dynamic Obstacle Avoidance</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
+    <!-- PROJECT CARDS SECTION -->
+    <section class="content-section">
+      <p>Over the years, I've had the privilege of working on multiple exciting projects:</p>
+      
+      <!-- A grid of clickable cards -->
+      <div class="project-grid">
+        
+        <!-- PROJECT 1 CARD -->
+        <a class="project-card" href="project_offlinerl.html">
+          <h3>Mildly Conservative Q-Learning for Grid World Navigation</h3>
+        </a>
+        
+        <!-- PROJECT 2 CARD -->
+        <a class="project-card" href="project_turtlebot.html">
+          <h3>Autonomous Mapping &amp; Navigation Using TurtleBot3</h3>
+        </a>
+        
+        <!-- Add more project cards as needed... -->
+      </div>
     </section>
   </div>
 </body>
