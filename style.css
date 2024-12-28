@@ -7,126 +7,110 @@
   box-sizing: border-box;
 }
 
+/* Dark background, slightly off-black */
 html, body {
-  /* Black background, minimal color for text */
-  background-color: #000;
-  color: #ddd; /* Light gray text */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 16px;
+  background-color: #000;       /* black or near-black */
+  color: #ccc;                  /* soft gray body text */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
 }
 
-a {
-  color: #fff; /* White links by default */
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-a:hover {
-  color: #f2f2f2; /* Slightly lighter on hover */
-}
-
-ul {
-  list-style: none;
-}
-
-/* Large headings in pure white for contrast */
+/* Headings in bright white */
 h1, h2, h3, h4, h5, h6 {
-  color: #fff; 
+  color: #fff;                  /* stand out strongly against black */
   margin-bottom: 0.5em;
   font-weight: 600;
 }
 
+/* Links in golden color, with slight hover effect */
+a {
+  color: #ffdf00;               /* golden/yellow link color */
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: #fff;                  /* brighten on hover */
+}
+
+/* Unordered lists reset */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* Paragraph spacing */
+p {
+  margin-bottom: 1rem;
+}
+
 /* ------------------------------
-   Header & Navigation
+   Navbar / Header
 ------------------------------ */
 .site-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
-  /* Slight padding around the header */
   padding: 1rem 2rem;
-  
-  /* A subtle border below the header (dark gray) */
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid #111;  /* subtle boundary */
 }
-
 .logo-and-name {
   display: flex;
   align-items: center;
 }
-
-/* Thumbnail where Adel’s signature was */
+/* Your round thumbnail (similar to Adel's signature spot) */
 .site-logo {
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   object-fit: cover;
-  margin-right: 0.5rem;
+  margin-right: 0.75rem;
 }
-
 .site-title {
   color: #fff;
   font-weight: 700;
   font-size: 1.2rem;
 }
 
+/* Nav links in a row */
 .main-nav ul {
   display: flex;
   gap: 1.5rem;
 }
-
-.main-nav a {
-  text-transform: lowercase; 
-  /* or uppercase if you prefer */
+.main-nav li a {
   font-weight: 500;
-  /* little padding */
   padding: 0.2rem 0;
-}
-
-.main-nav a:hover {
-  color: #999; /* subtle hover color */
 }
 
 /* ------------------------------
    Hero Section
 ------------------------------ */
 .hero-section {
-  padding: 3rem 2rem;
   max-width: 800px;
   margin: 0 auto;
-  text-align: left;
+  padding: 3rem 2rem;
 }
-
 .hero-section h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
-  /* White text already from global heading style */
 }
-
 .hero-subtitle {
-  font-size: 1.2rem;
-  color: #aaa;
-  max-width: 600px;
+  font-size: 1.1rem;
+  color: #999;   /* darker gray to contrast heading */
   margin-bottom: 2rem;
   line-height: 1.4;
 }
 
-/* Availability toggle style (the red/white toggle in Adel’s design).
-   You can adapt the color scheme if you want. */
+/* Toggle or status (e.g., 'Unavailable for hire') */
 .availability-toggle {
   display: inline-flex;
   align-items: center;
   background: #111;
   border-radius: 20px;
   padding: 0.5rem 1rem;
+  margin-top: 1rem;
 }
-
 .toggle-label {
-  color: #f00;
-  /* bright red for “unavailable/available” label? 
-     Tweak as you prefer. */
+  color: #ffdf00;  /* same gold color as links */
   font-weight: 500;
 }
 
@@ -138,34 +122,32 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
   padding: 3rem 2rem;
 }
-
-.content-section p, 
+.content-section p,
 .content-section li {
-  color: #ccc; /* softer gray text than headings */
+  color: #ccc; /* match body color */
 }
-
-/* Example for lists in research section */
 .content-section ul {
   margin-top: 1rem;
-  padding-left: 1.5rem;
+  /* If you prefer bullet points: 
+     list-style: disc; 
+     padding-left: 1.5rem; 
+  */
 }
 
-/* Projects grid layout */
+/* Example "card" layout for projects */
 .project-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-top: 1rem;
 }
-
 .project-card {
   background: #111;
   padding: 0.8rem 1rem;
   border-radius: 4px;
   color: #fff;
   transition: background 0.2s;
+  text-align: center;
 }
-
 .project-card:hover {
   background: #222;
 }
@@ -175,12 +157,11 @@ h1, h2, h3, h4, h5, h6 {
 ------------------------------ */
 .site-footer {
   text-align: center;
-  padding: 1rem;
-  border-top: 1px solid #222;
-  margin-top: 2rem;
+  padding: 1rem 2rem;
+  border-top: 1px solid #111;
 }
-
 .site-footer p {
   color: #666;
   font-size: 0.9rem;
+  margin-top: 1rem;
 }
