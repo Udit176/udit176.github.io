@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>California Housing Price Prediction using Linear Regression</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER / NAVBAR (Matches index.html style) -->
+  <header class="site-header">
+    <div class="logo-and-name">
+      <!-- Optional thumbnail:
+      <img 
+        src="profile_pic.jpeg" 
+        alt="Udit Ekansh Thumbnail" 
+        class="site-logo"
+      /> -->
+      <span class="site-title">Udit Ekansh</span>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#research">Research</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#certificates">Certificates</a></li>
+        <li><a href="index.html#courses">Courses</a></li>
+        <li><a href="index.html#publications">Publications</a></li>
+        <li><a href="index.html#misc">Misc</a></li>
+        <li><a href="index.html#connect">Connect</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO / TITLE SECTION -->
+  <section class="hero-section">
+    <h1>California Housing Price Prediction using Linear Regression</h1>
+  </section>
+
+  <!-- EXACT PROJECT CONTENT (unchanged) -->
+  <section style="margin-top:1rem; text-align:left; max-width:600px; margin:auto;">
+    <ul>
+      <li>
+        <strong>California Housing Price Prediction using Linear Regression:</strong>
+        <p>
+          In this project, I tackled the task of predicting housing prices using the California Housing Dataset from Scikit-Learn. Instead of relying on pre-built linear regression implementations
+          from libraries like Scikit-Learn or PyTorch, I chose to build the model from scratch, applying the closed-form solution of linear regression (Normal Equation). This hands-on approach deepened
+          my understanding of the mathematical foundations behind linear regression while allowing me to control each step of the process.
+        </p>
+        <p>
+            The workflow began with data preprocessing, where I shuffled the dataset, performed an 80-20 train-test split, and applied feature scaling using min-max normalization. 
+            I added a bias term to the feature matrix before calculating the weight vector analytically, ensuring that the model was built entirely from first principles. 
+            By avoiding black-box implementations, I gained valuable insight into how feature transformations, scaling, and bias terms influence model performance.          
+            To assess the model's effectiveness, I evaluated it using standard metrics: Mean Absolute Error (MAE), Mean Squared Error (MSE), and Root Mean Squared Error (RMSE). 
+            The results were promising, with an RMSE of approximately 0.74 on the training set and 0.75 on the test set, indicating that the model generalized well to unseen data.
+            I also visualized the model's predictions against actual values and plotted the distribution of residuals. Importantly, I generated Q-Q plots to verify one of the core assumptions of 
+            linear regression: that errors should follow a roughly normal distribution. While the residuals were reasonably well-behaved, some deviations from normality suggested potential areas
+            for improvement, such as exploring polynomial features or regularization techniques to better capture non-linear relationships.
+        </p>
+        <p></p>
+            Through this project, I not only built a functional predictive model but also gained a more intuitive grasp of linear regression's strengths and limitations. The process highlighted how theoretical understanding translates into practical application, while the residual analysis emphasized the importance of critically evaluating model assumptions rather than solely relying on performance metrics.
+       </p>  
+          
+        <p>
+          The code for this project can be found <a href="https://github.com/Udit176/AutonomousMappingNavigation.git" target="_blank" style="text-decoration: underline;">here</a>.
+        </p>
+        <p>
+          <strong>Demonstration Videos: (TODO)</strong>
+        </p>
+        <ul>
+          <li>
+            <a href="https://www.youtube.com/watch?v=VideoID1" target="_blank">Mapping in Action</a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/watch?v=VideoID2" target="_blank">Dynamic Obstacle Avoidance</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <!-- FOOTER (Optional) -->
+  <footer class="site-footer" style="text-align:center; margin-top:2rem;">
+    <p>© 2024 Udit Ekansh. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
