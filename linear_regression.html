@@ -60,6 +60,21 @@
             and <strong>Root Mean Squared Error (RMSE).</strong> 
             The results were promising, with an RMSE of approximately  <strong>0.74 on the training set and 0.75 on the test set</strong>, indicating that the model generalized well 
             to unseen data.
+        </p>
+
+        <!-- Adding Images with Captions -->
+        <div style="text-align: center; margin: 20px 0;">
+            <figure>
+                <img src="predicted_vs_actual_train.png" alt="Predicted vs Actual for Training Set" style="width: 500px; height: auto;">
+                <figcaption><strong>Figure 1:</strong> Predicted vs Actual values for the training set.</figcaption>
+            </figure>
+        
+            <figure>
+                <img src="predicted_vs_actual_test.png" alt="Predicted vs Actual for Test Set" style="width: 500px; height: auto;">
+                <figcaption><strong>Figure 2:</strong> Predicted vs Actual values for the test set.</figcaption>
+            </figure>
+        </div>
+            
             I also visualized the model's predictions against actual values and plotted the distribution of residuals. Importantly, I generated <strong>Q-Q plots</strong> to verify
             one of the core assumptions of linear regression: that errors should follow a roughly normal distribution. 
             While the residuals were reasonably well-behaved, some deviations from normality suggested potential areasfor improvement, 
