@@ -45,7 +45,7 @@
 <!--         <strong>California Housing Price Prediction using Linear Regression:</strong> -->
         <p>
           In this project, I tackled the task of <strong>predicting housing prices</strong> using the 
-          <a href="https://inria.github.io/scikit-learn-mooc/python_scripts/datasets_california_housing.html" target="_blank">California Housing Dataset style="text-decoration: underline;">here</a>.</a>
+          <a href="https://inria.github.io/scikit-learn-mooc/python_scripts/datasets_california_housing.html" target="_blank" style="text-decoration: underline;"> California Housing Dataset </a>.
           Instead of relying on pre-built linear regression implementations
           from libraries like Scikit-Learn or PyTorch, I chose to build the model from <strong>scratch</strong>, applying the closed-form solution of
           linear regression (Normal Equation). This hands-on approach deepened
@@ -70,7 +70,7 @@
             </figure>
         
             <figure>
-                <img src="predicted_vs_actual_test.png" alt="Predicted vs Actual for Test Set" style="width: 500px; height: auto;">
+                <img src="predicted_vs_errors.png" alt="Predictions vs Errors for Test and Training Sets" style="width: 500px; height: auto;">
                 <figcaption><strong>Figure 2:</strong> Predicted vs Actual values for the test set.</figcaption>
             </figure>
         </div>
@@ -80,7 +80,19 @@
             While the residuals were reasonably well-behaved, some deviations from normality suggested potential areasfor improvement, 
             such as exploring polynomial features or regularization techniques to better capture non-linear relationships.
         </p>
-        <p></p>
+          <!-- Adding Images with Captions -->
+        <div style="text-align: center; margin: 20px 0;">
+            <figure>
+                <img src="error_dist.png" alt="Error Distribution shows approximate Guassian Trend" style="width: 500px; height: auto;">
+                <figcaption><strong>Figure 1:</strong> Predicted vs Actual values for the training and test sets.</figcaption>
+            </figure>
+        
+            <figure>
+                <img src="qqplot.png" alt="Q-Q Plot of Errors" style="width: 500px; height: auto;">
+                <figcaption><strong>Figure 2:</strong> Predicted vs Actual values for the test set.</figcaption>
+            </figure>
+        </div>
+        <p>
             Through this project, I not only built a functional predictive model but also gained a more intuitive grasp of linear regression's 
             strengths and limitations. The process highlighted how theoretical understanding translates into practical application,
             while the residual analysis emphasized the importance of critically evaluating model assumptions rather than solely relying on performance metrics.
