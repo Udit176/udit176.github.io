@@ -1,84 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Causal Inference as an Inductive Bias in Reinforcement Learning</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+<section class="hero-section">
+  <h1>Causal Inference as an Inductive Bias in Reinforcement Learning</h1>
+</section>
 
-  <!-- HEADER / NAVBAR (Same as other pages) -->
-  <header class="site-header">
-    <div class="logo-and-name">
-      <span class="site-title">Udit Ekansh</span>
-    </div>
-    <nav class="main-nav">
-      <ul>
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#research">Research</a></li>
-        <li><a href="index.html#projects">Projects</a></li>
-        <li><a href="index.html#certificates">Certificates</a></li>
-        <li><a href="index.html#courses">Courses</a></li>
-        <li><a href="index.html#publications">Publications</a></li>
-        <li><a href="index.html#misc">Misc</a></li>
-        <li><a href="index.html#connect">Connect</a></li>
-      </ul>
-    </nav>
-  </header>
+<section style="margin-top:1rem; text-align:left; max-width:600px; margin:auto;">
+  <ul>
+    <li>
+      <p>
+        This project explored how <strong>causal inductive biases</strong>—specifically interventions and counterfactual reasoning—can enhance <strong>generalization in reinforcement learning (RL)</strong>. We conducted a systematic comparison between <strong>model-free RL agents</strong> and <strong>causal RL agents</strong> using the <a href="https://github.com/Tom1042roboai/CausalCF" target="_blank" style="text-decoration: underline;">CausalCF framework</a> within the <strong>CausalWorld</strong> robotic manipulation simulator.
+      </p>
 
-  <!-- HERO / TITLE SECTION -->
-  <section class="hero-section">
-    <h1>Causal Inference as an Inductive Bias in Reinforcement Learning</h1>
-  </section>
+      <p>
+        Agents were trained on a goal-conditioned <strong>robotic picking task</strong> and evaluated across 12 domain-shift protocols (P0–P11), which systematically altered environment variables such as block mass, pose, goal position, and friction. We used <strong>fractional success</strong> as the primary metric—quantifying overlap between the final and goal block configurations.
+      </p>
 
-  <!-- PROJECT DESCRIPTION -->
-  <section style="margin-top:1rem; text-align:left; max-width:600px; margin:auto;">
-    <ul>
-      <li>
-        <p>
-          In this project, we explored whether embedding <strong>causal inductive biases</strong> into reinforcement learning (RL) could improve generalization under distributional shifts. Using the <a href="https://causalworld.org/" target="_blank" style="text-decoration: underline;">CausalWorld environment</a>, we compared standard model-free baselines like Soft Actor-Critic (SAC) with several <strong>causal RL variants</strong> including the CausalCF algorithm, which incorporates <strong>intervention</strong> and <strong>counterfactual reasoning</strong> to enhance learning.
-        </p>
+      <p>
+        Our study tested four configurations:
+        <ol>
+          <li>Baseline SAC (no causal reasoning)</li>
+          <li>CausalCF (causal representation without interventions)</li>
+          <li>CausalCF + Intervene (with both intervention and counterfactual training)</li>
+          <li>Transfer-CausalRep (transfer of causal modules from picking to pushing task)</li>
+        </ol>
+        These configurations corresponded to ascending levels in the <strong>Pearl Causal Hierarchy</strong>: association, intervention, and counterfactuals.
+      </p>
 
-        <p>
-          We trained all agents on a robotic picking task and evaluated them under 12 perturbation protocols (P0–P11) designed to introduce domain shifts (e.g., object mass, size, pose, and floor friction). We then assessed transferability by reusing the learned causal modules from the picking task to fine-tune the agent on a distinct pushing task. Our primary evaluation metric was <strong>fractional success</strong>, which measures how closely the agent’s configuration matches the target.
-        </p>
+      <p>
+        Results showed that causal agents significantly outperformed SAC in moderate distribution shifts (e.g., changes in mass or goal pose). <strong>CausalCF + Intervene</strong> achieved higher robustness, particularly under moderate structural variation. Additionally, the <strong>Transfer-CausalRep</strong> agent—trained solely on picking but evaluated on pushing—retained competitive performance, supporting the hypothesis that causal representations are partially transferable across tasks with shared structure.
+      </p>
 
-        <p>
-          Results demonstrated that causal agents—especially those trained with both interventions and counterfactuals—<strong>generalized better</strong> than non-causal SAC baselines in moderate domain shifts. The <strong>Transfer-CausalRep</strong> model also achieved competitive performance on the pushing task without retraining its causal modules, supporting the hypothesis that learned causal structure improves <strong>transfer and robustness</strong>. However, all models struggled under severe shifts (P10–P11), pointing to open challenges in causal RL.
-        </p>
+      <p>
+        However, all methods—causal and non-causal—saw degraded performance under severe domain perturbations (e.g., combined variation in mass, friction, and pose), pointing to limits of current causal RL approaches in highly randomized settings.
+      </p>
 
-        <!-- Optional Figures Section -->
-        <!--
-        <div style="text-align: center; margin: 20px 0;">
-            <figure>
-                <img src="causalcf_barplot.png" alt="CausalCF Performance Summary" style="width: 500px; height: auto;">
-                <figcaption><strong>Figure 1:</strong> Fractional success across protocols for causal vs. non-causal agents.</figcaption>
-            </figure>
-        
-            <figure>
-                <img src="causalcf_radar.png" alt="Radar Plot Comparison" style="width: 500px; height: auto;">
-                <figcaption><strong>Figure 2:</strong> Radar plots highlighting generalization patterns.</figcaption>
-            </figure>
-        </div>
-        -->
+      <p>
+        This project contributed a controlled empirical evaluation of causal RL under domain shift and task transfer, reinforcing the potential of <strong>structural causal models and counterfactual reasoning</strong> to improve robustness in RL-based robotic systems.
+      </p>
 
-        <p>
-          Through this study, I gained hands-on experience in <strong>causal reasoning, inductive bias design, policy transfer</strong>, and evaluating generalization in robotic agents. This work illustrates the practical value of integrating <strong>structural knowledge</strong> into reinforcement learning, and motivates further exploration of scalable causal RL frameworks in real-world systems.
-        </p>
-
-        <p>
-          The complete report can be accessed <a href="CS578_FinalReport.pdf" target="_blank" style="text-decoration: underline;">here</a>. Code is based on the official <a href="https://github.com/Tom1042roboai/CausalCF" target="_blank" style="text-decoration: underline;">CausalCF repository</a> with extensions for evaluation and transfer learning.
-        </p>
-      </li>
-    </ul>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="site-footer" style="text-align:center; margin-top:2rem;">
-    <p>© 2024 Udit Ekansh. All rights reserved.</p>
-  </footer>
-
-</body>
-</html>
-
+      <p>
+        The full report is available <a href="CS578_FinalReport.pdf" target="_blank" style="text-decoration: underline;">here</a>.
+      </p>
+    </li>
+  </ul>
+</section>
