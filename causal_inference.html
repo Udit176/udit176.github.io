@@ -6,11 +6,18 @@
   <ul>
     <li>
       <p>
-        This project explored how <strong>causal inductive biases</strong>—specifically interventions and counterfactual reasoning—can enhance <strong>generalization in reinforcement learning (RL)</strong>. We conducted a systematic comparison between <strong>model-free RL agents</strong> and <strong>causal RL agents</strong> using the <a href="https://github.com/Tom1042roboai/CausalCF" target="_blank" style="text-decoration: underline;">CausalCF framework</a> within the <strong>CausalWorld</strong> robotic manipulation simulator.
+        This project explored how <strong>causal inductive biases</strong>—specifically interventions and counterfactual reasoning—can enhance 
+        <strong>generalization in reinforcement learning (RL)</strong>. We conducted a systematic comparison between <strong>model-free RL agents</strong>
+        and <strong>causal RL agents</strong> using the 
+        <a href="https://github.com/Tom1042roboai/CausalCF" target="_blank" style="text-decoration: underline;">CausalCF framework</a> 
+        within the <strong>CausalWorld</strong> robotic manipulation simulator.
       </p>
 
       <p>
-        Agents were trained on a goal-conditioned <strong>robotic picking task</strong> and evaluated across 12 domain-shift protocols (P0–P11), which systematically altered environment variables such as block mass, pose, goal position, and friction. We used <strong>fractional success</strong> as the primary metric—quantifying overlap between the final and goal block configurations.
+        Agents were trained on a goal-conditioned <strong>robotic picking task</strong>
+        and evaluated across 12 domain-shift protocols (P0–P11), which systematically altered environment variables 
+        such as block mass, pose, goal position, and friction. We used <strong>fractional success</strong> 
+        as the primary metric—quantifying overlap between the final and goal block configurations.
       </p>
 
       <p>
@@ -25,15 +32,20 @@
       </p>
 
       <p>
-        Results showed that causal agents significantly outperformed SAC in moderate distribution shifts (e.g., changes in mass or goal pose). <strong>CausalCF + Intervene</strong> achieved higher robustness, particularly under moderate structural variation. Additionally, the <strong>Transfer-CausalRep</strong> agent—trained solely on picking but evaluated on pushing—retained competitive performance, supporting the hypothesis that causal representations are partially transferable across tasks with shared structure.
+        Results showed that causal agents significantly outperformed SAC in moderate distribution shifts (e.g., changes in mass or goal pose). 
+        <strong>CausalCF + Intervene</strong> achieved higher robustness, particularly under moderate structural variation.
+        Additionally, the <strong>Transfer-CausalRep</strong> agent—trained solely on picking but evaluated on pushing—retained competitive performance, 
+        supporting the hypothesis that causal representations are partially transferable across tasks with shared structure.
       </p>
 
       <p>
-        However, all methods—causal and non-causal—saw degraded performance under severe domain perturbations (e.g., combined variation in mass, friction, and pose), pointing to limits of current causal RL approaches in highly randomized settings.
+        However, all methods—causal and non-causal—saw degraded performance under severe domain perturbations
+        (e.g., combined variation in mass, friction, and pose), pointing to limits of current causal RL approaches in highly randomized settings.
       </p>
 
       <p>
-        This project contributed a controlled empirical evaluation of causal RL under domain shift and task transfer, reinforcing the potential of <strong>structural causal models and counterfactual reasoning</strong> to improve robustness in RL-based robotic systems.
+        This project contributed a controlled empirical evaluation of causal RL under domain shift and task transfer,
+        reinforcing the potential of <strong>structural causal models and counterfactual reasoning</strong> to improve robustness in RL-based robotic systems.
       </p>
 
       <p>
