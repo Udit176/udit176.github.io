@@ -51,6 +51,31 @@
         We evaluated the approach using two simulated scenarios: (1) <strong>shared-goal navigation</strong>, where multiple robots attempt to reach the same goal in a cluttered environment, and (2) <strong>distributed parking</strong>, where each robot has a unique goal in a constrained parking lot. In both settings, the cooperative IPC approach consistently outperformed the independent baseline in terms of <strong>success rate, safety, path efficiency,</strong> and <strong>time to goal</strong>.
       </p>
 
+      <!-- Cooperative Driving Simulation GIFs -->
+
+<div style="text-align: center; margin: 20px 0;">
+  <figure>
+    <img src="multi_agent_ipc.gif" alt="Multi-Agent IPC Without V2V" style="width: 500px; height: auto;">
+    <figcaption><strong>Figure 1:</strong> Independent multi-agent IPC leading to deadlock in a shared-goal scenario.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="multi_agent_ipc_v2v.gif" alt="Multi-Agent IPC With V2V" style="width: 500px; height: auto;">
+    <figcaption><strong>Figure 2:</strong> Coordinated multi-agent IPC with V2V resolving spatial conflict at the planning stage.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="multi_agent_parking.gif" alt="Independent Parking Strategy Without V2V" style="width: 500px; height: auto;">
+    <figcaption><strong>Figure 3:</strong> Uncoordinated IPC in a parking lot scenario causes overlapping and inefficient paths.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="multi_agent_parking_v2v.gif" alt="Cooperative Parking Strategy With V2V" style="width: 500px; height: auto;">
+    <figcaption><strong>Figure 4:</strong> Cooperative reference selection using V2V leads to smooth, conflict-free navigation.</figcaption>
+  </figure>
+</div>
+
+
       <p>
         For instance, in the shared-goal scenario, the average success rate improved from 53% with independent IPC to 80% using V2V coordination. In the distributed parking task, success rose from 47% to 93%. Minimum inter-agent distance also increased, highlighting improved safety through coordination.
       </p>
