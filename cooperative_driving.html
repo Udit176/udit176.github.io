@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>An Integrated Planning Approach to Cooperative Driving Automation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER / NAVBAR (Matches index.html style) -->
+  <header class="site-header">
+    <div class="logo-and-name">
+      <!-- Optional thumbnail:
+      <img 
+        src="profile_pic.jpeg" 
+        alt="Udit Ekansh Thumbnail" 
+        class="site-logo"
+      /> -->
+      <span class="site-title">Udit Ekansh</span>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#research">Research</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#certificates">Certificates</a></li>
+        <li><a href="index.html#courses">Courses</a></li>
+        <li><a href="index.html#publications">Publications</a></li>
+        <li><a href="index.html#misc">Misc</a></li>
+        <li><a href="index.html#connect">Connect</a></li>
+      </ul>
+    </nav>
+  </header>
+<section class="hero-section">
+  <h1>An Integrated Planning Approach to Cooperative Driving Automation</h1>
+</section>
+
+<section style="margin-top:1rem; text-align:left; max-width:600px; margin:auto;">
+  <ul>
+    <li>
+      <p>
+        This project extends the <strong>Integrated Planning and Control (IPC)</strong> framework to support <strong>cooperative driving using Vehicle-to-Vehicle (V2V) communication</strong>. The original IPC approach allows reactive, trajectory-free navigation by computing control inputs directly from range data. However, when applied independently in multi-agent settings, it often leads to inefficient trajectories or deadlock due to uncoordinated reference selection.
+      </p>
+
+      <p>
+        To address this, we formulate a <strong>joint optimization problem</strong> where agents share their admissible motion regions and selected reference points via V2V. This allows them to collaboratively select references that satisfy both individual feasibility and inter-agent separation constraints. The joint formulation preserves the feedback-driven nature of IPC while ensuring that agents safely and efficiently coordinate in shared environments.
+      </p>
+
+      <p>
+        We evaluated the approach using two simulated scenarios: (1) <strong>shared-goal navigation</strong>, where multiple robots attempt to reach the same goal in a cluttered environment, and (2) <strong>distributed parking</strong>, where each robot has a unique goal in a constrained parking lot. In both settings, the cooperative IPC approach consistently outperformed the independent baseline in terms of <strong>success rate, safety, path efficiency,</strong> and <strong>time to goal</strong>.
+      </p>
+
+      <p>
+        For instance, in the shared-goal scenario, the average success rate improved from 53% with independent IPC to 80% using V2V coordination. In the distributed parking task, success rose from 47% to 93%. Minimum inter-agent distance also increased, highlighting improved safety through coordination.
+      </p>
+
+      <p>
+        Overall, this work demonstrates that <strong>coordination at the reference planning stage</strong> is essential even in static environments. V2V-enabled IPC provides a scalable, distributed solution for safe and efficient multi-robot navigation—laying the foundation for more robust behavior in real-world cooperative driving systems.
+      </p>
+
+      <p>
+        The full report is available <a href="PATH_TO_REPORT_PDF" target="_blank" style="text-decoration: underline;">here</a>.
+      </p>
+    </li>
+  </ul>
+</section>
