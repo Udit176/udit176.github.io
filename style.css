@@ -216,3 +216,12 @@ p {
   background-color: #0df;   /* lighten on hover */
 }
 
+.output-block {
+  margin-bottom: 2rem;
+}
+
+.output-block img {
+  margin-top: 0.5rem;
+  border-radius: 8px;
+}
+
