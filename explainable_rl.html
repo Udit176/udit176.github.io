@@ -1,57 +1,97 @@
-<section class="content-section">
-  <h1>Transparent RL: Explaining Agent Decisions</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Transparent RL: Explaining Agent Decisions</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
-  <p>
-    This project builds an interpretable reinforcement learning system using tabular Q-learning 
-    on FrozenLake. Instead of treating the policy as a black box, the system exposes how decisions 
-    are made by analyzing action values and confidence at every state.
-  </p>
+  <!-- HEADER / NAVBAR -->
+  <header class="site-header">
+    <div class="logo-and-name">
+      <span class="site-title">Udit Ekansh</span>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#research">Research</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#certificates">Certificates</a></li>
+        <li><a href="index.html#courses">Courses</a></li>
+        <li><a href="index.html#publications">Publications</a></li>
+        <li><a href="index.html#misc">Misc</a></li>
+        <li><a href="index.html#connect">Connect</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <h2>Motivation</h2>
-  <p>
-    Reinforcement learning agents typically optimize behavior without providing insight into 
-    their decision process. This project addresses that gap by making the policy fully transparent, 
-    allowing us to understand not just what the agent does, but why.
-  </p>
+  <section class="hero-section">
+    <h1>Transparent RL: Explaining Agent Decisions</h1>
+  </section>
 
-  <h2>Approach</h2>
-  <ul>
-    <li>Train a tabular Q-learning agent in a discrete gridworld (FrozenLake)</li>
-    <li>Extract the learned Q-values for each state-action pair</li>
-    <li>Rank actions per state and identify the optimal decision</li>
-    <li>Compute a confidence metric using the gap between top two actions</li>
-  </ul>
+  <section style="margin-top:1rem; text-align:left; max-width:700px; margin:auto;">
+    <ul>
+      <li>
+        <p>
+          This project explores how to make reinforcement learning policies more interpretable by exposing
+          the reasoning behind each action selection. Rather than treating the learned policy as a black box,
+          the system analyzes the value of every available action at each state and identifies both the chosen
+          action and the confidence associated with that decision.
+        </p>
 
- <h2>Key Outputs</h2>
+        <p>
+          The implementation uses <strong>tabular Q-learning</strong> in the standard
+          <strong>FrozenLake-v1</strong> environment from Gymnasium, with deterministic dynamics
+          (<code>is_slippery=False</code>) to ensure that the learned behavior can be clearly visualized
+          and interpreted. This setting makes it possible to inspect the full state-action structure of the policy.
+        </p>
 
-<div class="output-block">
-  <p><b>Policy Map:</b> shows the selected action in every state</p>
-  <img src="images/explainable_rl/policy_map.png" width="350">
-</div>
+        <p>
+          For each state, the project computes the full set of <strong>Q-values</strong>, ranks the available actions,
+          and measures confidence using the gap between the highest-valued action and the second-best alternative.
+          This provides a simple but effective way to distinguish between states where the agent is decisive and
+          states where its preference is weak or ambiguous.
+        </p>
 
-<div class="output-block">
-  <p><b>Confidence Map:</b> highlights how decisive each action is</p>
-  <img src="images/explainable_rl/confidence_map.png" width="350">
-</div>
+        <p>
+          The project produces three main outputs:
+          <ol>
+            <li>A <strong>policy map</strong> showing the selected action in every state</li>
+            <li>A <strong>confidence map</strong> highlighting how strongly the agent prefers its chosen action</li>
+            <li>A <strong>Q-value heatmap</strong> exposing the full decision structure across all state-action pairs</li>
+          </ol>
+        </p>
 
-<div class="output-block">
-  <p><b>Q-Value Heatmap:</b> exposes the full decision structure</p>
-  <img src="images/explainable_rl/q_value_heatmap.png" width="350">
-</div>
+        <p>
+          <strong>Policy Map</strong><br>
+          <img src="images/explainable_rl/policy_map.png" alt="Policy Map" style="max-width:100%; height:auto; margin-top:0.75rem;">
+        </p>
 
-  <h2>Takeaway</h2>
-  <p>
-    The project demonstrates that even simple RL systems can be made interpretable. By exposing 
-    action values and confidence, we can identify where the agent is certain, where it is ambiguous, 
-    and how its behavior evolves across the state space.
-  </p>
+        <p>
+          <strong>Confidence Map</strong><br>
+          <img src="images/explainable_rl/confidence_map.png" alt="Confidence Map" style="max-width:100%; height:auto; margin-top:0.75rem;">
+        </p>
 
-  <h2>Code</h2>
-  <p>
-    <a href="https://github.com/Udit176/explainable-rl" target="_blank">
-      View on GitHub
-    </a>
-  </p>
+        <p>
+          <strong>Q-Value Heatmap</strong><br>
+          <img src="images/explainable_rl/q_value_heatmap.png" alt="Q-Value Heatmap" style="max-width:100%; height:auto; margin-top:0.75rem;">
+        </p>
 
-  <p><a href="index.html">Back</a></p>
-</section>
+        <p>
+          This project demonstrates that even simple RL agents can be made significantly more transparent when
+          their internal action values are surfaced in a structured way. By combining policy visualization with
+          confidence analysis, the project turns a learned controller into a more interpretable decision system.
+        </p>
+
+        <p>
+          The full code is available
+          <a href="https://github.com/Udit176/explainable-rl" target="_blank" style="text-decoration: underline;">here</a>.
+        </p>
+      </li>
+    </ul>
+  </section>
+
+</body>
+</html>
