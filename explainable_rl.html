@@ -1,0 +1,57 @@
+<section class="content-section">
+  <h1>Transparent RL: Explaining Agent Decisions</h1>
+
+  <p>
+    This project builds an interpretable reinforcement learning system using tabular Q-learning 
+    on FrozenLake. Instead of treating the policy as a black box, the system exposes how decisions 
+    are made by analyzing action values and confidence at every state.
+  </p>
+
+  <h2>Motivation</h2>
+  <p>
+    Reinforcement learning agents typically optimize behavior without providing insight into 
+    their decision process. This project addresses that gap by making the policy fully transparent, 
+    allowing us to understand not just what the agent does, but why.
+  </p>
+
+  <h2>Approach</h2>
+  <ul>
+    <li>Train a tabular Q-learning agent in a discrete gridworld (FrozenLake)</li>
+    <li>Extract the learned Q-values for each state-action pair</li>
+    <li>Rank actions per state and identify the optimal decision</li>
+    <li>Compute a confidence metric using the gap between top two actions</li>
+  </ul>
+
+ <h2>Key Outputs</h2>
+
+<div class="output-block">
+  <p><b>Policy Map:</b> shows the selected action in every state</p>
+  <img src="images/explainable_rl/policy_map.png" width="350">
+</div>
+
+<div class="output-block">
+  <p><b>Confidence Map:</b> highlights how decisive each action is</p>
+  <img src="images/explainable_rl/confidence_map.png" width="350">
+</div>
+
+<div class="output-block">
+  <p><b>Q-Value Heatmap:</b> exposes the full decision structure</p>
+  <img src="images/explainable_rl/q_value_heatmap.png" width="350">
+</div>
+
+  <h2>Takeaway</h2>
+  <p>
+    The project demonstrates that even simple RL systems can be made interpretable. By exposing 
+    action values and confidence, we can identify where the agent is certain, where it is ambiguous, 
+    and how its behavior evolves across the state space.
+  </p>
+
+  <h2>Code</h2>
+  <p>
+    <a href="https://github.com/Udit176/explainable-rl" target="_blank">
+      View on GitHub
+    </a>
+  </p>
+
+  <p><a href="index.html">Back</a></p>
+</section>
