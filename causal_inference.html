@@ -45,10 +45,13 @@
     in the <strong>CausalWorld</strong> robotic manipulation simulator.
   </p>
 
-  <p>
-    Agents were trained on a robotic picking task and evaluated across <strong>12 domain-shift protocols</strong> that changed
-    object mass, pose, goal position, and friction. Performance was measured using <strong>fractional success</strong>.
-  </p>
+ <p>
+  Agents were trained on a robotic picking task and evaluated across <strong>12 domain-shift protocols</strong> that changed
+  object mass, pose, goal position, and friction. Performance was measured using <strong>fractional success</strong>,
+  which quantifies overlap between the final block configuration and the goal (0 = no overlap, 1 = perfect alignment).
+  We report three variants: <strong>full integrated</strong> (average over the entire trajectory), 
+  <strong>last</strong> (final timestep performance), and <strong>last integrated</strong> (performance weighted toward the final part of the trajectory).
+</p>
 
   <!-- IMAGE 1: BASELINE FAILURE -->
   <figure style="margin:1.75rem 0; text-align:center;">
