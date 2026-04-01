@@ -36,55 +36,75 @@
   <h1>Causal Inference as an Inductive Bias in Reinforcement Learning</h1>
 </section>
 
-<section style="margin-top:1rem; text-align:left; max-width:600px; margin:auto;">
-  <ul>
-    <li>
-      <p>
-        This project explored how <strong>causal inductive biases</strong>—specifically interventions and counterfactual reasoning—can enhance 
-        <strong>generalization in reinforcement learning (RL)</strong>. We conducted a systematic comparison between <strong>model-free RL agents</strong>
-        and <strong>causal RL agents</strong> using the 
-        <a href="https://github.com/Tom1042roboai/CausalCF" target="_blank" style="text-decoration: underline;">CausalCF framework</a> 
-        within the <strong>CausalWorld</strong> robotic manipulation simulator.
-      </p>
+<section style="margin-top:1.5rem; text-align:left; max-width:820px; margin:auto; line-height:1.75;">
 
-      <p>
-        Agents were trained on a goal-conditioned <strong>robotic picking task</strong>
-        and evaluated across 12 domain-shift protocols (P0–P11), which systematically altered environment variables 
-        such as block mass, pose, goal position, and friction. We used <strong>fractional success</strong> 
-        as the primary metric—quantifying overlap between the final and goal block configurations.
-      </p>
+  <p>
+    This project studied whether causal reasoning improves generalization in reinforcement learning under distribution shift.
+    We compared a standard RL baseline, <strong>Soft Actor-Critic (SAC)</strong>, against causal agents built on the
+    <a href="https://github.com/Tom1042roboai/CausalCF" target="_blank" style="text-decoration: underline;">CausalCF framework</a>
+    in the <strong>CausalWorld</strong> robotic manipulation simulator.
+  </p>
 
-      <p>
-        Our study tested four configurations:
-        <ol>
-          <li>Baseline SAC (no causal reasoning)</li>
-          <li>CausalCF (causal representation without interventions)</li>
-          <li>CausalCF + Intervene (with both intervention and counterfactual training)</li>
-          <li>Transfer-CausalRep (transfer of causal modules from picking to pushing task)</li>
-        </ol>
-        These configurations corresponded to ascending levels in the <strong>Pearl Causal Hierarchy</strong>: association, intervention, and counterfactuals.
-      </p>
+  <p>
+    Agents were trained on a robotic picking task and evaluated across <strong>12 domain-shift protocols</strong> that changed
+    object mass, pose, goal position, and friction. Performance was measured using <strong>fractional success</strong>.
+  </p>
 
-      <p>
-        Results showed that causal agents significantly outperformed SAC in moderate distribution shifts (e.g., changes in mass or goal pose). 
-        <strong>CausalCF + Intervene</strong> achieved higher robustness, particularly under moderate structural variation.
-        Additionally, the <strong>Transfer-CausalRep</strong> agent—trained solely on picking but evaluated on pushing—retained competitive performance, 
-        supporting the hypothesis that causal representations are partially transferable across tasks with shared structure.
-      </p>
+  <!-- IMAGE 1: BASELINE FAILURE -->
+  <figure style="margin:1.75rem 0; text-align:center;">
+    <img
+      src="sac_baseline.png"
+      alt="SAC baseline performance across domain shifts"
+      style="width:100%; max-width:650px; border-radius:12px; display:block; margin:auto;"
+    />
+    <figcaption style="font-size:0.95rem; color:#555; margin-top:0.6rem;">
+      SAC baseline. Performance collapses under harder domain shifts.
+    </figcaption>
+  </figure>
 
-      <p>
-        However, all methods—causal and non-causal—saw degraded performance under severe domain perturbations
-        (e.g., combined variation in mass, friction, and pose), pointing to limits of current causal RL approaches in highly randomized settings.
-      </p>
+  <p>
+    The key result is that <strong>causal agents are more robust under distribution shift</strong>.
+    Under moderate shifts, they maintain strong performance while the baseline degrades.
+    Under harder shifts, SAC approaches near-zero success, while causal agents retain measurable performance.
+  </p>
 
-      <p>
-        This project contributed a controlled empirical evaluation of causal RL under domain shift and task transfer,
-        reinforcing the potential of <strong>structural causal models and counterfactual reasoning</strong> to improve robustness in RL-based robotic systems.
-      </p>
+  <!-- IMAGE 2: CAUSAL IMPROVEMENT -->
+  <figure style="margin:1.75rem 0; text-align:center;">
+    <img
+      src="causalcf_intervene.png"
+      alt="CausalCF plus Intervene performance"
+      style="width:100%; max-width:650px; border-radius:12px; display:block; margin:auto;"
+    />
+    <figcaption style="font-size:0.95rem; color:#555; margin-top:0.6rem;">
+      CausalCF + Intervene. Improved robustness under distribution shift.
+    </figcaption>
+  </figure>
 
-      <p>
-        The full report is available <a href="CS578_FinalReport.pdf" target="_blank" style="text-decoration: underline;">here</a>.
-      </p>
-    </li>
-  </ul>
+  <p>
+    We also observe <strong>transfer across tasks</strong>. A model trained only on picking achieves competitive performance
+    on a new pushing task, indicating that learned causal structure is partially reusable.
+  </p>
+
+  <!-- IMAGE 3: TRANSFER -->
+  <figure style="margin:1.75rem 0; text-align:center;">
+    <img
+      src="transfer.png"
+      alt="Transfer from picking to pushing"
+      style="width:100%; max-width:650px; border-radius:12px; display:block; margin:auto;"
+    />
+    <figcaption style="font-size:0.95rem; color:#555; margin-top:0.6rem;">
+      Transfer-CausalRep. Causal representations generalize to a new task.
+    </figcaption>
+  </figure>
+
+  <p>
+    Under extreme multi-factor shifts, all methods break down. This highlights a key limitation:
+    causal RL improves robustness, but does not yet solve generalization in highly randomized settings.
+  </p>
+
+  <p style="margin-top:1.25rem;">
+    The full report is available 
+    <a href="CS578_FinalReport.pdf" target="_blank" style="text-decoration: underline;">here</a>.
+  </p>
+
 </section>
