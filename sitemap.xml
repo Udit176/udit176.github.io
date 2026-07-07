@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://udit176.github.io/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://udit176.github.io/offlinerl.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://udit176.github.io/ipc.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://udit176.github.io/turtlebot.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://udit176.github.io/linear_regression.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://udit176.github.io/causal_inference.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://udit176.github.io/cooperative_driving.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://udit176.github.io/explainable_rl.html</loc>
+    <priority>0.7</priority>
+  </url>
+</urlset>
