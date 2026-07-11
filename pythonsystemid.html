@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>PythonSystemID: System Identification &amp; Control | Udit Ekansh</title>
+  <meta name="description" content="Open-source Python library for system identification, validation, and control across classical dynamical systems including mass-spring-damper and unicycle models." />
+  <link rel="canonical" href="https://udit176.github.io/pythonsystemid.html" />
+  <meta property="og:title" content="PythonSystemID: System Identification &amp; Control" />
+  <meta property="og:description" content="Modular Python framework for system identification, model validation, and closed-loop control of dynamical systems." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://udit176.github.io/pythonsystemid.html" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER / NAVBAR -->
+  <header class="site-header">
+    <div class="logo-and-name">
+      <img
+        src="images/profile_pic.jpeg"
+        alt="Udit Ekansh Thumbnail"
+        class="site-logo"
+      />
+      <span class="site-title">Udit Ekansh</span>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#research">Research</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#certificates">Certificates</a></li>
+        <li><a href="index.html#courses">Courses</a></li>
+        <li><a href="index.html#blog">Blog</a></li>
+        <li><a href="index.html#connect">Connect</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO / TITLE SECTION -->
+  <section class="hero-section">
+    <h1>PythonSystemID: System Identification &amp; Control</h1>
+  </section>
+
+  <!-- PROJECT CONTENT -->
+  <section class="content-section" style="max-width: 900px; margin: 0 auto;">
+
+    <p>
+      <strong>PythonSystemID</strong> is an open-source Python library for system identification, model validation, and closed-loop control
+      of dynamical systems. It provides a modular framework to experiment with identification methods, validate models through both
+      prediction accuracy and control performance, and generate publication-quality animations.
+    </p>
+
+    <p>
+      The project is built around a core insight: <strong>model quality should be evaluated using prediction performance + control
+      performance</strong>, not just parameter accuracy. A model with biased parameters may still achieve excellent closed-loop
+      tracking if the bias is consistent across the operating region.
+    </p>
+
+    <h3>Supported Systems</h3>
+
+    <p>
+      <strong>Mass-Spring-Damper (MSD)</strong> &mdash; A continuous-time second-order system identified using least-squares
+      regression and ARX models, with PID control for closed-loop tracking.
+    </p>
+
+    <p>
+      <strong>Kinematic Unicycle</strong> &mdash; A nonlinear mobile robot model identified using linear, grey-box (parametric),
+      and black-box (feature-based ridge regression) methods, with Lyapunov-based path tracking control.
+    </p>
+
+    <h3>Mass-Spring-Damper: Open-Loop Simulation</h3>
+    <div class="output-block" style="text-align: center;">
+      <img src="images/pythonsystemid/01_open_loop.gif" alt="Mass-spring-damper open-loop simulation showing position response under PRBS excitation" style="max-width:100%; height:auto;">
+      <p style="font-size:0.95rem; color:#999; margin-top:0.5rem;">
+        Open-loop response of the MSD system under pseudo-random binary sequence (PRBS) excitation.
+      </p>
+    </div>
+
+    <h3>Model Validation: Rollout Comparison</h3>
+    <div class="output-block" style="text-align: center;">
+      <img src="images/pythonsystemid/02_rollout_comparison.gif" alt="Rollout comparison between true and identified MSD models" style="max-width:100%; height:auto;">
+      <p style="font-size:0.95rem; color:#999; margin-top:0.5rem;">
+        Free-run rollout comparing the true system against the identified model. Near-perfect tracking validates the identification.
+      </p>
+    </div>
+
+    <h3>Closed-Loop PID Tracking</h3>
+    <div class="output-block" style="text-align: center;">
+      <img src="images/pythonsystemid/03_closed_loop_tracking.gif" alt="Closed-loop PID tracking comparison between true and identified MSD models" style="max-width:100%; height:auto;">
+      <p style="font-size:0.95rem; color:#999; margin-top:0.5rem;">
+        PID controller tracking a step reference on both the true plant and the identified model.
+      </p>
+    </div>
+
+    <h3>Unicycle Path Tracking: Circle</h3>
+    <div class="output-block" style="text-align: center;">
+      <img src="images/pythonsystemid/04_unicycle_circle.gif" alt="Unicycle robot tracking a circular reference path" style="max-width:100%; height:auto;">
+      <p style="font-size:0.95rem; color:#999; margin-top:0.5rem;">
+        Lyapunov-based controller tracking a circular reference path.
+      </p>
+    </div>
+
+    <h3>Unicycle Path Tracking: Lemniscate</h3>
+    <div class="output-block" style="text-align: center;">
+      <img src="images/pythonsystemid/05_unicycle_lemniscate.gif" alt="Unicycle robot tracking a figure-eight lemniscate path" style="max-width:100%; height:auto;">
+      <p style="font-size:0.95rem; color:#999; margin-top:0.5rem;">
+        Lyapunov-based controller tracking a figure-eight (lemniscate) reference path.
+      </p>
+    </div>
+
+    <h3>Key Features</h3>
+    <ul style="list-style: disc; padding-left: 1.5rem;">
+      <li>Multiple identification methods per system with fair benchmarking</li>
+      <li>Consistent validation pipelines (one-step RMSE, rollout fit, generalization)</li>
+      <li>Closed-loop evaluation of identified models under PID and Lyapunov controllers</li>
+      <li>PID gain tuning via grid search with configurable cost weights</li>
+      <li>Publication-quality animations for every stage of the pipeline</li>
+      <li>Minimal dependencies: NumPy, SciPy, Matplotlib only</li>
+    </ul>
+
+    <p style="margin-top:1.25rem;">
+      The full source code is available
+      <a href="https://github.com/Udit176/PythonSystemID" target="_blank" rel="noopener" style="text-decoration: underline;">here</a>.
+    </p>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" style="text-align: center; margin-top: 2rem;">
+    <p>&copy; 2025 Udit Ekansh. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
