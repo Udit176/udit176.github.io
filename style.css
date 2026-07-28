@@ -267,6 +267,48 @@ p {
   border-color: #fff;
 }
 
+/* Courses accordion */
+.courses-accordion {
+  margin-bottom: 1rem;
+}
+
+.courses-accordion summary {
+  cursor: pointer;
+  background: #111;
+  padding: 1rem 1.25rem;
+  border-radius: 6px;
+  color: #ddd;
+  font-size: 1rem;
+  font-weight: 600;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.courses-accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.courses-accordion summary::before {
+  content: "\25B6";
+  font-size: 0.7rem;
+  transition: transform 0.2s;
+}
+
+.courses-accordion[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.courses-accordion summary:hover {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.courses-accordion .accordion-content {
+  padding-top: 0.75rem;
+}
+
 /* ------------------------------
    Blog Section
 ------------------------------ */
