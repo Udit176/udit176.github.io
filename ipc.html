@@ -26,6 +26,7 @@
       -->
       <span class="site-title">Udit Ekansh</span>
     </div>
+    <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
     <nav class="main-nav">
       <ul>
         <li><a href="index.html#about">About</a></li>
@@ -72,7 +73,7 @@
 
     <!-- VIDEO 1: Static Obstacles -->
     <h3>AUV Navigation with Static Obstacles</h3>
-    <iframe width="490" height="315" src="https://www.youtube.com/embed/pQ3jUsJdq0c?si=G9qE7yWsqFP1PU7a"
+    <iframe width="490" height="315" style="max-width:100%;" src="https://www.youtube.com/embed/pQ3jUsJdq0c?si=G9qE7yWsqFP1PU7a"
       title="YouTube video player"
       frameborder="0" allow="accelerometer; 
       autoplay; clipboard-write; encrypted-media;
@@ -83,7 +84,7 @@
 
     <!-- VIDEO 2: Dynamic Obstacles -->
     <h3>AUV Navigation with Dynamic Obstacles</h3>
-    <iframe width="490" height="315" 
+    <iframe width="490" height="315" style="max-width:100%;" 
       src="https://www.youtube.com/embed/QVoXUH31uZM?si=8U2cBf8eBFCJ6goU" 
       title="YouTube video player" 
       frameborder="0" 
@@ -108,5 +109,10 @@
     <p>© 2024 Udit Ekansh. All rights reserved.</p>
   </footer>
 
+  <script>
+  document.querySelector(".nav-toggle").addEventListener("click", function() {
+    document.querySelector(".main-nav").classList.toggle("open");
+  });
+  </script>
 </body>
 </html>
