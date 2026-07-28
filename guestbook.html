@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Guestbook | Udit Ekansh</title>
+  <meta name="description" content="Leave a message on Udit Ekansh's guestbook." />
+  <link rel="canonical" href="https://udit176.github.io/guestbook.html" />
+  <meta property="og:title" content="Guestbook | Udit Ekansh" />
+  <meta property="og:description" content="Leave a message on Udit Ekansh's guestbook." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://udit176.github.io/guestbook.html" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .guestbook-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 3rem;
+    }
+
+    .gb-form {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 6px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .gb-form label {
+      display: block;
+      color: #999;
+      font-size: 0.85rem;
+      margin-bottom: 0.3rem;
+      margin-top: 1rem;
+    }
+
+    .gb-form label:first-child {
+      margin-top: 0;
+    }
+
+    .gb-form input,
+    .gb-form textarea {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      background: #0a0a0a;
+      border: 1px solid #222;
+      border-radius: 4px;
+      color: #ddd;
+      font-size: 0.9rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .gb-form input:focus,
+    .gb-form textarea:focus {
+      border-color: #555;
+    }
+
+    .gb-form textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .gb-form button {
+      margin-top: 1rem;
+      padding: 0.6rem 1.5rem;
+      background: #222;
+      border: 1px solid #333;
+      border-radius: 4px;
+      color: #ddd;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .gb-form button:hover {
+      background: #333;
+      color: #fff;
+    }
+
+    .gb-status {
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    .gb-status.success {
+      color: #4a9;
+    }
+
+    .gb-status.error {
+      color: #c55;
+    }
+
+    .gb-entry {
+      border-bottom: 1px solid #111;
+      padding: 1rem 0;
+    }
+
+    .gb-entry:last-child {
+      border-bottom: none;
+    }
+
+    .gb-entry-name {
+      color: #ddd;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .gb-entry-date {
+      color: #555;
+      font-size: 0.8rem;
+      margin-left: 0.5rem;
+    }
+
+    .gb-entry-message {
+      color: #aaa;
+      font-size: 0.9rem;
+      margin-top: 0.4rem;
+      line-height: 1.5;
+    }
+
+    .gb-empty {
+      color: #555;
+      font-size: 0.95rem;
+      padding: 2rem 0;
+      text-align: center;
+    }
+
+    .gb-count {
+      color: #666;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .guestbook-section {
+        padding: 0 1rem 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="logo-and-name">
+      <span class="site-title">Udit Ekansh</span>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#research">Research</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#courses">Courses</a></li>
+        <li><a href="index.html#blog">Blog</a></li>
+        <li><a href="index.html#misc">Misc</a></li>
+        <li><a href="index.html#connect">Connect</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero-section">
+    <h1>Guestbook</h1>
+    <p style="color:#777; font-size:0.85rem; max-width:600px; line-height:1.5; margin-top:0.5rem;">
+      Leave a message! Submissions are reviewed before appearing on this page.
+    </p>
+  </section>
+
+  <section class="guestbook-section">
+
+    <form class="gb-form" id="gb-form" action="https://formspree.io/f/meeyndyg" method="POST">
+      <label for="gb-name">Name</label>
+      <input type="text" id="gb-name" name="name" required placeholder="Your name" />
+
+      <label for="gb-message">Message</label>
+      <textarea id="gb-message" name="message" required placeholder="Say something nice..."></textarea>
+
+      <button type="submit">Sign the Guestbook</button>
+      <p class="gb-status" id="gb-status"></p>
+    </form>
+
+    <div id="gb-entries">
+      <p class="gb-empty">Loading...</p>
+    </div>
+
+  </section>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Udit Ekansh. All rights reserved.</p>
+  </footer>
+
+  <script>
+  document.querySelector(".nav-toggle").addEventListener("click", function() {
+    document.querySelector(".main-nav").classList.toggle("open");
+  });
+
+  var form = document.getElementById("gb-form");
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    var status = document.getElementById("gb-status");
+    var btn = form.querySelector("button");
+    btn.disabled = true;
+    btn.textContent = "Sending...";
+    status.textContent = "";
+    status.className = "gb-status";
+
+    fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: { "Accept": "application/json" }
+    }).then(function(resp) {
+      if (resp.ok) {
+        status.textContent = "Thank you! Your message will appear after review.";
+        status.className = "gb-status success";
+        form.reset();
+      } else {
+        status.textContent = "Something went wrong. Please try again.";
+        status.className = "gb-status error";
+      }
+      btn.disabled = false;
+      btn.textContent = "Sign the Guestbook";
+    }).catch(function() {
+      status.textContent = "Network error. Please try again.";
+      status.className = "gb-status error";
+      btn.disabled = false;
+      btn.textContent = "Sign the Guestbook";
+    });
+  });
+
+  function escapeHtml(str) {
+    var div = document.createElement("div");
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  fetch("data/guestbook.json")
+    .then(function(resp) {
+      if (!resp.ok) throw new Error("not found");
+      return resp.json();
+    })
+    .then(function(data) {
+      var container = document.getElementById("gb-entries");
+      var entries = data.entries || [];
+      if (!entries.length) {
+        container.innerHTML = '<p class="gb-empty">No messages yet. Be the first to sign!</p>';
+        return;
+      }
+      var html = '<p class="gb-count">' + entries.length + " messages</p>";
+      for (var i = 0; i < entries.length; i++) {
+        var e = entries[i];
+        html += '<div class="gb-entry">';
+        html += '<span class="gb-entry-name">' + escapeHtml(e.name) + '</span>';
+        html += '<span class="gb-entry-date">' + escapeHtml(e.date) + '</span>';
+        html += '<div class="gb-entry-message">' + escapeHtml(e.message) + '</div>';
+        html += '</div>';
+      }
+      container.innerHTML = html;
+    })
+    .catch(function() {
+      document.getElementById("gb-entries").innerHTML =
+        '<p class="gb-empty">No messages yet. Be the first to sign!</p>';
+    });
+  </script>
+</body>
+</html>
