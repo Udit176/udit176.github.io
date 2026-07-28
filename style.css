@@ -216,6 +216,105 @@ p {
   background-color: #0df;   /* lighten on hover */
 }
 
+/* ------------------------------
+   Courses Section
+------------------------------ */
+.semester-block {
+  background: #111;
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.semester-block h3 {
+  font-size: 1rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid #222;
+  padding-bottom: 0.5rem;
+}
+
+.course-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.course-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.course-list li:last-child {
+  border-bottom: none;
+}
+
+.course-list li a,
+.course-list li span {
+  color: #ddd;
+  font-size: 0.95rem;
+}
+
+.course-list li a {
+  text-decoration: none;
+  border-bottom: 1px solid #333;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.course-list li a:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+/* ------------------------------
+   Blog Section
+------------------------------ */
+.blog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.blog-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #111;
+  padding: 1rem 1.25rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.blog-card:hover {
+  background: #1a1a1a;
+}
+
+.blog-title {
+  color: #ddd;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.blog-card:hover .blog-title {
+  color: #fff;
+}
+
+.blog-arrow {
+  color: #555;
+  font-size: 1.2rem;
+  margin-left: 1rem;
+  flex-shrink: 0;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.blog-card:hover .blog-arrow {
+  color: #fff;
+  transform: translateX(3px);
+}
+
 .output-block {
   margin-bottom: 2rem;
 }
@@ -233,9 +332,10 @@ p {
   background: none;
   border: none;
   color: #fff;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   cursor: pointer;
   padding: 0.25rem 0.5rem;
+  margin-left: auto;
 }
 
 /* ------------------------------
@@ -254,19 +354,26 @@ iframe {
    Mobile Responsive (max-width: 768px)
 ------------------------------ */
 @media (max-width: 768px) {
-  .nav-toggle {
-    display: block;
-  }
-
   .site-header {
     flex-wrap: wrap;
     padding: 0.75rem 1rem;
   }
 
+  .nav-toggle {
+    display: block;
+    order: 2;
+  }
+
+  .logo-and-name {
+    order: 1;
+  }
+
   .main-nav {
     display: none;
+    order: 3;
     width: 100%;
-    margin-top: 0.75rem;
+    margin-top: 0.5rem;
+    border-top: 1px solid #222;
   }
 
   .main-nav.open {
@@ -281,7 +388,8 @@ iframe {
   .main-nav li a {
     display: block;
     padding: 0.6rem 0;
-    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+    font-size: 0.95rem;
   }
 
   .hero-section {
@@ -290,6 +398,10 @@ iframe {
 
   .hero-section h1 {
     font-size: 1.4rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
   }
 
   .content-section {
@@ -310,6 +422,10 @@ iframe {
 
   .certificate-card {
     flex: 1 1 auto;
+  }
+
+  .site-footer {
+    padding: 1rem;
   }
 }
 
