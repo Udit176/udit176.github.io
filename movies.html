@@ -7,7 +7,7 @@
   <meta name="description" content="A complete list of every movie Udit Ekansh has watched, organized alphabetically." />
   <link rel="canonical" href="https://udit176.github.io/movies.html" />
   <meta property="og:title" content="Movies I've Watched | Udit Ekansh" />
-  <meta property="og:description" content="343 movies and counting." />
+  <meta property="og:description" content="Every movie Udit Ekansh has watched, organized alphabetically." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://udit176.github.io/movies.html" />
   <link rel="stylesheet" href="style.css" />
@@ -75,7 +75,7 @@
 
   <section class="hero-section">
     <h1>Movies I've Watched</h1>
-    <p class="movie-count">343 titles</p>
+    <p class="movie-count" id="movie-count"></p>
     <p style="color:#777; font-size:0.85rem; max-width:600px; line-height:1.5; margin-top:0.5rem;">
       This list was created from memory on July 28, 2026. While I aimed to make it as comprehensive as possible, I may have inadvertently omitted some titles. I update it whenever I remember something I've missed or watch something new.
     </p>
@@ -545,6 +545,9 @@
   document.querySelector(".nav-toggle").addEventListener("click", function() {
     document.querySelector(".main-nav").classList.toggle("open");
   });
+
+  document.getElementById("movie-count").textContent =
+    document.querySelectorAll(".movie-list li").length + " titles";
   </script>
 </body>
 </html>
