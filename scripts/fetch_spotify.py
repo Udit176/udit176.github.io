@@ -4,7 +4,7 @@ Fetch all Spotify liked songs and save as a static JSON file.
 
 Usage:
     1. Create a Spotify app at https://developer.spotify.com/dashboard
-    2. Set redirect URI to http://localhost:8888/callback
+    2. Set redirect URI to http://127.0.0.1:8888/callback
     3. Copy your Client ID
     4. Run: python scripts/fetch_spotify.py --client-id YOUR_CLIENT_ID
     5. A browser window opens — log in and authorize
@@ -25,7 +25,7 @@ import urllib.parse
 import urllib.request
 import webbrowser
 
-REDIRECT_URI = "http://localhost:8888/callback"
+REDIRECT_URI = "http://127.0.0.1:8888/callback"
 SCOPES = "user-library-read"
 OUTPUT_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "spotify_likes.json")
 
@@ -155,7 +155,7 @@ def main():
 
     verifier, challenge = generate_pkce()
 
-    server = http.server.HTTPServer(("localhost", 8888), CallbackHandler)
+    server = http.server.HTTPServer(("127.0.0.1", 8888), CallbackHandler)
     thread = threading.Thread(target=server.handle_request, daemon=True)
     thread.start()
 
