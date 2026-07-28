@@ -139,6 +139,38 @@
       color: #555;
     }
 
+    .sort-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .sort-label {
+      color: #555;
+      font-size: 0.8rem;
+    }
+
+    .sort-btn {
+      background: #111;
+      border: 1px solid #222;
+      color: #888;
+      padding: 0.35rem 0.7rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .sort-btn:hover {
+      color: #ddd;
+      border-color: #444;
+    }
+
+    .sort-btn.active {
+      color: #1DB954;
+      border-color: #1DB954;
+    }
+
     .song-row {
       display: flex;
       align-items: center;
@@ -308,6 +340,7 @@
   var rendered = 0;
   var BATCH = 100;
   var debounceTimer = null;
+  var currentSort = "title";
 
   function escapeHtml(str) {
     var div = document.createElement("div");
@@ -355,6 +388,11 @@
     var html = '<p class="song-count">' + songs.length + " songs</p>";
     html += '<div class="controls">';
     html += '<input type="text" class="search-box" id="search" placeholder="Search songs, artists, albums...">';
+    html += '<div class="sort-controls">';
+    html += '<span class="sort-label">Sort:</span>';
+    html += '<button class="sort-btn' + (currentSort === "title" ? " active" : "") + '" id="sort-title">Title</button>';
+    html += '<button class="sort-btn' + (currentSort === "date" ? " active" : "") + '" id="sort-date">Date Added</button>';
+    html += '</div>';
     html += "</div>";
     html += '<div id="song-list"></div>';
     container.innerHTML = html;
@@ -364,7 +402,36 @@
       debounceTimer = setTimeout(filterAndRender, 200);
     });
 
+    document.getElementById("sort-title").addEventListener("click", function() { sortBy("title"); });
+    document.getElementById("sort-date").addEventListener("click", function() { sortBy("date"); });
+
     renderBatch();
+  }
+
+  function applySortOrder(songs) {
+    return songs.slice().sort(function(a, b) {
+      if (currentSort === "date") {
+        var da = a.added_at || "";
+        var db = b.added_at || "";
+        if (da > db) return -1;
+        if (da < db) return 1;
+        return 0;
+      }
+      var va = (a.title || "").toLowerCase();
+      var vb = (b.title || "").toLowerCase();
+      if (va < vb) return -1;
+      if (va > vb) return 1;
+      return 0;
+    });
+  }
+
+  function sortBy(key) {
+    currentSort = key;
+    var titleBtn = document.getElementById("sort-title");
+    var dateBtn = document.getElementById("sort-date");
+    if (titleBtn) titleBtn.className = "sort-btn" + (key === "title" ? " active" : "");
+    if (dateBtn) dateBtn.className = "sort-btn" + (key === "date" ? " active" : "");
+    filterAndRender();
   }
 
   function filterAndRender() {
@@ -379,7 +446,7 @@
       });
     }
 
-    filteredSongs = songs;
+    filteredSongs = applySortOrder(songs);
     rendered = 0;
 
     var list = document.getElementById("song-list");
@@ -389,10 +456,10 @@
 
     var countEl = document.querySelector(".song-count");
     if (countEl) {
-      countEl.textContent = songs.length + " songs";
+      countEl.textContent = filteredSongs.length + " songs";
     }
 
-    if (!songs.length) {
+    if (!filteredSongs.length) {
       if (list) list.innerHTML = '<p class="empty-state">No songs found.</p>';
       return;
     }
