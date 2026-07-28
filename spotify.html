@@ -3,73 +3,76 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>My Spotify Liked Songs | Udit Ekansh</title>
+  <title>My Liked Songs | Udit Ekansh</title>
   <meta name="description" content="Every song Udit Ekansh has ever liked on Spotify." />
   <link rel="canonical" href="https://udit176.github.io/spotify.html" />
-  <meta property="og:title" content="My Spotify Liked Songs | Udit Ekansh" />
+  <meta property="og:title" content="My Liked Songs | Udit Ekansh" />
   <meta property="og:description" content="Every song I've ever liked on Spotify." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://udit176.github.io/spotify.html" />
   <link rel="stylesheet" href="style.css" />
   <style>
     .spotify-section {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 0 2rem 3rem;
-    }
-
-    .spotify-connect-btn {
-      display: inline-block;
-      background: #1DB954;
-      color: #000;
-      font-weight: 700;
-      font-size: 1rem;
-      padding: 0.75rem 1.5rem;
-      border-radius: 30px;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.2s;
-    }
-
-    .spotify-connect-btn:hover {
-      background: #1ed760;
-      transform: scale(1.03);
-      color: #000;
-    }
-
-    .spotify-status {
-      color: #777;
-      font-size: 0.9rem;
-      margin-top: 1rem;
-    }
-
-    .spotify-loading {
-      color: #999;
-      font-size: 1rem;
-      margin: 2rem 0;
-    }
-
-    .spotify-loading .spinner {
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      border: 2px solid #333;
-      border-top-color: #1DB954;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      vertical-align: middle;
-      margin-right: 0.5rem;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
     }
 
     .song-count {
       color: #666;
       font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .controls {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      align-items: center;
       margin-bottom: 1.5rem;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 200px;
+      max-width: 400px;
+      padding: 0.6rem 1rem;
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 4px;
+      color: #ddd;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-box:focus {
+      border-color: #1DB954;
+    }
+
+    .search-box::placeholder {
+      color: #555;
+    }
+
+    .sort-btn {
+      background: #111;
+      border: 1px solid #222;
+      color: #999;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .sort-btn:hover {
+      color: #ddd;
+      border-color: #444;
+    }
+
+    .sort-btn.active {
+      color: #1DB954;
+      border-color: #1DB954;
     }
 
     .songs-table {
@@ -85,12 +88,30 @@
       letter-spacing: 0.05em;
       padding: 0.5rem 0;
       border-bottom: 1px solid #222;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.2s;
+    }
+
+    .songs-table thead th:hover {
+      color: #aaa;
     }
 
     .songs-table thead th.col-num {
       width: 3rem;
       text-align: right;
       padding-right: 1rem;
+      cursor: default;
+    }
+
+    .songs-table thead th .sort-arrow {
+      font-size: 0.7rem;
+      margin-left: 0.25rem;
+      color: #444;
+    }
+
+    .songs-table thead th.sorted .sort-arrow {
+      color: #1DB954;
     }
 
     .songs-table tbody tr {
@@ -162,33 +183,26 @@
       white-space: nowrap;
     }
 
-    .search-box {
-      width: 100%;
-      max-width: 350px;
-      padding: 0.6rem 1rem;
+    .empty-state {
+      color: #666;
+      text-align: center;
+      padding: 3rem 1rem;
+      font-size: 1rem;
+    }
+
+    .empty-state code {
       background: #111;
-      border: 1px solid #222;
-      border-radius: 4px;
-      color: #ddd;
-      font-size: 0.9rem;
-      margin-bottom: 1.5rem;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    .search-box:focus {
-      border-color: #1DB954;
-    }
-
-    .search-box::placeholder {
-      color: #555;
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      font-size: 0.85rem;
+      color: #aaa;
     }
 
     @media (max-width: 768px) {
       .spotify-section {
         padding: 0 1rem 2rem;
       }
-      .td-album, .col-album, .td-date, .col-date {
+      .td-album, .col-album {
         display: none;
       }
       .song-art {
@@ -224,15 +238,8 @@
   </section>
 
   <section class="spotify-section">
-    <div id="spotify-app">
-      <div id="pre-auth">
-        <button class="spotify-connect-btn" onclick="login()">Connect to Spotify</button>
-        <p class="spotify-status">Connects via Spotify's secure OAuth. No data is stored or sent anywhere.</p>
-      </div>
-      <div id="loading" style="display:none;">
-        <p class="spotify-loading"><span class="spinner"></span> Fetching liked songs...</p>
-      </div>
-      <div id="songs-container" style="display:none;"></div>
+    <div id="songs-container">
+      <p class="empty-state">Loading...</p>
     </div>
   </section>
 
@@ -245,117 +252,8 @@
     document.querySelector(".main-nav").classList.toggle("open");
   });
 
-  var CLIENT_ID = "YOUR_SPOTIFY_CLIENT_ID";
-  var REDIRECT_URI = "https://udit176.github.io/spotify.html";
-  var SCOPES = "user-library-read";
-
-  function generateRandomString(length) {
-    var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    var arr = new Uint8Array(length);
-    crypto.getRandomValues(arr);
-    var result = "";
-    for (var i = 0; i < length; i++) {
-      result += chars[arr[i] % chars.length];
-    }
-    return result;
-  }
-
-  async function generateCodeChallenge(verifier) {
-    var encoder = new TextEncoder();
-    var data = encoder.encode(verifier);
-    var digest = await crypto.subtle.digest("SHA-256", data);
-    var bytes = new Uint8Array(digest);
-    var str = "";
-    for (var i = 0; i < bytes.length; i++) {
-      str += String.fromCharCode(bytes[i]);
-    }
-    return btoa(str).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
-  }
-
-  async function login() {
-    var verifier = generateRandomString(128);
-    var challenge = await generateCodeChallenge(verifier);
-    sessionStorage.setItem("spotify_verifier", verifier);
-
-    var params = new URLSearchParams({
-      client_id: CLIENT_ID,
-      response_type: "code",
-      redirect_uri: REDIRECT_URI,
-      scope: SCOPES,
-      code_challenge_method: "S256",
-      code_challenge: challenge
-    });
-
-    window.location.href = "https://accounts.spotify.com/authorize?" + params.toString();
-  }
-
-  async function getAccessToken(code) {
-    var verifier = sessionStorage.getItem("spotify_verifier");
-    var response = await fetch("https://accounts.spotify.com/api/token", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        client_id: CLIENT_ID,
-        grant_type: "authorization_code",
-        code: code,
-        redirect_uri: REDIRECT_URI,
-        code_verifier: verifier
-      })
-    });
-    var data = await response.json();
-    return data.access_token;
-  }
-
-  async function fetchAllLikedSongs(token) {
-    var allSongs = [];
-    var url = "https://api.spotify.com/v1/me/tracks?limit=50";
-
-    while (url) {
-      var response = await fetch(url, {
-        headers: { Authorization: "Bearer " + token }
-      });
-      var data = await response.json();
-      allSongs = allSongs.concat(data.items);
-      url = data.next;
-    }
-    return allSongs;
-  }
-
-  function renderSongs(songs) {
-    var container = document.getElementById("songs-container");
-    var html = "";
-    html += '<p class="song-count">' + songs.length + " liked songs</p>";
-    html += '<input type="text" class="search-box" id="search" placeholder="Search songs, artists, albums..." oninput="filterSongs()">';
-    html += '<div style="overflow-x:auto;">';
-    html += '<table class="songs-table"><thead><tr>';
-    html += '<th class="col-num">#</th><th>Title</th><th class="col-album">Album</th><th class="col-date">Added</th>';
-    html += '</tr></thead><tbody id="songs-body">';
-
-    for (var i = 0; i < songs.length; i++) {
-      var track = songs[i].track;
-      var added = songs[i].added_at ? songs[i].added_at.split("T")[0] : "";
-      var art = track.album.images.length > 2 ? track.album.images[2].url : (track.album.images.length > 0 ? track.album.images[0].url : "");
-      var artists = track.artists.map(function(a) { return a.name; }).join(", ");
-      var spotifyUrl = track.external_urls.spotify || "#";
-
-      html += '<tr data-search="' + (track.name + " " + artists + " " + track.album.name).toLowerCase().replace(/"/g, "&quot;") + '">';
-      html += '<td class="col-num">' + (i + 1) + "</td>";
-      html += '<td><div class="song-info">';
-      if (art) {
-        html += '<img class="song-art" src="' + art + '" alt="" loading="lazy">';
-      }
-      html += '<div class="song-text">';
-      html += '<span class="song-name"><a href="' + spotifyUrl + '" target="_blank">' + escapeHtml(track.name) + "</a></span>";
-      html += '<span class="song-artist">' + escapeHtml(artists) + "</span>";
-      html += "</div></div></td>";
-      html += '<td class="td-album">' + escapeHtml(track.album.name) + "</td>";
-      html += '<td class="td-date">' + added + "</td>";
-      html += "</tr>";
-    }
-
-    html += "</tbody></table></div>";
-    container.innerHTML = html;
-  }
+  var allSongs = [];
+  var currentSort = { key: "added_at", dir: "desc" };
 
   function escapeHtml(str) {
     var div = document.createElement("div");
@@ -363,42 +261,107 @@
     return div.innerHTML;
   }
 
-  function filterSongs() {
-    var query = document.getElementById("search").value.toLowerCase();
-    var rows = document.querySelectorAll("#songs-body tr");
-    var num = 0;
-    for (var i = 0; i < rows.length; i++) {
-      var match = rows[i].getAttribute("data-search").indexOf(query) !== -1;
-      rows[i].style.display = match ? "" : "none";
-      if (match) {
-        num++;
-        rows[i].querySelector(".col-num").textContent = num;
+  function renderTable(songs) {
+    var container = document.getElementById("songs-container");
+    if (!songs.length) {
+      container.innerHTML = '<p class="empty-state">No songs found.</p>';
+      return;
+    }
+
+    var html = "";
+    html += '<p class="song-count">' + allSongs.length + " songs</p>";
+    html += '<div class="controls">';
+    html += '<input type="text" class="search-box" id="search" placeholder="Search songs, artists, albums..." oninput="filterAndRender()">';
+    html += "</div>";
+    html += '<div style="overflow-x:auto;">';
+    html += '<table class="songs-table"><thead><tr>';
+    html += '<th class="col-num">#</th>';
+    html += buildTh("title", "Title");
+    html += buildTh("artist", "Artist");
+    html += buildTh("album", "Album", "col-album");
+    html += buildTh("added_at", "Added");
+    html += "</tr></thead><tbody>";
+
+    for (var i = 0; i < songs.length; i++) {
+      var s = songs[i];
+      html += "<tr>";
+      html += '<td class="col-num">' + (i + 1) + "</td>";
+      html += "<td><div class='song-info'>";
+      if (s.art) {
+        html += '<img class="song-art" src="' + escapeHtml(s.art) + '" alt="" loading="lazy">';
       }
+      html += '<div class="song-text">';
+      html += '<span class="song-name"><a href="' + escapeHtml(s.url) + '" target="_blank">' + escapeHtml(s.title) + "</a></span>";
+      html += '<span class="song-artist">' + escapeHtml(s.artist) + "</span>";
+      html += "</div></div></td>";
+      html += '<td class="td-album">' + escapeHtml(s.album) + "</td>";
+      html += '<td class="td-date">' + (s.added_at ? s.added_at.split("T")[0] : "") + "</td>";
+      html += "</tr>";
+    }
+
+    html += "</tbody></table></div>";
+    container.innerHTML = html;
+  }
+
+  function buildTh(key, label, extraClass) {
+    var cls = (extraClass || "") + (currentSort.key === key ? " sorted" : "");
+    var arrow = "";
+    if (currentSort.key === key) {
+      arrow = currentSort.dir === "asc" ? " &#9650;" : " &#9660;";
+    }
+    return '<th class="' + cls.trim() + '" onclick="sortBy(\'' + key + '\')">' + label + '<span class="sort-arrow">' + arrow + "</span></th>";
+  }
+
+  function sortBy(key) {
+    if (currentSort.key === key) {
+      currentSort.dir = currentSort.dir === "asc" ? "desc" : "asc";
+    } else {
+      currentSort.key = key;
+      currentSort.dir = "asc";
+    }
+    filterAndRender();
+  }
+
+  function filterAndRender() {
+    var searchEl = document.getElementById("search");
+    var query = searchEl ? searchEl.value.toLowerCase() : "";
+    var filtered = allSongs;
+
+    if (query) {
+      filtered = allSongs.filter(function(s) {
+        return (s.title + " " + s.artist + " " + s.album).toLowerCase().indexOf(query) !== -1;
+      });
+    }
+
+    filtered = filtered.slice().sort(function(a, b) {
+      var va = (a[currentSort.key] || "").toLowerCase();
+      var vb = (b[currentSort.key] || "").toLowerCase();
+      if (va < vb) return currentSort.dir === "asc" ? -1 : 1;
+      if (va > vb) return currentSort.dir === "asc" ? 1 : -1;
+      return 0;
+    });
+
+    renderTable(filtered);
+    if (searchEl) {
+      var newSearch = document.getElementById("search");
+      newSearch.value = query;
+      newSearch.focus();
     }
   }
 
-  async function handleCallback() {
-    var params = new URLSearchParams(window.location.search);
-    var code = params.get("code");
-    if (!code) return;
-
-    window.history.replaceState({}, document.title, window.location.pathname);
-
-    document.getElementById("pre-auth").style.display = "none";
-    document.getElementById("loading").style.display = "block";
-
-    try {
-      var token = await getAccessToken(code);
-      var songs = await fetchAllLikedSongs(token);
-      document.getElementById("loading").style.display = "none";
-      document.getElementById("songs-container").style.display = "block";
-      renderSongs(songs);
-    } catch (e) {
-      document.getElementById("loading").innerHTML = '<p style="color:#e55;">Failed to load songs. Please try again.</p>';
-    }
-  }
-
-  handleCallback();
+  fetch("data/spotify_likes.json")
+    .then(function(resp) {
+      if (!resp.ok) throw new Error("not found");
+      return resp.json();
+    })
+    .then(function(data) {
+      allSongs = data.songs;
+      filterAndRender();
+    })
+    .catch(function() {
+      document.getElementById("songs-container").innerHTML =
+        '<p class="empty-state">No data yet.<br><br>Run the fetch script to populate:<br><code>python scripts/fetch_spotify.py --client-id YOUR_ID</code></p>';
+    });
   </script>
 </body>
 </html>
