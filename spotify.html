@@ -139,39 +139,6 @@
       color: #555;
     }
 
-    .sort-controls {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-
-    .sort-label {
-      color: #555;
-      font-size: 0.8rem;
-    }
-
-    .sort-btn {
-      background: #111;
-      border: 1px solid #222;
-      color: #888;
-      padding: 0.35rem 0.7rem;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      cursor: pointer;
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .sort-btn:hover {
-      color: #ddd;
-      border-color: #444;
-    }
-
-    .sort-btn.active {
-      color: #1DB954;
-      border-color: #1DB954;
-    }
-
     .song-row {
       display: flex;
       align-items: center;
@@ -311,7 +278,7 @@
         <li>It reads every saved track from the Spotify saved-tracks endpoint.</li>
         <li>The script generates a static JSON file containing each song's title, artist, album, Spotify link, and date added.</li>
         <li>The JSON is committed and pushed to the website's GitHub repository.</li>
-        <li>This page reads the JSON and renders it as a searchable, sortable list.</li>
+        <li>This page reads the JSON and renders it as a searchable list.</li>
       </ol>
     </div>
   </section>
@@ -336,7 +303,6 @@
   }
 
   var allSongs = [];
-  var currentSort = { key: "added_at", dir: "desc" };
 
   function escapeHtml(str) {
     var div = document.createElement("div");
@@ -356,12 +322,7 @@
 
     html += '<div class="controls">';
     html += '<input type="text" class="search-box" id="search" placeholder="Search songs, artists, albums..." oninput="filterAndRender()">';
-    html += '<div class="sort-controls">';
-    html += '<span class="sort-label">Sort by:</span>';
-    html += sortButton("added_at", "Date");
-    html += sortButton("title", "Title");
-    html += sortButton("artist", "Artist");
-    html += "</div></div>";
+    html += "</div>";
 
     for (var i = 0; i < songs.length; i++) {
       var s = songs[i];
@@ -381,25 +342,6 @@
     container.innerHTML = html;
   }
 
-  function sortButton(key, label) {
-    var active = currentSort.key === key;
-    var arrow = "";
-    if (active) {
-      arrow = currentSort.dir === "asc" ? " &#9650;" : " &#9660;";
-    }
-    return '<button class="sort-btn' + (active ? " active" : "") + '" onclick="sortBy(\'' + key + '\')">' + label + arrow + "</button>";
-  }
-
-  function sortBy(key) {
-    if (currentSort.key === key) {
-      currentSort.dir = currentSort.dir === "asc" ? "desc" : "asc";
-    } else {
-      currentSort.key = key;
-      currentSort.dir = key === "added_at" ? "desc" : "asc";
-    }
-    filterAndRender();
-  }
-
   function filterAndRender() {
     var searchEl = document.getElementById("search");
     var query = searchEl ? searchEl.value.toLowerCase() : "";
@@ -412,10 +354,10 @@
     }
 
     filtered = filtered.slice().sort(function(a, b) {
-      var va = (a[currentSort.key] || "").toLowerCase();
-      var vb = (b[currentSort.key] || "").toLowerCase();
-      if (va < vb) return currentSort.dir === "asc" ? -1 : 1;
-      if (va > vb) return currentSort.dir === "asc" ? 1 : -1;
+      var va = (a.title || "").toLowerCase();
+      var vb = (b.title || "").toLowerCase();
+      if (va < vb) return -1;
+      if (va > vb) return 1;
       return 0;
     });
 
