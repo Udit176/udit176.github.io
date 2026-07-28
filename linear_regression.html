@@ -25,6 +25,7 @@
       /> -->
       <span class="site-title">Udit Ekansh</span>
     </div>
+    <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
     <nav class="main-nav">
       <ul>
         <li><a href="index.html#about">About</a></li>
@@ -71,12 +72,12 @@
         <!-- Adding Images with Captions -->
         <div style="text-align: center; margin: 20px 0;">
             <figure>
-                <img src="images/pred_vs_actual.png" alt="Predicted vs Actual for Training Set" style="width: 500px; height: auto;">
+                <img src="images/pred_vs_actual.png" alt="Predicted vs Actual for Training Set" style="max-width: 500px; width: 100%; height: auto;">
                 <figcaption><strong>Figure 1:</strong> Predicted vs Actual values.</figcaption>
             </figure>
         
             <figure>
-                <img src="images/pred_vs_error.png" alt="Predictions vs Errors for Test and Training Sets" style="width: 500px; height: auto;">
+                <img src="images/pred_vs_error.png" alt="Predictions vs Errors for Test and Training Sets" style="max-width: 500px; width: 100%; height: auto;">
                 <figcaption><strong>Figure 2:</strong> Predictions vs Errors.</figcaption>
             </figure>
         </div>
@@ -89,12 +90,12 @@
           <!-- Adding Images with Captions -->
         <div style="text-align: center; margin: 20px 0;">
             <figure>
-                <img src="images/error_dist.png" alt="Error Distribution shows approximate Guassian Trend" style="width: 500px; height: auto;">
+                <img src="images/error_dist.png" alt="Error Distribution shows approximate Guassian Trend" style="max-width: 500px; width: 100%; height: auto;">
                 <figcaption><strong>Figure 1:</strong> Error Distribution confirms approximate normality..</figcaption>
             </figure>
         
             <figure>
-                <img src="images/qqplot.png" alt="Q-Q Plot of Errors" style="width: 500px; height: auto;">
+                <img src="images/qqplot.png" alt="Q-Q Plot of Errors" style="max-width: 500px; width: 100%; height: auto;">
                 <figcaption><strong>Figure 2:</strong> Q-Q Plot of Errors.</figcaption>
             </figure>
         </div>
@@ -114,5 +115,10 @@
     <p>© 2024 Udit Ekansh. All rights reserved.</p>
   </footer>
 
+  <script>
+  document.querySelector(".nav-toggle").addEventListener("click", function() {
+    document.querySelector(".main-nav").classList.toggle("open");
+  });
+  </script>
 </body>
 </html>
