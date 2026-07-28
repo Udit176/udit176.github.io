@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Movies I've Watched | Udit Ekansh</title>
-  <meta name="description" content="A complete list of every movie Udit Ekansh has watched, organized alphabetically." />
+  <title>Movies &amp; TV Shows I've Watched | Udit Ekansh</title>
+  <meta name="description" content="Every movie and TV show Udit Ekansh has watched, organized alphabetically." />
   <link rel="canonical" href="https://udit176.github.io/movies.html" />
-  <meta property="og:title" content="Movies I've Watched | Udit Ekansh" />
-  <meta property="og:description" content="Every movie Udit Ekansh has watched, organized alphabetically." />
+  <meta property="og:title" content="Movies &amp; TV Shows I've Watched | Udit Ekansh" />
+  <meta property="og:description" content="Every movie and TV show Udit Ekansh has watched, organized alphabetically." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://udit176.github.io/movies.html" />
   <link rel="stylesheet" href="style.css" />
@@ -43,11 +43,58 @@
       font-size: 1rem;
       margin-bottom: 1.5rem;
     }
+    .media-accordion {
+      margin-bottom: 1rem;
+    }
+    .media-accordion summary {
+      cursor: pointer;
+      background: #111;
+      padding: 1rem 1.25rem;
+      border-radius: 6px;
+      color: #ddd;
+      font-size: 1rem;
+      font-weight: 600;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .media-accordion summary::-webkit-details-marker {
+      display: none;
+    }
+    .media-accordion summary::before {
+      content: "\25B6";
+      font-size: 0.7rem;
+      transition: transform 0.2s;
+    }
+    .media-accordion[open] summary::before {
+      transform: rotate(90deg);
+    }
+    .media-accordion summary:hover {
+      background: #1a1a1a;
+      color: #fff;
+    }
+    .media-accordion .accordion-content {
+      padding-top: 0.75rem;
+    }
+    .tv-list {
+      list-style: none;
+      padding-left: 0;
+      columns: 2;
+      column-gap: 2rem;
+    }
+    .tv-list li {
+      padding: 0.25rem 0;
+      color: #ccc;
+      font-size: 0.95rem;
+      break-inside: avoid;
+    }
     @media (max-width: 768px) {
       .movie-section {
         padding: 0 1rem 2rem;
       }
-      .movie-list {
+      .movie-list,
+      .tv-list {
         columns: 1;
       }
     }
@@ -74,7 +121,7 @@
   </header>
 
   <section class="hero-section">
-    <h1>Movies I've Watched</h1>
+    <h1>Movies &amp; TV Shows I've Watched</h1>
     <p class="movie-count" id="movie-count"></p>
     <p style="color:#777; font-size:0.85rem; max-width:600px; line-height:1.5; margin-top:0.5rem;">
       This list was created from memory on July 28, 2026. While I aimed to make it as comprehensive as possible, I may have inadvertently omitted some titles. I update it whenever I remember something I've missed or watch something new.
@@ -82,6 +129,10 @@
   </section>
 
   <section class="movie-section">
+
+    <details class="media-accordion" open>
+      <summary id="movies-summary">Movies</summary>
+      <div class="accordion-content">
 
     <h2 class="movie-letter">#</h2>
     <ul class="movie-list">
@@ -593,6 +644,115 @@
       <li>Zombieland</li>
     </ul>
 
+      </div>
+    </details>
+
+    <details class="media-accordion">
+      <summary id="tv-completed-summary">TV Shows — Completed</summary>
+      <div class="accordion-content">
+        <ul class="tv-list" id="tv-completed">
+          <li>Arrested Development</li>
+          <li>Band of Brothers</li>
+          <li>Better Call Saul</li>
+          <li>BoJack Horseman</li>
+          <li>Breaking Bad</li>
+          <li>Brooklyn Nine-Nine</li>
+          <li>Californication</li>
+          <li>Chernobyl</li>
+          <li>Community</li>
+          <li>Entourage</li>
+          <li>The End of the F***ing World</li>
+          <li>Friends</li>
+          <li>Game of Thrones</li>
+          <li>Gossip Girl</li>
+          <li>Hannibal</li>
+          <li>How I Met Your Mother</li>
+          <li>The Inbetweeners</li>
+          <li>The Last Dance</li>
+          <li>Mindhunter</li>
+          <li>Mr. Bean</li>
+          <li>Narcos</li>
+          <li>The Office (U.S.)</li>
+          <li>One Tree Hill</li>
+          <li>The Queen's Gambit</li>
+          <li>Rick and Morty</li>
+          <li>Schitt's Creek</li>
+          <li>Seinfeld</li>
+          <li>Sherlock</li>
+          <li>The Sopranos</li>
+          <li>That '70s Show</li>
+          <li>The Wire</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="media-accordion">
+      <summary id="tv-partial-summary">TV Shows — Partially Completed</summary>
+      <div class="accordion-content">
+        <ul class="tv-list" id="tv-partial">
+          <li>13 Reasons Why &mdash; Season 1</li>
+          <li>American Dad!</li>
+          <li>Arrow</li>
+          <li>Atlanta</li>
+          <li>The Big Bang Theory</li>
+          <li>Black Mirror</li>
+          <li>Black Sails</li>
+          <li>Cops</li>
+          <li>Curb Your Enthusiasm</li>
+          <li>Daredevil</li>
+          <li>Deadwood</li>
+          <li>Dexter</li>
+          <li>Doctor Who</li>
+          <li>Family Guy</li>
+          <li>Fargo</li>
+          <li>The Flash</li>
+          <li>Fresh Off the Boat</li>
+          <li>Gilmore Girls</li>
+          <li>Gotham</li>
+          <li>Grey's Anatomy</li>
+          <li>Homeland</li>
+          <li>House</li>
+          <li>House of Cards</li>
+          <li>House of the Dragon</li>
+          <li>It's Always Sunny in Philadelphia</li>
+          <li>iZombie</li>
+          <li>Joey</li>
+          <li>Key &amp; Peele</li>
+          <li>Lucifer</li>
+          <li>Mad Men</li>
+          <li>Master of None</li>
+          <li>Masters of Sex</li>
+          <li>Modern Family</li>
+          <li>Monk</li>
+          <li>Mr. Robot</li>
+          <li>Narcos: Mexico</li>
+          <li>New Girl</li>
+          <li>The Newsroom</li>
+          <li>Parks and Recreation</li>
+          <li>Peaky Blinders</li>
+          <li>Prison Break</li>
+          <li>Riverdale</li>
+          <li>Saturday Night Live</li>
+          <li>The Secret Lives of Mormon Wives</li>
+          <li>Sense8</li>
+          <li>The Simpsons</li>
+          <li>Smallville</li>
+          <li>Sons of Anarchy</li>
+          <li>South Park</li>
+          <li>Spartacus</li>
+          <li>Stranger Things</li>
+          <li>Suits</li>
+          <li>Ted Lasso</li>
+          <li>True Detective</li>
+          <li>Two and a Half Men</li>
+          <li>Veep</li>
+          <li>Vikings</li>
+          <li>Westworld</li>
+          <li>The Witch</li>
+        </ul>
+      </div>
+    </details>
+
   </section>
 
   <footer class="site-footer">
@@ -604,8 +764,17 @@
     document.querySelector(".main-nav").classList.toggle("open");
   });
 
+  var movieCount = document.querySelectorAll(".movie-list li").length;
+  var tvCompletedCount = document.querySelectorAll("#tv-completed li").length;
+  var tvPartialCount = document.querySelectorAll("#tv-partial li").length;
   document.getElementById("movie-count").textContent =
-    document.querySelectorAll(".movie-list li").length + " titles";
+    movieCount + " movies, " + (tvCompletedCount + tvPartialCount) + " TV shows";
+  document.getElementById("movies-summary").textContent =
+    "Movies (" + movieCount + ")";
+  document.getElementById("tv-completed-summary").textContent =
+    "TV Shows — Completed (" + tvCompletedCount + ")";
+  document.getElementById("tv-partial-summary").textContent =
+    "TV Shows — Partially Completed (" + tvPartialCount + ")";
   </script>
 </body>
 </html>
