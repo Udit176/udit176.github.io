@@ -303,6 +303,10 @@
   }
 
   var allSongs = [];
+  var filteredSongs = [];
+  var rendered = 0;
+  var BATCH = 100;
+  var debounceTimer = null;
 
   function escapeHtml(str) {
     var div = document.createElement("div");
@@ -310,64 +314,102 @@
     return div.innerHTML;
   }
 
-  function renderSongs(songs) {
+  function buildRow(s, index) {
+    var html = '<div class="song-row">';
+    html += '<span class="song-num">' + (index + 1) + "</span>";
+    if (s.art) {
+      html += '<img class="song-art" src="' + escapeHtml(s.art) + '" alt="" loading="lazy">';
+    }
+    html += '<div class="song-details">';
+    html += '<div class="song-title"><a href="' + escapeHtml(s.url) + '" target="_blank">' + escapeHtml(s.title) + "</a></div>";
+    html += '<div class="song-meta">' + escapeHtml(s.artist) + " &middot; " + escapeHtml(s.album) + "</div>";
+    html += "</div>";
+    html += '<span class="song-date">' + (s.added_at ? s.added_at.split("T")[0] : "") + "</span>";
+    html += "</div>";
+    return html;
+  }
+
+  function renderBatch() {
+    var list = document.getElementById("song-list");
+    if (!list || rendered >= filteredSongs.length) return;
+    var end = Math.min(rendered + BATCH, filteredSongs.length);
+    var html = "";
+    for (var i = rendered; i < end; i++) {
+      html += buildRow(filteredSongs[i], i);
+    }
+    list.insertAdjacentHTML("beforeend", html);
+    rendered = end;
+  }
+
+  function resetAndRender(songs) {
     var container = document.getElementById("songs-container");
+    filteredSongs = songs;
+    rendered = 0;
+
     if (!songs.length) {
       container.innerHTML = '<p class="empty-state">No songs found.</p>';
       return;
     }
 
-    var html = "";
-    html += '<p class="song-count">' + allSongs.length + " songs</p>";
-
+    var html = '<p class="song-count">' + songs.length + " songs</p>";
     html += '<div class="controls">';
-    html += '<input type="text" class="search-box" id="search" placeholder="Search songs, artists, albums..." oninput="filterAndRender()">';
+    html += '<input type="text" class="search-box" id="search" placeholder="Search songs, artists, albums...">';
     html += "</div>";
-
-    for (var i = 0; i < songs.length; i++) {
-      var s = songs[i];
-      html += '<div class="song-row">';
-      html += '<span class="song-num">' + (i + 1) + "</span>";
-      if (s.art) {
-        html += '<img class="song-art" src="' + escapeHtml(s.art) + '" alt="" loading="lazy">';
-      }
-      html += '<div class="song-details">';
-      html += '<div class="song-title"><a href="' + escapeHtml(s.url) + '" target="_blank">' + escapeHtml(s.title) + "</a></div>";
-      html += '<div class="song-meta">' + escapeHtml(s.artist) + " &middot; " + escapeHtml(s.album) + "</div>";
-      html += "</div>";
-      html += '<span class="song-date">' + (s.added_at ? s.added_at.split("T")[0] : "") + "</span>";
-      html += "</div>";
-    }
-
+    html += '<div id="song-list"></div>';
     container.innerHTML = html;
+
+    document.getElementById("search").addEventListener("input", function() {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(filterAndRender, 200);
+    });
+
+    renderBatch();
   }
 
   function filterAndRender() {
     var searchEl = document.getElementById("search");
     var query = searchEl ? searchEl.value.toLowerCase() : "";
-    var filtered = allSongs;
+    var cursorPos = searchEl ? searchEl.selectionStart : 0;
 
+    var songs = allSongs;
     if (query) {
-      filtered = allSongs.filter(function(s) {
-        return (s.title + " " + s.artist + " " + s.album).toLowerCase().indexOf(query) !== -1;
+      songs = allSongs.filter(function(s) {
+        return s._search.indexOf(query) !== -1;
       });
     }
 
-    filtered = filtered.slice().sort(function(a, b) {
-      var va = (a.title || "").toLowerCase();
-      var vb = (b.title || "").toLowerCase();
-      if (va < vb) return -1;
-      if (va > vb) return 1;
-      return 0;
-    });
+    filteredSongs = songs;
+    rendered = 0;
 
-    renderSongs(filtered);
+    var list = document.getElementById("song-list");
+    if (list) {
+      list.innerHTML = "";
+    }
+
+    var countEl = document.querySelector(".song-count");
+    if (countEl) {
+      countEl.textContent = songs.length + " songs";
+    }
+
+    if (!songs.length) {
+      if (list) list.innerHTML = '<p class="empty-state">No songs found.</p>';
+      return;
+    }
+
+    renderBatch();
+
     if (searchEl) {
-      var newSearch = document.getElementById("search");
-      newSearch.value = query;
-      newSearch.focus();
+      searchEl.focus();
+      searchEl.setSelectionRange(cursorPos, cursorPos);
     }
   }
+
+  window.addEventListener("scroll", function() {
+    if (rendered >= filteredSongs.length) return;
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 500) {
+      renderBatch();
+    }
+  });
 
   fetch("data/spotify_likes.json")
     .then(function(resp) {
@@ -376,7 +418,17 @@
     })
     .then(function(data) {
       allSongs = data.songs.filter(function(s) { return s.title && s.title.trim(); });
-      filterAndRender();
+      allSongs.sort(function(a, b) {
+        var va = (a.title || "").toLowerCase();
+        var vb = (b.title || "").toLowerCase();
+        if (va < vb) return -1;
+        if (va > vb) return 1;
+        return 0;
+      });
+      allSongs.forEach(function(s) {
+        s._search = (s.title + " " + s.artist + " " + s.album).toLowerCase();
+      });
+      resetAndRender(allSongs);
     })
     .catch(function() {
       document.getElementById("songs-container").innerHTML =
