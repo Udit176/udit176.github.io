@@ -13,9 +13,94 @@
   <link rel="stylesheet" href="style.css" />
   <style>
     .spotify-section {
-      max-width: 900px;
+      max-width: 800px;
       margin: 0 auto;
       padding: 0 2rem 3rem;
+    }
+
+    .disclaimer {
+      color: #777;
+      font-size: 0.85rem;
+      max-width: 600px;
+      line-height: 1.5;
+      margin-top: 0.5rem;
+    }
+
+    .info-wrapper {
+      display: inline-block;
+      position: relative;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+    }
+
+    .info-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 1px solid #555;
+      color: #555;
+      font-size: 0.7rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+      text-decoration: none;
+      font-style: normal;
+    }
+
+    .info-icon:hover {
+      color: #1DB954;
+      border-color: #1DB954;
+    }
+
+    .info-tooltip {
+      display: none;
+      position: absolute;
+      bottom: 130%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #222;
+      color: #ccc;
+      font-size: 0.75rem;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .info-wrapper:hover .info-tooltip {
+      display: block;
+    }
+
+    .info-detail {
+      display: none;
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+      color: #aaa;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      max-width: 600px;
+    }
+
+    .info-detail.open {
+      display: block;
+    }
+
+    .info-detail ol {
+      list-style: decimal;
+      padding-left: 1.25rem;
+      margin-top: 0.5rem;
+    }
+
+    .info-detail li {
+      padding: 0.2rem 0;
+      color: #aaa;
     }
 
     .song-count {
@@ -29,13 +114,13 @@
       gap: 0.75rem;
       flex-wrap: wrap;
       align-items: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
 
     .search-box {
       flex: 1;
-      min-width: 200px;
-      max-width: 400px;
+      min-width: 180px;
+      max-width: 350px;
       padding: 0.6rem 1rem;
       background: #111;
       border: 1px solid #222;
@@ -54,11 +139,23 @@
       color: #555;
     }
 
+    .sort-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .sort-label {
+      color: #555;
+      font-size: 0.8rem;
+    }
+
     .sort-btn {
       background: #111;
       border: 1px solid #222;
-      color: #999;
-      padding: 0.5rem 0.75rem;
+      color: #888;
+      padding: 0.35rem 0.7rem;
       border-radius: 4px;
       font-size: 0.8rem;
       cursor: pointer;
@@ -75,71 +172,25 @@
       border-color: #1DB954;
     }
 
-    .songs-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .songs-table thead th {
-      text-align: left;
-      color: #666;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+    .song-row {
+      display: flex;
+      align-items: center;
       padding: 0.5rem 0;
-      border-bottom: 1px solid #222;
-      cursor: pointer;
-      user-select: none;
-      transition: color 0.2s;
-    }
-
-    .songs-table thead th:hover {
-      color: #aaa;
-    }
-
-    .songs-table thead th.col-num {
-      width: 3rem;
-      text-align: right;
-      padding-right: 1rem;
-      cursor: default;
-    }
-
-    .songs-table thead th .sort-arrow {
-      font-size: 0.7rem;
-      margin-left: 0.25rem;
-      color: #444;
-    }
-
-    .songs-table thead th.sorted .sort-arrow {
-      color: #1DB954;
-    }
-
-    .songs-table tbody tr {
       border-bottom: 1px solid #111;
+      gap: 0.75rem;
       transition: background 0.15s;
     }
 
-    .songs-table tbody tr:hover {
-      background: #111;
+    .song-row:hover {
+      background: #0a0a0a;
     }
 
-    .songs-table td {
-      padding: 0.5rem 0;
-      font-size: 0.9rem;
-      vertical-align: middle;
-    }
-
-    .songs-table td.col-num {
+    .song-num {
+      width: 2.5rem;
       text-align: right;
-      padding-right: 1rem;
-      color: #555;
+      color: #444;
       font-size: 0.85rem;
-    }
-
-    .song-info {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+      flex-shrink: 0;
     }
 
     .song-art {
@@ -150,36 +201,42 @@
       background: #222;
     }
 
-    .song-text .song-name {
-      color: #ddd;
-      font-weight: 500;
-      display: block;
+    .song-details {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
     }
 
-    .song-text .song-name a {
+    .song-title {
+      color: #ddd;
+      font-weight: 500;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .song-title a {
       color: #ddd;
       text-decoration: none;
     }
 
-    .song-text .song-name a:hover {
+    .song-title a:hover {
       color: #1DB954;
-      text-decoration: underline;
     }
 
-    .song-text .song-artist {
-      color: #777;
+    .song-meta {
+      color: #666;
       font-size: 0.8rem;
-      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    .td-album {
-      color: #777;
-      font-size: 0.85rem;
-    }
-
-    .td-date {
-      color: #555;
+    .song-date {
+      color: #444;
       font-size: 0.8rem;
+      flex-shrink: 0;
       white-space: nowrap;
     }
 
@@ -202,12 +259,16 @@
       .spotify-section {
         padding: 0 1rem 2rem;
       }
-      .td-album, .col-album {
-        display: none;
-      }
       .song-art {
         width: 32px;
         height: 32px;
+      }
+      .song-num {
+        width: 2rem;
+        font-size: 0.75rem;
+      }
+      .song-date {
+        display: none;
       }
     }
   </style>
@@ -233,8 +294,26 @@
   </header>
 
   <section class="hero-section">
-    <h1>My Liked Songs</h1>
-    <p style="color:#777; font-size:0.9rem;">Every song I've ever liked on Spotify.</p>
+    <h1>
+      My Liked Songs
+      <span class="info-wrapper">
+        <span class="info-icon" onclick="toggleInfo()" title="How was this built?">i</span>
+        <span class="info-tooltip">Click to learn how this was built</span>
+      </span>
+    </h1>
+    <p class="disclaimer">
+      I got into the habit of adding every song I listen to to my liked songs on Spotify. As a result, my liked songs are a pretty good representation of every song I've ever listened to (or at least listened to in the last 5 years).
+    </p>
+    <div class="info-detail" id="info-detail">
+      <strong>How was this built?</strong>
+      <ol>
+        <li>A Python script authenticates with the Spotify Web API using OAuth (PKCE flow).</li>
+        <li>It reads every saved track from the Spotify saved-tracks endpoint.</li>
+        <li>The script generates a static JSON file containing each song's title, artist, album, Spotify link, and date added.</li>
+        <li>The JSON is committed and pushed to the website's GitHub repository.</li>
+        <li>This page reads the JSON and renders it as a searchable, sortable list.</li>
+      </ol>
+    </div>
   </section>
 
   <section class="spotify-section">
@@ -252,6 +331,10 @@
     document.querySelector(".main-nav").classList.toggle("open");
   });
 
+  function toggleInfo() {
+    document.getElementById("info-detail").classList.toggle("open");
+  }
+
   var allSongs = [];
   var currentSort = { key: "added_at", dir: "desc" };
 
@@ -261,7 +344,7 @@
     return div.innerHTML;
   }
 
-  function renderTable(songs) {
+  function renderSongs(songs) {
     var container = document.getElementById("songs-container");
     if (!songs.length) {
       container.innerHTML = '<p class="empty-state">No songs found.</p>';
@@ -270,46 +353,41 @@
 
     var html = "";
     html += '<p class="song-count">' + allSongs.length + " songs</p>";
+
     html += '<div class="controls">';
     html += '<input type="text" class="search-box" id="search" placeholder="Search songs, artists, albums..." oninput="filterAndRender()">';
-    html += "</div>";
-    html += '<div style="overflow-x:auto;">';
-    html += '<table class="songs-table"><thead><tr>';
-    html += '<th class="col-num">#</th>';
-    html += buildTh("title", "Title");
-    html += buildTh("artist", "Artist");
-    html += buildTh("album", "Album", "col-album");
-    html += buildTh("added_at", "Added");
-    html += "</tr></thead><tbody>";
+    html += '<div class="sort-controls">';
+    html += '<span class="sort-label">Sort by:</span>';
+    html += sortButton("added_at", "Date");
+    html += sortButton("title", "Title");
+    html += sortButton("artist", "Artist");
+    html += "</div></div>";
 
     for (var i = 0; i < songs.length; i++) {
       var s = songs[i];
-      html += "<tr>";
-      html += '<td class="col-num">' + (i + 1) + "</td>";
-      html += "<td><div class='song-info'>";
+      html += '<div class="song-row">';
+      html += '<span class="song-num">' + (i + 1) + "</span>";
       if (s.art) {
         html += '<img class="song-art" src="' + escapeHtml(s.art) + '" alt="" loading="lazy">';
       }
-      html += '<div class="song-text">';
-      html += '<span class="song-name"><a href="' + escapeHtml(s.url) + '" target="_blank">' + escapeHtml(s.title) + "</a></span>";
-      html += '<span class="song-artist">' + escapeHtml(s.artist) + "</span>";
-      html += "</div></div></td>";
-      html += '<td class="td-album">' + escapeHtml(s.album) + "</td>";
-      html += '<td class="td-date">' + (s.added_at ? s.added_at.split("T")[0] : "") + "</td>";
-      html += "</tr>";
+      html += '<div class="song-details">';
+      html += '<div class="song-title"><a href="' + escapeHtml(s.url) + '" target="_blank">' + escapeHtml(s.title) + "</a></div>";
+      html += '<div class="song-meta">' + escapeHtml(s.artist) + " &middot; " + escapeHtml(s.album) + "</div>";
+      html += "</div>";
+      html += '<span class="song-date">' + (s.added_at ? s.added_at.split("T")[0] : "") + "</span>";
+      html += "</div>";
     }
 
-    html += "</tbody></table></div>";
     container.innerHTML = html;
   }
 
-  function buildTh(key, label, extraClass) {
-    var cls = (extraClass || "") + (currentSort.key === key ? " sorted" : "");
+  function sortButton(key, label) {
+    var active = currentSort.key === key;
     var arrow = "";
-    if (currentSort.key === key) {
+    if (active) {
       arrow = currentSort.dir === "asc" ? " &#9650;" : " &#9660;";
     }
-    return '<th class="' + cls.trim() + '" onclick="sortBy(\'' + key + '\')">' + label + '<span class="sort-arrow">' + arrow + "</span></th>";
+    return '<button class="sort-btn' + (active ? " active" : "") + '" onclick="sortBy(\'' + key + '\')">' + label + arrow + "</button>";
   }
 
   function sortBy(key) {
@@ -317,7 +395,7 @@
       currentSort.dir = currentSort.dir === "asc" ? "desc" : "asc";
     } else {
       currentSort.key = key;
-      currentSort.dir = "asc";
+      currentSort.dir = key === "added_at" ? "desc" : "asc";
     }
     filterAndRender();
   }
@@ -341,7 +419,7 @@
       return 0;
     });
 
-    renderTable(filtered);
+    renderSongs(filtered);
     if (searchEl) {
       var newSearch = document.getElementById("search");
       newSearch.value = query;
