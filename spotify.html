@@ -342,6 +342,7 @@
   var BATCH = 100;
   var debounceTimer = null;
   var currentSort = "title";
+  var sortAsc = true;
 
   function escapeHtml(str) {
     var div = document.createElement("div");
@@ -391,8 +392,8 @@
     html += '<input type="text" class="search-box" id="search" placeholder="Search songs, artists, albums...">';
     html += '<div class="sort-controls">';
     html += '<span class="sort-label">Sort:</span>';
-    html += '<button class="sort-btn' + (currentSort === "title" ? " active" : "") + '" id="sort-title">Title</button>';
-    html += '<button class="sort-btn' + (currentSort === "date" ? " active" : "") + '" id="sort-date">Date Added</button>';
+    html += '<button class="sort-btn' + (currentSort === "title" ? " active" : "") + '" id="sort-title">Title ' + (currentSort === "title" ? (sortAsc ? "▲" : "▼") : "") + '</button>';
+    html += '<button class="sort-btn' + (currentSort === "date" ? " active" : "") + '" id="sort-date">Date Added ' + (currentSort === "date" ? (sortAsc ? "▲" : "▼") : "") + '</button>';
     html += '</div>';
     html += "</div>";
     html += '<div id="song-list"></div>';
@@ -410,28 +411,41 @@
   }
 
   function applySortOrder(songs) {
+    var dir = sortAsc ? 1 : -1;
     return songs.slice().sort(function(a, b) {
       if (currentSort === "date") {
         var da = a.added_at || "";
         var db = b.added_at || "";
-        if (da > db) return -1;
-        if (da < db) return 1;
+        if (da < db) return dir;
+        if (da > db) return -dir;
         return 0;
       }
       var va = (a.title || "").toLowerCase();
       var vb = (b.title || "").toLowerCase();
-      if (va < vb) return -1;
-      if (va > vb) return 1;
+      if (va < vb) return -dir;
+      if (va > vb) return dir;
       return 0;
     });
   }
 
   function sortBy(key) {
-    currentSort = key;
+    if (currentSort === key) {
+      sortAsc = !sortAsc;
+    } else {
+      currentSort = key;
+      sortAsc = true;
+    }
+    var arrow = sortAsc ? " ▲" : " ▼";
     var titleBtn = document.getElementById("sort-title");
     var dateBtn = document.getElementById("sort-date");
-    if (titleBtn) titleBtn.className = "sort-btn" + (key === "title" ? " active" : "");
-    if (dateBtn) dateBtn.className = "sort-btn" + (key === "date" ? " active" : "");
+    if (titleBtn) {
+      titleBtn.className = "sort-btn" + (key === "title" ? " active" : "");
+      titleBtn.textContent = "Title" + (key === "title" ? arrow : "");
+    }
+    if (dateBtn) {
+      dateBtn.className = "sort-btn" + (key === "date" ? " active" : "");
+      dateBtn.textContent = "Date Added" + (key === "date" ? arrow : "");
+    }
     filterAndRender();
   }
 
