@@ -19,6 +19,52 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
   />
+  <style>
+    .visitor-info-wrapper {
+      display: inline-block;
+      position: relative;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+    }
+    .visitor-info-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 1px solid #555;
+      color: #555;
+      font-size: 0.7rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+      font-style: normal;
+    }
+    .visitor-info-icon:hover {
+      color: #fff;
+      border-color: #fff;
+    }
+    .visitor-info-detail {
+      display: none;
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      margin-top: 0.75rem;
+      color: #aaa;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      max-width: 600px;
+      text-align: left;
+    }
+    .visitor-info-detail.open {
+      display: block;
+    }
+    .visitor-info-detail p {
+      margin: 0.5rem 0 0;
+    }
+  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -74,6 +120,17 @@
   </p>
   <p>❌ Not currently looking for full-time opportunities.</p>
   <p>Thanks for visiting. <a href="guestbook.html" style="text-decoration: underline;">Leave your name in my guestbook</a> before you go.</p>
+
+  <p style="margin-top: 1rem;">
+    <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fudit176.github.io&count_bg=%23555555&title_bg=%23333333&icon=&emoji_status=&title=unique+visitors&edge_flat=true" alt="Visitor count" style="vertical-align: middle;" />
+    <span class="visitor-info-wrapper">
+      <span class="visitor-info-icon" onclick="document.getElementById('visitor-info-detail').classList.toggle('open')" title="How is this tracked?">i</span>
+    </span>
+  </p>
+  <div class="visitor-info-detail" id="visitor-info-detail">
+    <strong>How is this tracked?</strong>
+    <p>This counter uses <a href="https://hits.seeyoufarm.com" target="_blank" style="text-decoration:underline; color:#aaa;">hits.seeyoufarm.com</a>, a lightweight, open-source badge service. It counts unique visitors based on a hashed combination of your IP and user-agent string. No cookies, no analytics scripts, no personal data is stored or shared. This website does not use Google Analytics or any other tracking service.</p>
+  </div>
 
   <!-- ICON LINKS (Email & LinkedIn) -->
   <div class="hero-icons">
@@ -238,9 +295,6 @@
         <h3>Sign the Guestbook</h3>
       </a>
     </div>
-    <p style="margin-top: 1.5rem; color: #555; font-size: 0.85rem;">
-      <img src="https://api.visitorbadge.io/api/visitors?path=udit176.github.io&label=Visitors&countColor=%23555555" alt="Visitor count" style="vertical-align: middle;" />
-    </p>
   </section>
 
   <!-- CONNECT SECTION -->
