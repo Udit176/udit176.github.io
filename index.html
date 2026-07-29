@@ -122,14 +122,15 @@
   <p>Thanks for visiting. <a href="guestbook.html" style="text-decoration: underline;">Leave your name in my guestbook</a> before you go.</p>
 
   <p style="margin-top: 1rem;">
-    <img src="https://api.visitorbadge.io/api/visitors?path=udit176.github.io&label=unique%20visitors&countColor=%23555555&labelColor=%23333333&style=flat" alt="Visitor count" style="vertical-align: middle;" />
+    <img src="https://api.visitorbadge.io/api/visitors?path=udit176.github.io-visits&label=visits&countColor=%23555555&labelColor=%23333333&style=flat" alt="Visit count" style="vertical-align: middle;" />
+    <span id="unique-badge"></span>
     <span class="visitor-info-wrapper">
       <span class="visitor-info-icon" onclick="document.getElementById('visitor-info-detail').classList.toggle('open')" title="How is this tracked?">i</span>
     </span>
   </p>
   <div class="visitor-info-detail" id="visitor-info-detail">
     <strong>How is this tracked?</strong>
-    <p>This counter uses <a href="https://visitorbadge.io" target="_blank" style="text-decoration:underline; color:#aaa;">visitorbadge.io</a>, a lightweight badge service. No cookies, no analytics scripts, no personal data is stored or shared. This website does not use Google Analytics or any other tracking service.</p>
+    <p>This page uses <a href="https://visitorbadge.io" target="_blank" style="text-decoration:underline; color:#aaa;">visitorbadge.io</a>, a lightweight badge service. The "visits" counter increments on every page load. The "unique visitors" counter uses your browser's local storage to only count your first visit. No cookies, no analytics scripts, no personal data is stored or shared. This website does not use Google Analytics or any other tracking service.</p>
   </div>
 
   <!-- ICON LINKS (Email & LinkedIn) -->
@@ -323,6 +324,22 @@
   document.querySelector('.nav-toggle').addEventListener('click', function() {
     document.querySelector('.main-nav').classList.toggle('open');
   });
+
+  (function() {
+    var badge = document.getElementById("unique-badge");
+    if (!badge) return;
+    var img = document.createElement("img");
+    img.alt = "Unique visitor count";
+    img.style.verticalAlign = "middle";
+    img.style.marginLeft = "0.4rem";
+    if (!localStorage.getItem("ue_visited")) {
+      localStorage.setItem("ue_visited", "1");
+      img.src = "https://api.visitorbadge.io/api/visitors?path=udit176.github.io-unique&label=unique%20visitors&countColor=%23555555&labelColor=%23333333&style=flat";
+    } else {
+      img.src = "https://api.visitorbadge.io/api/visitors?path=udit176.github.io-unique&label=unique%20visitors&countColor=%23555555&labelColor=%23333333&style=flat&readonly=true";
+    }
+    badge.appendChild(img);
+  })();
   </script>
 </body>
 </html>
