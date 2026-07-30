@@ -284,7 +284,7 @@
         <li><a href="index.html#about">About</a></li>
         <li><a href="index.html#research">Research</a></li>
         <li><a href="index.html#projects">Projects</a></li>
-        <li><a href="index.html#courses">Courses</a></li>
+        <li><a href="index.html#publications">Publications</a></li>
         <li><a href="index.html#blog">Blog</a></li>
         <li><a href="index.html#misc">Misc</a></li>
         <li><a href="index.html#guestbook">Guestbook</a></li>
@@ -301,10 +301,11 @@
         <span class="info-tooltip">Click to learn how this was built</span>
       </span>
     </h1>
-    <p class="disclaimer">
-      One of my pet peeves was being asked, “Have you heard this song?” and knowing it sounded familiar without being able to place it. So, I started adding every song I heard to my Liked Songs. 
+    <p class=”disclaimer”>
+      One of my pet peeves was being asked, “Have you heard this song?” and knowing it sounded familiar without being able to place it. So, I started adding every song I heard to my Liked Songs.
       Nearly a decade later, the habit has left me with a remarkably complete soundtrack to my life.
     </p>
+    <p class=”disclaimer” id=”last-updated”></p>
     <div class="info-detail" id="info-detail">
       <strong>How was this built?</strong>
       <ol>
@@ -500,6 +501,10 @@
       return resp.json();
     })
     .then(function(data) {
+      if (data.last_updated) {
+        var el = document.getElementById("last-updated");
+        if (el) el.textContent = "Last updated: " + data.last_updated;
+      }
       allSongs = data.songs.filter(function(s) { return s.title && s.title.trim(); });
       allSongs.sort(function(a, b) {
         var va = (a.title || "").toLowerCase();
