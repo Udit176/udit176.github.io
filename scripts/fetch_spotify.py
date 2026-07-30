@@ -25,6 +25,8 @@ import secrets
 import subprocess
 import sys
 import threading
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 import webbrowser
@@ -112,6 +114,22 @@ def parse_track(item):
     }
 
 
+def api_request(url, token, max_retries=5):
+    req = urllib.request.Request(url, headers={"Authorization": f"Bearer {token}"})
+    for attempt in range(max_retries):
+        try:
+            with urllib.request.urlopen(req) as resp:
+                return json.loads(resp.read())
+        except urllib.error.HTTPError as e:
+            if e.code == 429:
+                wait = int(e.headers.get("Retry-After", 2 ** attempt))
+                print(f"\n  Rate limited. Waiting {wait}s...")
+                time.sleep(wait)
+            else:
+                raise
+    raise RuntimeError(f"Still rate-limited after {max_retries} retries")
+
+
 def fetch_liked_songs(token, stop_at=None):
     """Fetch liked songs from Spotify. If stop_at is set, stop when we
     reach a song with that added_at timestamp (incremental mode)."""
@@ -120,9 +138,7 @@ def fetch_liked_songs(token, stop_at=None):
     stopped_early = False
 
     while url:
-        req = urllib.request.Request(url, headers={"Authorization": f"Bearer {token}"})
-        with urllib.request.urlopen(req) as resp:
-            data = json.loads(resp.read())
+        data = api_request(url, token)
 
         for item in data["items"]:
             if stop_at and item["added_at"] <= stop_at:
