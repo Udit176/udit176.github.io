@@ -127,9 +127,10 @@ def fetch_liked_songs(token):
 
 
 def save_json(songs, path):
+    from datetime import date
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w") as f:
-        json.dump({"count": len(songs), "songs": songs}, f, indent=2)
+        json.dump({"count": len(songs), "last_updated": date.today().isoformat(), "songs": songs}, f, indent=2)
     print(f"  Saved to {path}")
 
 
