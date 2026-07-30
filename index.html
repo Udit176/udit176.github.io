@@ -64,6 +64,67 @@
     .visitor-info-detail p {
       margin: 0.5rem 0 0;
     }
+    .contact-form {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 6px;
+      padding: 1.5rem;
+      max-width: 500px;
+    }
+    .contact-form label {
+      display: block;
+      color: #999;
+      font-size: 0.85rem;
+      margin-bottom: 0.3rem;
+      margin-top: 1rem;
+    }
+    .contact-form label:first-of-type {
+      margin-top: 0;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      background: #0a0a0a;
+      border: 1px solid #222;
+      border-radius: 4px;
+      color: #ddd;
+      font-size: 0.9rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+      box-sizing: border-box;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #555;
+    }
+    .contact-form textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    .contact-form button {
+      margin-top: 1rem;
+      padding: 0.6rem 1.5rem;
+      background: #222;
+      border: 1px solid #333;
+      border-radius: 4px;
+      color: #ccc;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .contact-form button:hover {
+      background: #333;
+      color: #fff;
+    }
+    .contact-status {
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: #777;
+    }
+    .contact-status.success { color: #4a9; }
+    .contact-status.error { color: #c55; }
   </style>
   <script type="application/ld+json">
   {
@@ -106,7 +167,7 @@
         <li><a href="#blog">Blog</a></li>
         <li><a href="#misc">Misc</a></li>
         <li><a href="#guestbook">Guestbook</a></li>
-        <li><a href="#connect">Connect</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -298,20 +359,25 @@
     </div>
   </section>
 
-  <!-- CONNECT SECTION -->
-  <section id="connect" class="content-section">
-    <h2>🔗 Connect</h2>
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="content-section">
+    <h2>📬 Contact</h2>
     <p>
-      Thank you for visiting my website! Feel free to reach out for any inquiries, 
-      collaborations, or just to say hello.
+      Interested in collaborating, discussing research, or just getting in touch? Feel free to reach out.
     </p>
-    <p>
-      You can find me on 
-      <a 
-        href="https://www.linkedin.com/in/udit-ekansh" 
-        target="_blank" style="text-decoration: underline;"> LinkedIn</a>
-        or just drop me an 
-        <a href="mailto:uekansh@udel.edu" target="_blank" style="text-decoration: underline;">email</a>.
+    <form class="contact-form" action="https://formspree.io/f/meeyndyg" method="POST">
+      <input type="hidden" name="_subject" value="Contact from udit176.github.io" />
+      <label for="contact-name">Name</label>
+      <input type="text" id="contact-name" name="name" required placeholder="Your name" />
+      <label for="contact-email">Email</label>
+      <input type="email" id="contact-email" name="email" required placeholder="Your email" />
+      <label for="contact-message">Message</label>
+      <textarea id="contact-message" name="message" required placeholder="What's on your mind?"></textarea>
+      <button type="submit">Send</button>
+      <p class="contact-status" id="contact-status"></p>
+    </form>
+    <p style="color: #777; font-size: 0.85rem; margin-top: 1rem;">
+      or email me at <a href="mailto:uekansh@udel.edu" style="text-decoration: underline; color: #aaa;">uekansh@udel.edu</a>
     </p>
   </section>
 
@@ -340,6 +406,39 @@
     }
     badge.appendChild(img);
   })();
+
+  var contactForm = document.querySelector(".contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      var status = document.getElementById("contact-status");
+      var btn = contactForm.querySelector("button");
+      btn.disabled = true;
+      btn.textContent = "Sending...";
+      status.textContent = "";
+      status.className = "contact-status";
+      fetch(contactForm.action, {
+        method: "POST",
+        body: new FormData(contactForm),
+        headers: { "Accept": "application/json" }
+      }).then(function(resp) {
+        if (resp.ok) {
+          status.textContent = "Message sent! I'll get back to you soon.";
+          status.className = "contact-status success";
+          contactForm.reset();
+        } else {
+          status.textContent = "Something went wrong. Please try again.";
+          status.className = "contact-status error";
+        }
+      }).catch(function() {
+        status.textContent = "Something went wrong. Please try again.";
+        status.className = "contact-status error";
+      }).finally(function() {
+        btn.disabled = false;
+        btn.textContent = "Send";
+      });
+    });
+  }
   </script>
 </body>
 </html>
