@@ -138,6 +138,13 @@ def git_commit_and_push(path):
     repo_root = os.path.dirname(os.path.dirname(os.path.abspath(path)))
     rel_path = os.path.relpath(path, repo_root)
     subprocess.run(["git", "add", rel_path], cwd=repo_root, check=True)
+    result = subprocess.run(
+        ["git", "diff", "--cached", "--quiet"],
+        cwd=repo_root,
+    )
+    if result.returncode == 0:
+        print("  No changes to commit.")
+        return
     subprocess.run(
         ["git", "commit", "-m", f"Update Spotify liked songs ({json.loads(open(path).read())['count']} tracks)"],
         cwd=repo_root,
