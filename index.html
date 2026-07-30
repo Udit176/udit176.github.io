@@ -363,6 +363,7 @@
           </a>
           <a href="spotify.html" class="project-card">
             <h3>Listening Log</h3>
+            <span id="listening-log-date" style="color: #555; font-size: 0.75rem;"></span>
           </a>
         </div>
       </div>
@@ -429,6 +430,16 @@
     }
     badge.appendChild(img);
   })();
+
+  fetch("data/spotify_likes.json")
+    .then(function(r) { return r.ok ? r.json() : null; })
+    .then(function(d) {
+      if (d && d.last_updated) {
+        var el = document.getElementById("listening-log-date");
+        if (el) el.textContent = "Last updated: " + d.last_updated;
+      }
+    })
+    .catch(function() {});
 
   var contactForm = document.querySelector(".contact-form");
   if (contactForm) {
