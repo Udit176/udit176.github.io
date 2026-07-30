@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """
-Fetch all Spotify liked songs and save as a static JSON file.
+Fetch Spotify liked songs and save as a static JSON file.
+
+By default, performs an incremental update: loads the existing JSON,
+fetches only songs added after the most recent entry, and prepends them.
+Pass --full to re-fetch the entire library from scratch.
 
 Usage:
     1. Create a Spotify app at https://developer.spotify.com/dashboard
@@ -8,7 +12,7 @@ Usage:
     3. Copy your Client ID
     4. Run: python scripts/fetch_spotify.py --client-id YOUR_CLIENT_ID
     5. A browser window opens — log in and authorize
-    6. The script fetches all liked songs and writes data/spotify_likes.json
+    6. The script fetches new liked songs and updates data/spotify_likes.json
     7. Optionally pass --commit to auto-commit and push the updated JSON
 """
 
@@ -93,9 +97,27 @@ def exchange_code(client_id, code, verifier):
         return json.loads(resp.read())["access_token"]
 
 
-def fetch_liked_songs(token):
+def parse_track(item):
+    track = item["track"]
+    artists = ", ".join(a["name"] for a in track["artists"])
+    album_images = track["album"]["images"]
+    art = album_images[2]["url"] if len(album_images) > 2 else (album_images[0]["url"] if album_images else "")
+    return {
+        "title": track["name"],
+        "artist": artists,
+        "album": track["album"]["name"],
+        "url": track["external_urls"].get("spotify", ""),
+        "art": art,
+        "added_at": item["added_at"],
+    }
+
+
+def fetch_liked_songs(token, stop_at=None):
+    """Fetch liked songs from Spotify. If stop_at is set, stop when we
+    reach a song with that added_at timestamp (incremental mode)."""
     songs = []
     url = "https://api.spotify.com/v1/me/tracks?limit=50"
+    stopped_early = False
 
     while url:
         req = urllib.request.Request(url, headers={"Authorization": f"Bearer {token}"})
@@ -103,27 +125,28 @@ def fetch_liked_songs(token):
             data = json.loads(resp.read())
 
         for item in data["items"]:
-            track = item["track"]
-            artists = ", ".join(a["name"] for a in track["artists"])
-            album_images = track["album"]["images"]
-            art = album_images[2]["url"] if len(album_images) > 2 else (album_images[0]["url"] if album_images else "")
+            if stop_at and item["added_at"] <= stop_at:
+                stopped_early = True
+                break
+            songs.append(parse_track(item))
 
-            songs.append({
-                "title": track["name"],
-                "artist": artists,
-                "album": track["album"]["name"],
-                "url": track["external_urls"].get("spotify", ""),
-                "art": art,
-                "added_at": item["added_at"],
-            })
+        if stopped_early:
+            break
 
         url = data.get("next")
         if url:
             sys.stdout.write(f"\r  Fetched {len(songs)} songs...")
             sys.stdout.flush()
 
-    print(f"\r  Fetched {len(songs)} songs total.")
+    print(f"\r  Fetched {len(songs)} {'new ' if stop_at else ''}songs.")
     return songs
+
+
+def load_existing(path):
+    if not os.path.exists(path):
+        return None
+    with open(path) as f:
+        return json.load(f)
 
 
 def save_json(songs, path):
@@ -131,7 +154,7 @@ def save_json(songs, path):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w") as f:
         json.dump({"count": len(songs), "last_updated": date.today().isoformat(), "songs": songs}, f, indent=2)
-    print(f"  Saved to {path}")
+    print(f"  Saved {len(songs)} songs to {path}")
 
 
 def git_commit_and_push(path):
@@ -159,6 +182,7 @@ def main():
     parser.add_argument("--client-id", required=True, help="Spotify app Client ID")
     parser.add_argument("--output", default=OUTPUT_PATH, help="Output JSON path")
     parser.add_argument("--commit", action="store_true", help="Auto-commit and push after saving")
+    parser.add_argument("--full", action="store_true", help="Re-fetch entire library instead of incremental update")
     args = parser.parse_args()
 
     verifier, challenge = generate_pkce()
@@ -181,10 +205,23 @@ def main():
     print("Exchanging code for access token...")
     token = exchange_code(args.client_id, auth_code, verifier)
 
-    print("Fetching liked songs...")
-    songs = fetch_liked_songs(token)
+    existing = load_existing(args.output)
+    stop_at = None
+    if not args.full and existing and existing.get("songs"):
+        newest = max(s["added_at"] for s in existing["songs"] if s.get("added_at"))
+        stop_at = newest
+        print(f"Incremental mode: fetching songs added after {newest}")
+    else:
+        print("Full fetch: downloading entire library...")
 
-    save_json(songs, args.output)
+    new_songs = fetch_liked_songs(token, stop_at=stop_at)
+
+    if stop_at and existing:
+        all_songs = new_songs + existing["songs"]
+    else:
+        all_songs = new_songs
+
+    save_json(all_songs, args.output)
 
     if args.commit:
         git_commit_and_push(args.output)
