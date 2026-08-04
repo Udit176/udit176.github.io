@@ -20,50 +20,6 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
   />
   <style>
-    .visitor-info-wrapper {
-      display: inline-block;
-      position: relative;
-      margin-left: 0.4rem;
-      vertical-align: middle;
-    }
-    .visitor-info-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      border: 1px solid #555;
-      color: #555;
-      font-size: 0.7rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: color 0.2s, border-color 0.2s;
-      font-style: normal;
-    }
-    .visitor-info-icon:hover {
-      color: #fff;
-      border-color: #fff;
-    }
-    .visitor-info-detail {
-      display: none;
-      background: #111;
-      border: 1px solid #222;
-      border-radius: 6px;
-      padding: 1rem 1.25rem;
-      margin-top: 0.75rem;
-      color: #aaa;
-      font-size: 0.85rem;
-      line-height: 1.6;
-      max-width: 600px;
-      text-align: left;
-    }
-    .visitor-info-detail.open {
-      display: block;
-    }
-    .visitor-info-detail p {
-      margin: 0.5rem 0 0;
-    }
     .contact-form {
       background: #111;
       border: 1px solid #222;
@@ -194,16 +150,7 @@
   <p>❌ Not currently looking for full-time opportunities.</p>
   <p>Thanks for visiting. <a href="guestbook.html" style="text-decoration: underline;">Leave your name in my guestbook</a> before you go.</p>
 
-  <p style="margin-top: 1rem;">
-    <span id="unique-badge"></span>
-    <span class="visitor-info-wrapper">
-      <span class="visitor-info-icon" onclick="document.getElementById('visitor-info-detail').classList.toggle('open')" title="How is this tracked?">i</span>
-    </span>
-  </p>
-  <div class="visitor-info-detail" id="visitor-info-detail">
-    <strong>How is this tracked?</strong>
-    <p>This page uses <a href="https://visitorbadge.io" target="_blank" style="text-decoration:underline; color:#aaa;">visitorbadge.io</a>, a lightweight badge service. The visitor counter uses your browser's local storage to only count your first visit. No cookies, no analytics scripts, no personal data is stored or shared. This website does not use Google Analytics or any other tracking service.</p>
-  </div>
+  <p id="visitor-greeting" style="margin-top: 1rem; color: #777; font-size: 0.9rem;"></p>
 
   <!-- ICON LINKS (Email & LinkedIn) -->
   <div class="hero-icons">
@@ -232,9 +179,9 @@
     <ul class="publication-list">
       <li>
         <strong>Instantaneous planning, control and safety for navigation in unknown underwater spaces</strong><br />
-        Veejay Karthik J., Udit Ekansh, Tejal Jain, Shivam Vishwakarma, Rohan Deshpande, Leena Vachhani<br />
+        Veejay Karthik J., <strong>Udit Ekansh</strong>, Tejal Jain, Shivam Vishwakarma, Rohan Deshpande, Leena Vachhani<br />
         <em>Ocean Engineering</em>, 2026.
-        <a href="https://doi.org/10.1016/j.oceaneng.2026.126627" target="_blank" style="text-decoration: underline;">DOI</a> |
+        <a href="https://doi.org/10.1016/j.oceaneng.2026.126627" target="_blank" style="text-decoration: underline;">Link to article</a>
         <!-- <a href="https://arxiv.org/abs/2604.05310" target="_blank" style="text-decoration: underline;">arXiv</a> -->
         <a href="ipc.html" style="display: inline-block; margin-top: 0.5rem; padding: 0.3rem 0.8rem; background: #222; border: 1px solid #333; border-radius: 4px; color: #ccc; text-decoration: none; font-size: 0.85rem; transition: background 0.2s, color 0.2s;">Learn more &rarr;</a>
       </li>
@@ -414,19 +361,39 @@
   });
 
   (function() {
-    var badge = document.getElementById("unique-badge");
-    if (!badge) return;
-    var img = document.createElement("img");
-    img.alt = "Unique visitor count";
-    img.style.verticalAlign = "middle";
-    img.style.marginLeft = "0.4rem";
-    if (!localStorage.getItem("ue_visited")) {
-      localStorage.setItem("ue_visited", "1");
-      img.src = "https://api.visitorbadge.io/api/visitors?path=udit176.github.io-unique&label=unique%20visitors&countColor=%23555555&labelColor=%23333333&style=flat";
-    } else {
-      img.src = "https://api.visitorbadge.io/api/visitors?path=udit176.github.io-unique&label=unique%20visitors&countColor=%23555555&labelColor=%23333333&style=flat&readonly=true";
-    }
-    badge.appendChild(img);
+    var el = document.getElementById("visitor-greeting");
+    if (!el) return;
+    var isNew = !localStorage.getItem("ue_visited");
+    var countUrl = "https://api.visitorbadge.io/api/visitors?path=udit176.github.io-unique&label=count&countColor=%23555555&labelColor=%23333333&style=flat";
+    if (!isNew) countUrl += "&readonly=true";
+    else localStorage.setItem("ue_visited", "1");
+
+    fetch(countUrl)
+      .then(function(r) { return r.text(); })
+      .then(function(svg) {
+        var match = svg.match(/>(\d[\d,]*)<\/text>/);
+        if (!match) { el.textContent = "Welcome!"; return; }
+        var n = parseInt(match[1].replace(/,/g, ""), 10);
+        var suffix = "th";
+        if (n % 100 < 11 || n % 100 > 13) {
+          if (n % 10 === 1) suffix = "st";
+          else if (n % 10 === 2) suffix = "nd";
+          else if (n % 10 === 3) suffix = "rd";
+        }
+        var msgs = [
+          "You're visitor #" + n + "! That's a nice round number. You win... nothing. But hey, congrats!",
+          "Visitor #" + n + "! If this were a game show, you'd win a brand new toaster. But it's not, so... welcome!",
+          "🎉 Visitor #" + n + "! Quick, make a wish!",
+          "Visitor #" + n + "! Legend says every 100th visitor gets good luck for a week. Don't fact-check that.",
+          "Whoa, visitor #" + n + "! The simulation is pleased with your timing."
+        ];
+        if (n % 100 === 0 && n > 0) {
+          el.textContent = msgs[Math.floor(Math.random() * msgs.length)];
+        } else {
+          el.textContent = "You are the " + n + suffix + " visitor.";
+        }
+      })
+      .catch(function() { el.textContent = "Welcome!"; });
   })();
 
   fetch("data/spotify_likes.json")
