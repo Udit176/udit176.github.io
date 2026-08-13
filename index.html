@@ -81,6 +81,12 @@
     }
     .contact-status.success { color: #4a9; }
     .contact-status.error { color: #c55; }
+    .content-section h2 {
+      display: inline-block;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid #333;
+      margin-bottom: 1rem;
+    }
     .publication-list {
       list-style: none;
       padding-left: 0;
@@ -133,7 +139,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#publications">Publications</a></li>
         <li><a href="#blog">Blog</a></li>
-        <li><a href="#misc">Misc</a></li>
+        <li><a href="#archives">Archives</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -164,7 +170,7 @@
 
   <!-- ABOUT SECTION -->
   <section id="about" class="content-section">
-    <h2>⭐ About</h2>
+    <h2>About</h2>
     <p>
       I am a Ph.D. student in Mechanical Engineering at the University of Delaware and a member of the Human-Oriented Robotics and Control (HORC) Lab. My research focuses on robot learning, adaptive control, and human-robot interaction for assistive and rehabilitative robotics. Previously, I earned an M.S. in Autonomy from Purdue University, where I conducted research in robot learning, computer vision, and autonomous systems. I also worked as a Research Assistant at IIT Bombay, developing planning and control algorithms for autonomous underwater vehicles.
     </p>
@@ -173,7 +179,7 @@
 
   <!-- PUBLICATIONS SECTION -->
   <section id="publications" class="content-section">
-    <h2>📄 Publications</h2>
+    <h2>Publications</h2>
     <ul class="publication-list">
       <li>
         <strong>Instantaneous planning, control and safety for navigation in unknown underwater spaces</strong><br />
@@ -188,7 +194,7 @@
 
 
   <section id="blog" class="content-section">
-  <h2>📝 Blog</h2>
+  <h2>Blog</h2>
   <p>Thoughts on robotics, research, and life in grad school.</p>
 
   <div class="blog-list">
@@ -213,11 +219,11 @@
 </section>
 
     <!-- MISC SECTION -->
-  <section id="misc" class="content-section">
-    <h2>🎲 Misc</h2>
+  <section id="archives" class="content-section">
+    <h2>Archives</h2>
 
     <details class="courses-accordion">
-      <summary>Academic Archive</summary>
+      <summary>Academic</summary>
       <div class="accordion-content" style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
         <details class="courses-accordion" style="flex: 1; min-width: 200px;">
           <summary>Courses</summary>
@@ -320,7 +326,7 @@
 
   <!-- CONTACT SECTION -->
   <section id="contact" class="content-section">
-    <h2>📬 Contact</h2>
+    <h2>Contact</h2>
     <p>
       Interested in collaborating, discussing research, or just getting in touch? Feel free to reach out.
     </p>
@@ -373,7 +379,7 @@
         var msgs = [
           "You're visitor #" + n + "! That's a nice round number. You win... nothing. But hey, congrats!",
           "Visitor #" + n + "! If this were a game show, you'd win a brand new toaster. But it's not, so... welcome!",
-          "🎉 Visitor #" + n + "! Quick, make a wish!",
+          "Visitor #" + n + "! Quick, make a wish!",
           "Visitor #" + n + "! Legend says every 100th visitor gets good luck for a week. Don't fact-check that.",
           "Whoa, visitor #" + n + "! The simulation is pleased with your timing."
         ];
