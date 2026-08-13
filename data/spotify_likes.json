@@ -1,7 +1,71 @@
 {
-  "count": 8915,
-  "last_updated": "2026-07-30",
+  "count": 8923,
+  "last_updated": "2026-08-13",
   "songs": [
+    {
+      "title": "Destiny - Mann Atkeya",
+      "artist": "Shashwat Sachdev, Token, Vaibhav Gupta, Shahzad Ali",
+      "album": "Dhurandhar The Revenge",
+      "url": "https://open.spotify.com/track/79WcL9b7spam7V0nBJNa6O",
+      "art": "https://i.scdn.co/image/ab67616d000048514c3eeb98521e02693a46d6db",
+      "added_at": "2026-08-12T21:52:22Z"
+    },
+    {
+      "title": "Dhurandhar The Revenge - Aari Aari",
+      "artist": "Shashwat Sachdev, Bombay Rockers, Irshad Kamil, Khan Saab, Reble, Token, Jasmine Sandlas, Sudhir Yaduvanshi",
+      "album": "Dhurandhar The Revenge",
+      "url": "https://open.spotify.com/track/157BtwkY54FQ3Xl8DsTso1",
+      "art": "https://i.scdn.co/image/ab67616d000048514c3eeb98521e02693a46d6db",
+      "added_at": "2026-08-12T21:48:18Z"
+    },
+    {
+      "title": "Choose Your Pig",
+      "artist": "Louie Zong",
+      "album": "Nintenhogs DS Original Soundtrack",
+      "url": "https://open.spotify.com/track/1xm7GtFzBmGCnLdBGfMi0s",
+      "art": "https://i.scdn.co/image/ab67616d0000485164f7dd1f8d8654dd1fc621ae",
+      "added_at": "2026-08-06T20:12:16Z"
+    },
+    {
+      "title": "Slop Shop",
+      "artist": "Louie Zong",
+      "album": "Nintenhogs DS Original Soundtrack",
+      "url": "https://open.spotify.com/track/26tK3qFvh8i4RIocrbTA4Y",
+      "art": "https://i.scdn.co/image/ab67616d0000485164f7dd1f8d8654dd1fc621ae",
+      "added_at": "2026-08-06T20:12:11Z"
+    },
+    {
+      "title": "Welcome To The Farm!",
+      "artist": "Louie Zong",
+      "album": "Nintenhogs DS Original Soundtrack",
+      "url": "https://open.spotify.com/track/49npMzDgm5vaektOfyD5Gm",
+      "art": "https://i.scdn.co/image/ab67616d0000485164f7dd1f8d8654dd1fc621ae",
+      "added_at": "2026-08-06T20:04:36Z"
+    },
+    {
+      "title": "Baptize (with JID & EARTHGANG feat. Ant Clemons)",
+      "artist": "Spillage Village, JID, EARTHGANG, Ant Clemons",
+      "album": "Spilligion",
+      "url": "https://open.spotify.com/track/5zWOqc9si4XnemdxZH4WGG",
+      "art": "https://i.scdn.co/image/ab67616d00004851230d88bf27d6ca322fb59eb4",
+      "added_at": "2026-07-30T21:14:45Z"
+    },
+    {
+      "title": "Spill Vill (with Desi Banks & Big Rube feat. Kountry Wayne)",
+      "artist": "Spillage Village, Desi Banks, Big Rube, Kountry Wayne",
+      "album": "Spilligion",
+      "url": "https://open.spotify.com/track/0SWJRiKGi1Ms9bfPJ5zajk",
+      "art": "https://i.scdn.co/image/ab67616d00004851230d88bf27d6ca322fb59eb4",
+      "added_at": "2026-07-30T21:12:45Z"
+    },
+    {
+      "title": "Sounds We Cannot Hear",
+      "artist": "Protomartyr",
+      "album": "Sounds We Cannot Hear",
+      "url": "https://open.spotify.com/track/0dlpa3bEXIlnUWal4t7DUy",
+      "art": "https://i.scdn.co/image/ab67616d00004851a26865b7f1b9f35f67a23399",
+      "added_at": "2026-07-30T20:43:30Z"
+    },
     {
       "title": "Dreamlab- I Echophase , II Quite Amazed , III Going to Meet My Lady",
       "artist": "Mythos",
