@@ -135,7 +135,8 @@
             <h3>Watch Log</h3>
           </a>
           <a href="spotify.html" class="project-card">
-            <h3>Listening Log</h3>
+            <h3>Music Log</h3>
+            <span id="listening-log-date" style="color: #555; font-size: 0.75rem;"></span>
           </a>
         </div>
       </div>
@@ -151,6 +152,16 @@
   document.querySelector(".nav-toggle").addEventListener("click", function() {
     document.querySelector(".main-nav").classList.toggle("open");
   });
+
+  fetch("data/spotify_likes.json")
+    .then(function(r) { return r.ok ? r.json() : null; })
+    .then(function(d) {
+      if (d && d.last_updated) {
+        var el = document.getElementById("listening-log-date");
+        if (el) el.textContent = "Last updated: " + d.last_updated;
+      }
+    })
+    .catch(function() {});
   </script>
 </body>
 </html>
