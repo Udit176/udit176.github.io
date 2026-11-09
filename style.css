@@ -155,15 +155,28 @@ p {
 
 .project-card {
   background: #111;
-  padding: 0.8rem 1rem;
   border-radius: 4px;
   color: #fff;
   transition: background 0.2s;
-  text-align: center;
+  text-align: left;
+  overflow: hidden;
+  max-width: 340px;
+  text-decoration: none;
 }
 
 .project-card:hover {
   background: #222;
+}
+
+.project-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.project-card-body {
+  padding: 0.8rem 1rem;
 }
 
 /* ------------------------------
@@ -456,6 +469,7 @@ iframe {
 
   .project-card {
     width: 100%;
+    max-width: none;
   }
 
   .certificate-grid {
